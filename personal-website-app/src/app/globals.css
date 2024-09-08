@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+/* Add Gilmer font import here if using a web font service */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -32,4 +33,30 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@layer base {
+  h1 {
+    @apply font-sans font-extralight;
+  }
+  h2 {
+    @apply font-gilmer font-light;
+  }
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100; /* Extra Light */
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 100; /* Bold */
+  margin-bottom: 1rem;
 }
