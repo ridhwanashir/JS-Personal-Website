@@ -7,18 +7,47 @@ import { useState } from 'react';
 export default function Home() {
   const [currentCard, setCurrentCard] = useState(0);
   const experiences = [
-    { title: "Experience 1", description: "Description 1" },
-    { title: "Experience 2", description: "Description 2" },
-    { title: "Experience 3", description: "Description 3" },
-    { title: "Experience 4", description: "Description 4" },
-    { title: "Experience 5", description: "Description 5" },
+    { 
+      logo: "/axrail_logo.png",
+      company: "Axrail Pte Ltd",
+      duration: "Jan 2020 - Present",
+      role: "AI/Data Engineer",
+      location: "Kuala Lumpur, Malaysia"
+    },
+    { 
+      logo: "/techbros_logo.png",
+      company: "Techbros Gmbh",
+      duration: "Mar 2018 - Dec 2019",
+      role: "Data Science Intern",
+      location: "Dusseldorf, Germany"
+    },
+    { 
+      logo: "/telkom_university_logo.png",
+      company: "Telkom University",
+      duration: "Mar 2018 - Dec 2019",
+      role: "Lecturer Assistant",
+      location: "Bandung, Indonesia"
+    },
+    { 
+      logo: "/metrodata_logo.png",
+      company: "PT Metrodata Electronics, Tbk.",
+      duration: "Apr 2024 - Current",
+      role: "Technical Consultant",
+      location: "Jakarta, Indonesia"
+    },
   ];
 
-  const nextCard = () => setCurrentCard((prev) => (prev + 1) % experiences.length);
-  const prevCard = () => setCurrentCard((prev) => (prev - 1 + experiences.length) % experiences.length);
+  const nextCard = () => {
+    setCurrentCard((prev) => (prev + 1) % experiences.length);
+  };
+
+  const prevCard = () => {
+    setCurrentCard((prev) => (prev - 1 + experiences.length) % experiences.length);
+  };
 
   return (
     <main className="flex flex-col items-center">
+      {/* Hero Section */}
       <div className="w-full min-h-screen flex flex-col items-center justify-center p-24 bg-cover bg-center" style={{ backgroundImage: "url('/background_1.png')" }}>
         <div className="flex flex-col items-center justify-center space-y-8">
           <Image
@@ -40,7 +69,7 @@ export default function Home() {
           <div className="h-40"></div>
         </div>
       </div>
-
+      {/* Profile Section */}
       <div className="w-full bg-white relative">
         <div className="max-w-screen-xl mx-auto h-screen flex flex-col justify-center w-full bg-white relative">
           <Image
@@ -48,7 +77,7 @@ export default function Home() {
             alt="Small logo"
             width={50}
             height={50}
-            className="absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           />
           <div className="flex h-full">
             <div className="w-1/3 relative">
@@ -78,6 +107,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* Experiences Section */}
       <div className="w-full bg-white relative">
         <div className="max-w-screen-xl mx-auto h-screen flex flex-col justify-center w-full bg-white relative">
           <Image
@@ -94,18 +124,33 @@ export default function Home() {
                 &lt;
               </button>
               
+              {/* Experience cards */}
               <div className="flex space-x-4 overflow-hidden">
                 {[0, 1, 2].map((offset) => {
                   const index = (currentCard + offset) % experiences.length;
+                  const exp = experiences[index];
                   return (
-                    <div key={index} className="w-64 p-4 bg-gray-100 rounded-lg shadow-md">
-                      <h3 className="text-xl font-semibold mb-2">{experiences[index].title}</h3>
-                      <p>{experiences[index].description}</p>
+                    <div key={index} className="w-64 h-96 bg-white rounded-lg shadow-md flex flex-col transition-transform duration-700 ease-in-out transform">
+                      <div className="h-2/5 p-4 flex items-center justify-center bg-white-100 rounded-t-lg">
+                        <Image
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          width={100}
+                          height={150}
+                          objectFit="contain"
+                        />
+                      </div>
+                      <div className="h-3/5 p-4 flex flex-col justify-between bg-black text-white">
+                        <h2 className="text-xl font-semibold">{exp.company}</h2>
+                        <p className="text-sm text-center">{exp.duration}</p>
+                        <p className="text-lg font-medium text-center">{exp.role}</p>
+                        <p className="text-sm text-center">{exp.location}</p>
+                      </div>
                     </div>
                   );
                 })}
               </div>
-              
+
               <button onClick={nextCard} className="mx-4 p-2 bg-gray-200 rounded-full">
                 &gt;
               </button>
