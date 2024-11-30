@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 export default function Home() {
   const [currentCard, setCurrentCard] = useState(0);
+  // Experience data
   const experiences = [
     { 
       logo: "/axrail_logo.png",
@@ -37,18 +38,22 @@ export default function Home() {
     },
   ];
 
+  // Function to move to the next card
   const nextCard = () => {
     setCurrentCard((prev) => (prev + 1) % experiences.length);
   };
 
+  // Function to move to the previous card
   const prevCard = () => {
     setCurrentCard((prev) => (prev - 1 + experiences.length) % experiences.length);
   };
 
   return (
     <main className="flex flex-col items-center">
+
       {/* Hero Section */}
       <div className="w-full min-h-screen flex flex-col items-center justify-center p-24 bg-cover bg-center" style={{ backgroundImage: "url('/background_1.png')" }}>
+        {/* Logo and Introduction */}
         <div className="flex flex-col items-center justify-center space-y-8">
           <Image
             src={ridhwanlogo}
@@ -61,17 +66,17 @@ export default function Home() {
               maxWidth: '100%',
             }}
           />
-          <div className="h-8"></div>
           <h1 className="text-4xl font-extralight mt-8">Ridhwan Nashir</h1>
           <h2 className="text-2xl font-light">
             Software Engineer <span className="mx-2">•</span> Solution Architect <span className="mx-2">•</span> Explorer
           </h2>
-          <div className="h-40"></div>
         </div>
       </div>
+
       {/* Profile Section */}
       <div className="w-full bg-white relative">
         <div className="max-w-screen-xl mx-auto h-screen flex flex-col justify-center w-full bg-white relative">
+          {/* Small logo at the top */}
           <Image
             src={ridhwanlogo}
             alt="Small logo"
@@ -80,6 +85,7 @@ export default function Home() {
             className="absolute top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           />
           <div className="flex h-full">
+            {/* Profile Image */}
             <div className="w-1/3 relative">
               <Image
                 src="/background_2.png"
@@ -90,6 +96,7 @@ export default function Home() {
                 className="absolute bottom-0"
               />
             </div>
+            {/* Profile Description */}
             <div className="w-2/3 p-8 flex items-center justify-end">
               <div className="pr-12">
                 <p className="text-4xl font-sans leading-tight">
@@ -107,6 +114,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       {/* Experiences Section */}
       <div className="w-full bg-white relative">
         <div className="max-w-screen-xl mx-auto h-screen flex flex-col justify-center w-full bg-white relative">
@@ -178,3 +186,4 @@ export default function Home() {
     </main>
   );
 }
+
