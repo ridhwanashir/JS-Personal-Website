@@ -92,7 +92,7 @@ export default function Home() {
                 alt="Ridhwan Nashir"
                 width={400}
                 height={500}
-                objectFit="cover"
+                style={{objectFit:"cover"}}
                 className="absolute bottom-0"
               />
             </div>
@@ -145,7 +145,7 @@ export default function Home() {
                           alt={`${exp.company} logo`}
                           width={100}
                           height={150}
-                          objectFit="contain"
+                          style={{objectFit:"contain"}}
                         />
                       </div>
                       <div className="h-3/5 p-4 flex flex-col justify-between bg-black text-white">
