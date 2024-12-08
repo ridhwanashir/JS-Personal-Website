@@ -2,6 +2,10 @@
 
 import Image from "next/image";
 import ridhwanlogo from "../../public/ridhwan-logo.png"
+import worksbg_data_ml from "../../public/works_data_ml_bg.png"
+import worksbg_design from "../../public/works_design_bg.png"
+import worksbg_software from "../../public/works_software_bg.png"
+import worksbg_research from "../../public/works_research_bg.png"
 import { useState } from 'react';
 
 export default function Home() {
