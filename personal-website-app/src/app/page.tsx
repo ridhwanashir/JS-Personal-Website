@@ -128,7 +128,7 @@ export default function Home() {
           <h2 className="text-4xl font-extralight text-center mb-12 font-poppins absolute top-24 left-1/2 transform -translate-x-1/2">Experiences</h2>
           <div className="flex h-full items-center">
             <div className="flex justify-center items-center w-full">
-              <button onClick={prevCard} className="mx-4 p-2 bg-gray-200 rounded-full">
+              <button onClick={prevCard} className="mx-4 p-2 bg-light-gray-200 rounded-full shadow-md">
                 &lt;
               </button>
               
@@ -149,7 +149,7 @@ export default function Home() {
                         />
                       </div>
                       <div className="h-3/5 p-4 flex flex-col justify-between bg-black text-white">
-                        <h2 className="text-xl font-semibold">{exp.company}</h2>
+                        <h2 className="text-xl font-semibold" style={{ color: "white" }}>{exp.company}</h2>
                         <p className="text-sm text-center">{exp.duration}</p>
                         <p className="text-lg font-medium text-center">{exp.role}</p>
                         <p className="text-sm text-center">{exp.location}</p>
@@ -159,7 +159,7 @@ export default function Home() {
                 })}
               </div>
 
-              <button onClick={nextCard} className="mx-4 p-2 bg-gray-200 rounded-full">
+              <button onClick={nextCard} className="mx-4 p-2 bg-light-gray-200 rounded-full shadow-md">
                 &gt;
               </button>
             </div>
