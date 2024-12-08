@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
 /* Add Gilmer font import here if using a web font service */
 
@@ -39,9 +38,11 @@ body {
 @layer base {
   h1 {
     @apply font-sans font-extralight;
+    color: black; /* Ensure h1 is black */
   }
   h2 {
     @apply font-gilmer font-light;
+    color: black; /* Ensure h2 is black */
   }
 }
 
@@ -52,11 +53,14 @@ h1, h2 {
 h1 {
   font-size: 3rem;
   margin-top: 20px;
+  font-weight: 200; /* Extra Light */
+  color: black; /* Explicitly set text color to black */
 }
 
 h2 {
   font-size: 1.5rem;
   text-align: center;
-  font-weight: 50; /* Bold */
+  font-weight: 400; /* Regular */
   margin-bottom: 1rem;
+  color: black; /* Explicitly set text color to black */
 }
