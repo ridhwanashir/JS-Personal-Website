@@ -172,23 +172,32 @@ export default function Home() {
       </div>
       <div className="w-full h-screen bg-black relative">
         <h2 className="text-4xl font-extralight text-center mb-12 font-poppins absolute top-24 left-1/2 transform -translate-x-1/2 text-white">Works</h2>
-      <div className="flex h-3/4 w-full absolute bottom-0">
-      <div className="relative flex-1 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-          <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
+        <div className="flex h-3/4 w-full absolute bottom-0">
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
+              <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
+            </div>
+            <p className="relative text-2xl text-white z-10">Data & ML</p>
+          </div>
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
+              <Image src={worksbg_design} alt="background design" className="w-full h-full object-cover" />
+            </div>
+            <p className="relative text-2xl text-white z-10">Designs</p>
+          </div>
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
+              <Image src={worksbg_software} alt="background software" className="w-full h-full object-cover" />
+            </div>
+            <p className="relative text-2xl text-white z-10">Software Engineering</p>
+          </div>
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
+              <Image src={worksbg_research} alt="background research" className="w-full h-full object-cover" />
+            </div>
+            <p className="relative text-2xl text-white z-10">Research and Blogs</p>
+          </div>
         </div>
-        <p className="relative text-2xl text-white z-10">Data & ML</p>
-      </div>
-        <div className="flex-1 bg-green-500 flex items-start justify-center">
-          <p className="text-2xl mt-24 mt-4 text-white">Green Block</p>
-        </div>
-        <div className="flex-1 bg-blue-500 flex items-start justify-center">
-          <p className="text-2xl mt-24 mt-4 text-white">Blue Block</p>
-        </div>
-        <div className="flex-1 bg-gray-500 flex items-start justify-center">
-          <p className="text-2xl mt-24 mt-4 text-white">Gray Block</p>
-        </div>
-      </div>
       </div>
     </main>
   );
