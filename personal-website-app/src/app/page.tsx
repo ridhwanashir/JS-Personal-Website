@@ -220,6 +220,16 @@ export default function Home() {
           <div className="flex-1 bg-white m-2 mt-8"></div>
           <div className="flex-1 bg-white m-2 mt-8"></div>
         </div>
+        <h2 className="text-4xl font-extralight relative mt-12 text-white">Certifications</h2>
+        <div className="flex h-48 w-4/5 relative bottom-1">
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+        </div>
+      </div>
     </main>
   );
 }
