@@ -212,6 +212,14 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="w-full h-screen bg-black relative flex flex-col items-center">
+        <h2 className="text-4xl font-extralight relative mt-24 text-white">Featured Projects</h2>
+        <div className="flex h-48 w-3/4 relative bottom-1">
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+          <div className="flex-1 bg-white m-2 mt-8"></div>
+        </div>
     </main>
   );
 }
