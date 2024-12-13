@@ -6,9 +6,17 @@ import worksbg_data_ml from "../../public/works_data_ml_bg.png"
 import worksbg_design from "../../public/works_design_bg.png"
 import worksbg_software from "../../public/works_software_bg.png"
 import worksbg_research from "../../public/works_research_bg.png"
-import { useState } from 'react';
+import under_construction from "../../public/under_construction.jpeg"
+import plus_thin from "../../public/plus_thin.svg"
+import { useState, useEffect } from 'react';
+// import feather from "feather-icons";
+import { ExternalLink } from 'react-feather';
 
 export default function Home() {
+  // useEffect(() => {
+  //   // Initialize Feather Icons after component mounts
+  //   feather.replace();
+  // }, []);
   const [currentCard, setCurrentCard] = useState(0);
   // Experience data
   const experiences = [
