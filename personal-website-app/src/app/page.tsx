@@ -222,11 +222,16 @@ export default function Home() {
       </div>
       <div className="w-full h-screen bg-black relative flex flex-col items-center">
         <h2 className="text-4xl font-extralight relative mt-24 text-white">Featured Projects</h2>
-        <div className="flex h-48 w-3/4 relative bottom-1">
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
+        <div className="flex h-48 w-3/4 relative bottom-1 mt-0">
+          <div className="flex-1 bg-white m-2 mt-8 duration-500 ease-in-out transform hover:scale-110">
+            <Image src={under_construction} alt="under construction" className="w-full h-full object-cover" />
+          </div>
+          <div className="flex-1 bg-white m-2 mt-8 duration-500 ease-in-out transform hover:scale-110">
+            <Image src={under_construction} alt="under construction" className="w-full h-full object-cover" />
+          </div>
+          <div className="flex-1 bg-white m-2 mt-8 duration-500 ease-in-out transform hover:scale-110">
+            <Image src={under_construction} alt="under construction" className="w-full h-full object-cover" />
+          </div>
         </div>
         <h2 className="text-4xl font-extralight relative mt-12 text-white">Certifications</h2>
         <div className="flex h-48 w-4/5 relative bottom-1">
