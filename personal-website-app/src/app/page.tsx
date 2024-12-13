@@ -232,6 +232,38 @@ export default function Home() {
           <div className="flex-1 bg-white m-2 mt-8 duration-500 ease-in-out transform hover:scale-110">
             <Image src={under_construction} alt="under construction" className="w-full h-full object-cover" />
           </div>
+          <div className="flex-1 flex flex-col items-center justify-center mt-8 border border-gray-800 bg-black p-4 group relative">
+            <div
+              className="transform transition-transform duration-500 group-hover:rotate-90"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-24 h-24"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </div>
+            <p className="mt-2 text-white text-sm text-center">
+              Your project
+            </p>
+            <div className="absolute -top-8 right-0 flex items-center space-x-2">
+              <a
+                href="https://example.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-sm underline decoration-transparent hover:decoration-white transition"
+              >
+                See All Projects
+              </a>
+              <ExternalLink color="white" size={16}/>
+            </div>
+          </div>
         </div>
         <h2 className="text-4xl font-extralight relative mt-12 text-white">Certifications</h2>
         <div className="flex h-48 w-4/5 relative bottom-1">
