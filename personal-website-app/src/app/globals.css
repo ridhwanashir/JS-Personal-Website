@@ -55,6 +55,7 @@ h1 {
   margin-top: 20px;
   font-weight: 200; /* Extra Light */
   color: black; /* Explicitly set text color to black */
+  animation: rotate-480 2s ease-in-out; /* Added animation property */
 }
 
 h2 {
@@ -64,3 +65,17 @@ h2 {
   margin-bottom: 1rem;
   color: black; /* Explicitly set text color to black */
 }
+
+@keyframes rotate-480 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.rotate-480 {
+  animation: rotate-480 2s ease-in-out;
+}
+
