@@ -6,6 +6,13 @@ import worksbg_data_ml from "../../public/works_data_ml_bg.png"
 import worksbg_design from "../../public/works_design_bg.png"
 import worksbg_software from "../../public/works_software_bg.png"
 import worksbg_research from "../../public/works_research_bg.png"
+import certificationbg_microsoft_ai from "../../public/certifications-microsoft-ai.webp"
+import certificationbg_aws_sa from "../../public/certifications-aws-sa.png"
+import certificationbg_tensorflow from "../../public/certifications-tensorflow.png"
+import certificationbg_google from "../../public/certifications-google-data.png"
+import certificationbg_deeplearningai from "../../public/certifications-deeplearningai.png"
+import certificationbg_imperial_college from "../../public/certifications-imperial-college-ml.png"
+import certificationbg_kemendikbud from "../../public/certifications-kemendikbud.png"
 import under_construction from "../../public/under_construction.jpeg"
 import plus_thin from "../../public/plus_thin.svg"
 import { useState, useEffect } from 'react';
@@ -266,13 +273,42 @@ export default function Home() {
           </div>
         </div>
         <h2 className="text-4xl font-extralight relative mt-12 text-white">Certifications</h2>
-        <div className="flex h-48 w-4/5 relative bottom-1">
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
-          <div className="flex-1 bg-white m-2 mt-8"></div>
+        <div className="flex h-50 w-4/5 relative bottom-1 justify-center mt-4">
+          <div className="flex flex-col items-center bg-transparent m-2 w-40 ">
+            <Image src={certificationbg_microsoft_ai} alt="microsoft azure ai fundamental" className="h-24 object-contain hover:scale-110 duration-500" />
+            <p className="text-sm text-center text-white mt-2">Microsoft Azure</p>
+            <p className="text-sm text-center text-white">AI Fundamentals</p>
+            <p className="text-xs text-center text-gray-500 font-thin">Issued Jun 2024</p>
+          </div>
+          <div className="flex flex-col items-center bg-transparent m-2 w-40">
+            <Image src={certificationbg_aws_sa} alt="aws solution architect" className="h-24 object-contain hover:scale-110 duration-500" />
+            <p className="text-sm text-center text-white mt-2">AWS</p>
+            <p className="text-sm text-center text-white">Solution Architect</p>
+            <p className="text-xs text-center text-gray-500 font-thin">Issued Apr 2024</p>
+          </div>
+          <div className="flex flex-col items-center bg-transparent m-2 w-40">
+            <Image src={certificationbg_google} alt="google data analytics" className="h-24 object-contain hover:scale-110 duration-500" />
+            <p className="text-sm text-center text-white mt-2">Google</p>
+            <p className="text-sm text-center text-white">Data Analytics</p>
+            <p className="text-xs text-center text-gray-500 font-thin">Issued Feb 2023</p>
+          </div>
+          <div className="flex flex-col items-center bg-transparent m-2 w-40">
+            <Image src={certificationbg_tensorflow} alt="tensorflow developer" className="h-24 object-contain hover:scale-110 duration-500" />
+            <p className="text-sm text-center text-white mt-2">TensorFlow</p>
+            <p className="text-sm text-center text-white">Developer</p>
+            <p className="text-xs text-center text-gray-500 font-thin">Issued Jul 2022</p>
+          </div>
+          <div className="flex flex-col items-center bg-transparent m-2 w-40">
+            <Image src={certificationbg_google} alt="google python automation" className="h-24 object-contain hover:scale-110 duration-500" />
+            <p className="text-sm text-center text-white mt-2">Google</p>
+            <p className="text-sm text-center text-white">Python Automation</p>
+            <p className="text-xs text-center text-gray-500 font-thin">Issued Mar 2022</p>
+          </div>
+          <div className="flex flex-col items-center bg-transparent m-2 w-40">
+            <Image src={certificationbg_imperial_college} alt="imperial college ml" className="h-24 object-contain hover:scale-110 duration-500" />
+            <p className="text-sm text-center text-white mt-2">Mathematics for Machine Learning</p>
+            <p className="text-xs text-center text-gray-500 font-thin">Issued Mar 2022</p>
+          </div>
         </div>
       </div>
     </main>
