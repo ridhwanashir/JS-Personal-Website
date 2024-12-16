@@ -318,6 +318,21 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* Skills Section */}
+      <div className="w-full h-screen bg-black relative">
+        <div className="flex h-1/2 border-white border-2">
+          <div className="flex-1 border-gray-500 border-2">
+          </div>
+          <div className="flex-1 border-gray-500 border-2">
+          </div>
+        </div>
+        <div className="flex h-1/2 border-white border-2">
+          <div className="flex-1 border-gray-500 border-2">
+          </div>
+          <div className="flex-1 border-gray-500 border-2">
+          </div>
+        </div>
+      </div>  
     </main>
   );
 }
