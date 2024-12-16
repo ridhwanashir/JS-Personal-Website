@@ -204,7 +204,7 @@ export default function Home() {
             </div>
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
               <div className="absolute inset-0 bg-black opacity-70"></div>
-              <p className="relative text-2xl text-white z-10">Designs</p>
+              <p className="relative text-2xl text-white z-10">Designs & Art</p>
             </div>
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
@@ -227,17 +227,24 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* Featured Projects and Certifications Section */}
       <div className="w-full h-screen bg-black relative flex flex-col items-center">
         <h2 className="text-4xl font-extralight relative mt-24 text-white">Featured Projects</h2>
         <div className="flex h-48 w-3/4 relative bottom-1 mt-0">
-          <div className="flex-1 bg-white m-2 mt-8 duration-500 ease-in-out transform hover:scale-110">
-            <Image src={under_construction} alt="under construction" className="w-full h-full object-cover" />
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
+            <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
+              <Image src={under_construction} alt="under construction" className="w-full object-cover" />
+            </div>
           </div>
-          <div className="flex-1 bg-white m-2 mt-8 duration-500 ease-in-out transform hover:scale-110">
-            <Image src={under_construction} alt="under construction" className="w-full h-full object-cover" />
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
+            <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
+              <Image src={under_construction} alt="under construction" className="w-full object-cover" />
+            </div>
           </div>
-          <div className="flex-1 bg-white m-2 mt-8 duration-500 ease-in-out transform hover:scale-110">
-            <Image src={under_construction} alt="under construction" className="w-full h-full object-cover" />
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
+            <div className="w-full bg-white  duration-500 ease-in-out transform hover:scale-110">
+              <Image src={under_construction} alt="under construction" className="w-full object-cover" />
+            </div>
           </div>
           <div className="flex-1 flex flex-col items-center justify-center mt-8 border border-gray-800 bg-black p-4 group relative">
             <div
