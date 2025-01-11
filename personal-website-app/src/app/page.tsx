@@ -13,6 +13,8 @@ import certificationbg_google from "../../public/certifications-google-data.png"
 import certificationbg_deeplearningai from "../../public/certifications-deeplearningai.png"
 import certificationbg_imperial_college from "../../public/certifications-imperial-college-ml.png"
 import certificationbg_kemendikbud from "../../public/certifications-kemendikbud.png"
+import interactivebg_skills from "../../public/interactive_skills_bg.png"
+import interactivebg_interests from "../../public/interactive_interests_bg.png"
 import under_construction from "../../public/under_construction.jpeg"
 import plus_thin from "../../public/plus_thin.svg"
 import { useState, useEffect } from 'react';
@@ -323,11 +325,17 @@ export default function Home() {
         <div className="flex h-1/2 border-white border-2">
           <div className="flex-1 border-gray-500 border-2">
           </div>
-          <div className="flex-1 border-gray-500 border-2">
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+            <div className="flex-1 border-gray-500 border-2 hover:scale-110 duration-500">
+              <Image src={interactivebg_skills} alt="interactive skills" className="w-full h-full object-cover " />
+            </div>
           </div>
         </div>
         <div className="flex h-1/2 border-white border-2">
-          <div className="flex-1 border-gray-500 border-2">
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+            <div className="flex-1 border-gray-500 border-2 hover:scale-110 duration-500">
+              <Image src={interactivebg_interests} alt="interactive interests" className="w-full h-full object-cover " />
+            </div>
           </div>
           <div className="flex-1 border-gray-500 border-2">
           </div>
