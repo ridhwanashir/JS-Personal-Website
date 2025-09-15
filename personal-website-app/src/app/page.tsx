@@ -129,7 +129,7 @@ export default function Home() {
       <div className="w-full bg-white relative">
         <div className="max-w-screen-xl mx-auto h-screen flex flex-col justify-center w-full bg-white relative">
           <Image
-            src={ridhwanlogo}
+            src="/ridhwan-logo.png"
             alt="Small logo"
             width={50}
             height={50}
@@ -191,7 +191,7 @@ export default function Home() {
         <div className="flex h-3/4 w-full absolute bottom-0">
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src="/works_data_ml_bg.png" alt="Data and Machine Learning background" className="w-full h-full object-cover" />
+              <Image src="/works_data_ml_bg.png" alt="Data and Machine Learning background" className="w-full h-full object-cover" width={500} height={300} />
             </div>
             {/* Transparent overlay with text */}
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
@@ -201,7 +201,7 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src="/works_design_bg.png" alt="Design and Art background" className="w-full h-full object-cover" />
+              <Image src="/works_design_bg.png" alt="Design and Art background" className="w-full h-full object-cover" width={500} height={300} />
             </div>
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
               <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -210,7 +210,7 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src="/works_software_bg.png" alt="Software Engineering background" className="w-full h-full object-cover" />
+              <Image src="/works_software_bg.png" alt="Software Engineering background" className="w-full h-full object-cover" width={500} height={300} />
             </div>
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
               <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -219,7 +219,7 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src="/works_research_bg.png" alt="Research and Blogs background" className="w-full h-full object-cover" />
+              <Image src="/works_research_bg.png" alt="Research and Blogs background" className="w-full h-full object-cover" width={500} height={300} />
             </div>
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
               <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -234,17 +234,17 @@ export default function Home() {
         <div className="flex h-48 w-3/4 relative bottom-1 mt-0">
           <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
             <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
-              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" />
+              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" width={500} height={300} />
             </div>
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
             <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
-              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" />
+              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" width={500} height={300} />
             </div>
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
             <div className="w-full bg-white  duration-500 ease-in-out transform hover:scale-110">
-              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" />
+              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" width={500} height={300} />
             </div>
           </div>
           <div className="flex-1 flex flex-col items-center justify-center mt-8 border border-gray-800 bg-black p-4 group relative">
@@ -283,37 +283,37 @@ export default function Home() {
         <h2 className="text-4xl font-extralight relative mt-12 text-white">Certifications</h2>
         <div className="flex h-50 w-4/5 relative bottom-1 justify-center mt-4">
           <div className="flex flex-col items-center bg-transparent m-2 w-40 ">
-            <Image src="/certifications-microsoft-ai.webp" alt="Microsoft Azure AI Fundamentals certification" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-microsoft-ai.webp" alt="Microsoft Azure AI Fundamentals certification" className="h-24 object-contain hover:scale-110 duration-500" width={96} height={96} />
             <p className="text-sm text-center text-white mt-2">Microsoft Azure</p>
             <p className="text-sm text-center text-white">AI Fundamentals</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Jun 2024</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src="/certifications-aws-sa.png" alt="AWS Solution Architect certification" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-aws-sa.png" alt="AWS Solution Architect certification" className="h-24 object-contain hover:scale-110 duration-500" width={96} height={96} />
             <p className="text-sm text-center text-white mt-2">AWS</p>
             <p className="text-sm text-center text-white">Solution Architect</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Apr 2024</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src="/certifications-google-data.png" alt="Google Data Analytics certification" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-google-data.png" alt="Google Data Analytics certification" className="h-24 object-contain hover:scale-110 duration-500" width={96} height={96} />
             <p className="text-sm text-center text-white mt-2">Google</p>
             <p className="text-sm text-center text-white">Data Analytics</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Feb 2023</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src="/certifications-tensorflow.png" alt="TensorFlow Developer certification" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-tensorflow.png" alt="TensorFlow Developer certification" className="h-24 object-contain hover:scale-110 duration-500" width={96} height={96} />
             <p className="text-sm text-center text-white mt-2">TensorFlow</p>
             <p className="text-sm text-center text-white">Developer</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Jul 2022</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src="/certifications-google-data.png" alt="Google Python Automation certification" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-google-data.png" alt="Google Python Automation certification" className="h-24 object-contain hover:scale-110 duration-500" width={96} height={96} />
             <p className="text-sm text-center text-white mt-2">Google</p>
             <p className="text-sm text-center text-white">Python Automation</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Mar 2022</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src="/certifications-imperial-college-ml.png" alt="Imperial College Mathematics for Machine Learning certification" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-imperial-college-ml.png" alt="Imperial College Mathematics for Machine Learning certification" className="h-24 object-contain hover:scale-110 duration-500" width={96} height={96} />
             <p className="text-sm text-center text-white mt-2">Mathematics for Machine Learning</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Mar 2022</p>
           </div>
@@ -326,14 +326,14 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="flex-1 border-gray-500 border-2 hover:scale-110 duration-500">
-              <Image src="/interactive_skills_bg.png" alt="Interactive skills background" className="w-full h-full object-cover " />
+              <Image src="/interactive_skills_bg.png" alt="Interactive skills background" className="w-full h-full object-cover" width={500} height={300} />
             </div>
           </div>
         </div>
         <div className="flex h-1/2 border-white border-2">
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="flex-1 border-gray-500 border-2 hover:scale-110 duration-500">
-              <Image src="/interactive_interests_bg.png" alt="Interactive interests background" className="w-full h-full object-cover " />
+              <Image src="/interactive_interests_bg.png" alt="Interactive interests background" className="w-full h-full object-cover" width={500} height={300} />
             </div>
           </div>
           <div className="flex-1 border-gray-500 border-2">
