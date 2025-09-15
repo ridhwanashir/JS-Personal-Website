@@ -1,34 +1,22 @@
 'use client';
 
 import Image from "next/image";
-import ridhwanlogo from "../../public/ridhwan-logo.png"
-import worksbg_data_ml from "../../public/works_data_ml_bg.png"
-import worksbg_design from "../../public/works_design_bg.png"
-import worksbg_software from "../../public/works_software_bg.png"
-import worksbg_research from "../../public/works_research_bg.png"
-import certificationbg_microsoft_ai from "../../public/certifications-microsoft-ai.webp"
-import certificationbg_aws_sa from "../../public/certifications-aws-sa.png"
-import certificationbg_tensorflow from "../../public/certifications-tensorflow.png"
-import certificationbg_google from "../../public/certifications-google-data.png"
-import certificationbg_deeplearningai from "../../public/certifications-deeplearningai.png"
-import certificationbg_imperial_college from "../../public/certifications-imperial-college-ml.png"
-import certificationbg_kemendikbud from "../../public/certifications-kemendikbud.png"
-import interactivebg_skills from "../../public/interactive_skills_bg.png"
-import interactivebg_interests from "../../public/interactive_interests_bg.png"
-import under_construction from "../../public/under_construction.jpeg"
-import plus_thin from "../../public/plus_thin.svg"
-import { useState, useEffect } from 'react';
-// import feather from "feather-icons";
-import { ExternalLink } from 'react-feather';
+import { useState } from 'react';
+import { ExternalLink, ChevronLeft, ChevronRight } from 'react-feather';
 
 export default function Home() {
-  // useEffect(() => {
-  //   // Initialize Feather Icons after component mounts
-  //   feather.replace();
-  // }, []);
-  const [currentCard, setCurrentCard] = useState(0);
-  // Experience data
-  const experiences = [
+  const [currentCard, setCurrentCard] = useState<number>(0);
+  
+  // Experience data with proper typing
+  interface Experience {
+    logo: string;
+    company: string;
+    duration: string;
+    role: string;
+    location: string;
+  }
+  
+  const experiences: Experience[] = [
     { 
       logo: "/axrail_logo.png",
       company: "Axrail Pte Ltd",
@@ -61,12 +49,12 @@ export default function Home() {
 
   // Function to move to the next card
   const nextCard = () => {
-    setCurrentCard((prev) => (prev + 1) % experiences.length);
+    setCurrentCard((prev: number) => (prev + 1) % experiences.length);
   };
 
   // Function to move to the previous card
   const prevCard = () => {
-    setCurrentCard((prev) => (prev - 1 + experiences.length) % experiences.length);
+    setCurrentCard((prev: number) => (prev - 1 + experiences.length) % experiences.length);
   };
 
   return (
@@ -77,10 +65,11 @@ export default function Home() {
         {/* Logo and Introduction */}
         <div className="flex flex-col items-center justify-center space-y-8">
           <Image
-            src={ridhwanlogo}
+            src="/ridhwan-logo.png"
             alt="Logo of Ridhwan Nashir"
             width={200}
             height={200}
+            priority
             style={{
               width: 'auto',
               height: 'auto',
@@ -99,7 +88,7 @@ export default function Home() {
         <div className="max-w-screen-xl mx-auto h-screen flex flex-col justify-center w-full bg-white relative">
           {/* Small logo at the top */}
           <Image
-            src={ridhwanlogo}
+            src="/ridhwan-logo.png"
             alt="Small logo"
             width={50}
             height={50}
@@ -149,8 +138,13 @@ export default function Home() {
           <h2 className="text-4xl font-extralight text-center mb-12 font-poppins absolute top-24 left-1/2 transform -translate-x-1/2">Experiences</h2>
           <div className="flex h-full items-center">
             <div className="flex justify-center items-center w-full">
-              <button onClick={prevCard} className="mx-4 p-2 bg-light-gray-200 rounded-full shadow-md">
-                &lt;
+              <button 
+                onClick={prevCard} 
+                className="mx-4 p-2 bg-gray-200 hover:bg-gray-300 rounded-full shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label="Previous experience"
+                type="button"
+              >
+                <ChevronLeft size={20} aria-hidden="true" />
               </button>
               
               {/* Experience cards */}
@@ -180,8 +174,13 @@ export default function Home() {
                 })}
               </div>
 
-              <button onClick={nextCard} className="mx-4 p-2 bg-light-gray-200 rounded-full shadow-md">
-                &gt;
+              <button 
+                onClick={nextCard} 
+                className="mx-4 p-2 bg-gray-200 hover:bg-gray-300 rounded-full shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label="Next experience"
+                type="button"
+              >
+                <ChevronRight size={20} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -192,7 +191,7 @@ export default function Home() {
         <div className="flex h-3/4 w-full absolute bottom-0">
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
+              <Image src="/works_data_ml_bg.png" alt="Data and Machine Learning background" className="w-full h-full object-cover" />
             </div>
             {/* Transparent overlay with text */}
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
@@ -202,7 +201,7 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src={worksbg_design} alt="background design" className="w-full h-full object-cover" />
+              <Image src="/works_design_bg.png" alt="Design and Art background" className="w-full h-full object-cover" />
             </div>
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
               <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -211,7 +210,7 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src={worksbg_software} alt="background software" className="w-full h-full object-cover" />
+              <Image src="/works_software_bg.png" alt="Software Engineering background" className="w-full h-full object-cover" />
             </div>
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
               <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -220,7 +219,7 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
-              <Image src={worksbg_research} alt="background research" className="w-full h-full object-cover" />
+              <Image src="/works_research_bg.png" alt="Research and Blogs background" className="w-full h-full object-cover" />
             </div>
             <div className="relative inset-0 flex items-center justify-center w-full h-16">
               <div className="absolute inset-0 bg-black opacity-70"></div>
@@ -235,17 +234,17 @@ export default function Home() {
         <div className="flex h-48 w-3/4 relative bottom-1 mt-0">
           <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
             <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
-              <Image src={under_construction} alt="under construction" className="w-full object-cover" />
+              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" />
             </div>
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
             <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
-              <Image src={under_construction} alt="under construction" className="w-full object-cover" />
+              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" />
             </div>
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-8">
             <div className="w-full bg-white  duration-500 ease-in-out transform hover:scale-110">
-              <Image src={under_construction} alt="under construction" className="w-full object-cover" />
+              <Image src="/under_construction.jpeg" alt="Project under construction" className="w-full object-cover" />
             </div>
           </div>
           <div className="flex-1 flex flex-col items-center justify-center mt-8 border border-gray-800 bg-black p-4 group relative">
@@ -284,37 +283,37 @@ export default function Home() {
         <h2 className="text-4xl font-extralight relative mt-12 text-white">Certifications</h2>
         <div className="flex h-50 w-4/5 relative bottom-1 justify-center mt-4">
           <div className="flex flex-col items-center bg-transparent m-2 w-40 ">
-            <Image src={certificationbg_microsoft_ai} alt="microsoft azure ai fundamental" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-microsoft-ai.webp" alt="Microsoft Azure AI Fundamentals certification" className="h-24 object-contain hover:scale-110 duration-500" />
             <p className="text-sm text-center text-white mt-2">Microsoft Azure</p>
             <p className="text-sm text-center text-white">AI Fundamentals</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Jun 2024</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src={certificationbg_aws_sa} alt="aws solution architect" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-aws-sa.png" alt="AWS Solution Architect certification" className="h-24 object-contain hover:scale-110 duration-500" />
             <p className="text-sm text-center text-white mt-2">AWS</p>
             <p className="text-sm text-center text-white">Solution Architect</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Apr 2024</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src={certificationbg_google} alt="google data analytics" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-google-data.png" alt="Google Data Analytics certification" className="h-24 object-contain hover:scale-110 duration-500" />
             <p className="text-sm text-center text-white mt-2">Google</p>
             <p className="text-sm text-center text-white">Data Analytics</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Feb 2023</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src={certificationbg_tensorflow} alt="tensorflow developer" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-tensorflow.png" alt="TensorFlow Developer certification" className="h-24 object-contain hover:scale-110 duration-500" />
             <p className="text-sm text-center text-white mt-2">TensorFlow</p>
             <p className="text-sm text-center text-white">Developer</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Jul 2022</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src={certificationbg_google} alt="google python automation" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-google-data.png" alt="Google Python Automation certification" className="h-24 object-contain hover:scale-110 duration-500" />
             <p className="text-sm text-center text-white mt-2">Google</p>
             <p className="text-sm text-center text-white">Python Automation</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Mar 2022</p>
           </div>
           <div className="flex flex-col items-center bg-transparent m-2 w-40">
-            <Image src={certificationbg_imperial_college} alt="imperial college ml" className="h-24 object-contain hover:scale-110 duration-500" />
+            <Image src="/certifications-imperial-college-ml.png" alt="Imperial College Mathematics for Machine Learning certification" className="h-24 object-contain hover:scale-110 duration-500" />
             <p className="text-sm text-center text-white mt-2">Mathematics for Machine Learning</p>
             <p className="text-xs text-center text-gray-500 font-thin">Issued Mar 2022</p>
           </div>
@@ -327,14 +326,14 @@ export default function Home() {
           </div>
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="flex-1 border-gray-500 border-2 hover:scale-110 duration-500">
-              <Image src={interactivebg_skills} alt="interactive skills" className="w-full h-full object-cover " />
+              <Image src="/interactive_skills_bg.png" alt="Interactive skills background" className="w-full h-full object-cover " />
             </div>
           </div>
         </div>
         <div className="flex h-1/2 border-white border-2">
           <div className="relative flex-1 flex items-center justify-center overflow-hidden">
             <div className="flex-1 border-gray-500 border-2 hover:scale-110 duration-500">
-              <Image src={interactivebg_interests} alt="interactive interests" className="w-full h-full object-cover " />
+              <Image src="/interactive_interests_bg.png" alt="Interactive interests background" className="w-full h-full object-cover " />
             </div>
           </div>
           <div className="flex-1 border-gray-500 border-2">

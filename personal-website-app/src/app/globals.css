@@ -1,81 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
-/* Add Gilmer font import here if using a web font service */
 
+/* Root variables for theming */
 :root {
-  --foreground-rgb: 0, 0, 0; /* Default to black */
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 240, 240, 240;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --foreground-rgb: 0, 0, 0; /* Keep text black in light mode */
-    --background-start-rgb: 255, 255, 255;
-    --background-end-rgb: 240, 240, 240;
-  }
-}
-
+/* Body styles - using Tailwind font from layout.tsx */
 body {
-  color: rgb(var(--foreground-rgb)); /* Black foreground */
+  color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  font-family: 'Poppins', sans-serif;
 }
 
+/* Custom utility classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
+/* Responsive design improvements */
 @layer base {
   h1 {
-    @apply font-sans font-extralight;
-    color: black; /* Ensure h1 is black */
+    @apply font-extralight text-black;
   }
   h2 {
-    @apply font-gilmer font-light;
-    color: black; /* Ensure h2 is black */
+    @apply font-light text-black;
   }
 }
 
-h1, h2 {
-  font-family: 'Poppins', sans-serif;
-}
-
-h1 {
-  font-size: 3rem;
-  margin-top: 20px;
-  font-weight: 200; /* Extra Light */
-  color: black; /* Explicitly set text color to black */
-}
-
-h2 {
-  font-size: 1.5rem;
-  text-align: center;
-  font-weight: 400; /* Regular */
-  margin-bottom: 1rem;
-  color: black; /* Explicitly set text color to black */
-}
-
-@keyframes rotate-480 {
-  0% {
-    transform: rotate(0deg);
+/* Focus styles for accessibility */
+@layer components {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
-  100% {
-    transform: rotate(90deg);
-  }
-}
-
-rotate-480 {
-  animation: rotate-480 2s ease-in-out;
 }
 
 

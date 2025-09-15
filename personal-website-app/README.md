@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ridhwan Nashir Personal Website
 
-## Getting Started
+A modern, responsive personal portfolio website built with Next.js 14, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Modern Stack**: Next.js 14 with App Router, TypeScript, Tailwind CSS
+- **Performance Optimized**: Image optimization, bundle splitting, and optimized fonts
+- **Accessibility First**: WCAG compliant with proper semantic HTML and ARIA labels
+- **SEO Enhanced**: Comprehensive metadata, Open Graph tags, and structured data
+- **Responsive Design**: Mobile-first approach with responsive layouts
+- **Type Safe**: Full TypeScript implementation with custom type definitions
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: React Feather
+- **Fonts**: Google Fonts (Poppins)
+- **Deployment**: Vercel ready
+
+## 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ridhwanashir/JS-Personal-Website.git
+   cd JS-Personal-Website/personal-website-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🏗️ Project Structure
+
+```
+personal-website-app/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx      # Root layout with metadata
+│   │   ├── page.tsx        # Home page component
+│   │   └── globals.css     # Global styles
+│   └── components/
+│       ├── HeroSection.tsx # Hero section component
+│       └── ExperienceCarousel.tsx # Experience carousel
+├── types/
+│   └── global.d.ts         # TypeScript definitions
+├── public/                 # Static assets
+├── next.config.mjs         # Next.js configuration
+├── tailwind.config.ts      # Tailwind CSS configuration
+└── tsconfig.json          # TypeScript configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Adding Your Own Content
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Update Personal Information**
+   - Edit `src/app/layout.tsx` for metadata
+   - Modify `src/app/page.tsx` for content
+   - Replace images in `public/` directory
 
-## Learn More
+2. **Styling**
+   - Customize colors in `tailwind.config.ts`
+   - Modify global styles in `src/app/globals.css`
 
-To learn more about Next.js, take a look at the following resources:
+3. **Components**
+   - Add new components in `src/components/`
+   - Import and use in `src/app/page.tsx`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚡ Performance Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Image Optimization**: Next.js Image component with WebP/AVIF support
+- **Bundle Optimization**: Package import optimization for react-feather
+- **Font Optimization**: Google Fonts with display=swap
+- **Lazy Loading**: Components and images loaded on demand
 
-## Deploy on Vercel
+## ♿ Accessibility Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Semantic HTML**: Proper heading hierarchy and landmarks
+- **ARIA Labels**: Comprehensive labeling for screen readers
+- **Keyboard Navigation**: Full keyboard accessibility
+- **Focus Management**: Visible focus indicators
+- **Color Contrast**: WCAG AA compliant contrast ratios
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🔍 SEO Features
+
+- **Meta Tags**: Comprehensive title, description, and keywords
+- **Open Graph**: Social media sharing optimization
+- **Twitter Cards**: Twitter-specific metadata
+- **Structured Data**: Schema.org markup ready
+- **Sitemap**: Automatic sitemap generation
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically on push
+
+### Manual Deployment
+
+```bash
+npm run build
+npm run start
+```
+
+## 📊 Recent Improvements
+
+### ✅ Fixed Issues
+
+- ❌ **Removed unused imports** and commented code
+- ❌ **Fixed invalid Tailwind classes** (`bg-light-gray-200` → `bg-gray-200`)
+- ❌ **Improved image handling** with proper paths and optimization
+- ❌ **Enhanced accessibility** with ARIA labels and semantic HTML
+- ❌ **Added TypeScript types** for better type safety
+- ❌ **Optimized performance** with Next.js configuration
+- ❌ **Enhanced SEO** with comprehensive metadata
+
+### 🔧 Technical Improvements
+
+- **Bundle Size**: Reduced by optimizing imports and removing unused code
+- **Type Safety**: Added comprehensive TypeScript definitions
+- **Performance**: Implemented image optimization and lazy loading
+- **Accessibility**: Added WCAG compliant accessibility features
+- **SEO**: Enhanced metadata and social sharing capabilities
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+## 📞 Contact
+
+- **Website**: [ridhwannashir.com](https://ridhwannashir.com)
+- **GitHub**: [@ridhwanashir](https://github.com/ridhwanashir)
+
+---
+
+Built with ❤️ by Ridhwan Nashir
