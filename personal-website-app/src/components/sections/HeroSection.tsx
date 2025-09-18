@@ -35,7 +35,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
       <div
         className="fixed left-1/2 transform -translate-x-1/2 z-50"
         style={{
-          top: `${logoTopPosition}vh`,
+          top: `${logoTopPosition-13}vh`,
           transition: 'all 0.1s ease-out',
           opacity: logoOpacity
         }}
@@ -49,7 +49,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
           className="transition-all duration-300 ease-out"
           style={{
             width: `${200 * logoScale}px`,
-            height: `${200 * logoScale}px`,
+            // height: `${200 * logoScale}px`,
             transform: `scale(${logoScale})`
           }}
         />
@@ -62,10 +62,18 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
       >
         {/* Text Content Only - Logo is now handled by fixed transitioning logo above */}
         <div
-          className="absolute top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 transition-all duration-300 ease-out"
+          // className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 transition-all duration-300 ease-out"
+          className="fixed top-0 left-0 w-full  flex flex-col items-center justify-center transform -translate-x-1/3 z-50"
+
           style={{
             opacity: Math.max(0, 1 - animations.backgroundTransition * 2),
+            // opacity: logoOpacity,
+            transition: 'all 0.1s ease-out',
+            top: `${logoTopPosition-14}vh`,
             transform: `translateY(${animations.backgroundTransition * 30}px)`
+        // style={{
+        //   opacity: logoOpacity
+        // }}
           }}
         >
           {/* Spacer for logo space */}
