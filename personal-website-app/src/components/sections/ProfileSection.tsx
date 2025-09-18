@@ -36,14 +36,14 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
   );
 
   return (
-    <div ref={profileRef} className="w-full bg-white relative z-10">
+    <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10">
       <div className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white relative px-4 sm:px-6 lg:px-8">
         {/* Logo is now handled by HeroSection's transitioning logo */}
         <div className="flex flex-col lg:flex-row h-full py-20 lg:py-16">
           {/* Profile Image */}
           <div className="w-full lg:w-1/3 relative order-2 lg:order-1 flex justify-center lg:justify-start mb-8 lg:mb-0">
             <Image
-              src="/background_2.png"
+              src="/background_1.png"
               alt="Ridhwan Nashir"
               width={400}
               height={500}

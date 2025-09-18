@@ -37,7 +37,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
         style={{
           top: `${logoTopPosition-13}vh`,
           transition: 'all 0.1s ease-out',
-          opacity: logoOpacity
+          // opacity: logoOpacity
         }}
       >
         <Image
