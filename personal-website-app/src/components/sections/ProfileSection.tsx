@@ -73,27 +73,7 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
               </button>
               
               {/* Scroll Indicator - appears when typewriter is complete */}
-              {isTypewriterComplete && (
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-bounce">
-                  <div className="flex flex-col items-center space-y-2 text-black">
-                    <p className="text-sm font-light">Scroll to explore</p>
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              )}
+
             </div>
           </div>
         </div>

@@ -14,6 +14,14 @@ import { SkillsSection } from '../components/sections/SkillsSection';
 import { ScrollLockIndicator } from '../components/ui/ScrollLockIndicator';
 import { AnimatedNavbar } from '../components/ui/AnimatedNavbar';
 
+// Experience data with proper typing
+interface Experience {
+  logo: string;
+  company: string;
+  duration: string;
+  role: string;
+  location: string;
+}
 export default function Home() {
   const {
     animations,
@@ -21,14 +29,6 @@ export default function Home() {
     refs: { heroRef, profileRef, experienceRef, worksRef, projectsRef }
   } = useScrollAnimations();
 
-  // Experience data with proper typing
-  interface Experience {
-    logo: string;
-    company: string;
-    duration: string;
-    role: string;
-    location: string;
-  }
   
   const experiences: Experience[] = [
     { 
@@ -82,7 +82,12 @@ export default function Home() {
       />
 
       {/* Experiences Section */}
-      <ExperienceSection experienceRef={experienceRef} animations={animations} />
+      {/* <ExperienceSection experienceRef={experienceRef} animations={animations} /> */}
+      <ExperienceSection 
+        experienceRef={experienceRef} 
+        animations={animations}
+        experiences={experiences}
+      />
 
       {/* Works Section */}
       <WorksSection worksRef={worksRef} animations={animations} />
