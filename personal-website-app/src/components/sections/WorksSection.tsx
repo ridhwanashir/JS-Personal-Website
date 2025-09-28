@@ -13,7 +13,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
     <div ref={worksRef} className="w-full min-h-screen bg-black relative z-10 flex flex-col">
       <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8">
         {/* Small logo at the top */}
-        <Image
+        {/* <Image
           src="/ridhwan-logo.png"
           alt="Small logo"
           width={50}
@@ -21,7 +21,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
           className={`absolute top-8 sm:top-12 left-1/2 transform -translate-x-1/2 w-8 h-8 sm:w-12 sm:h-12 transition-all duration-1000 ${
             animations.worksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
-        />
+        /> */}
         <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extralight text-center mb-12 font-poppins text-white transition-all duration-1000 delay-200 ${
           animations.worksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>

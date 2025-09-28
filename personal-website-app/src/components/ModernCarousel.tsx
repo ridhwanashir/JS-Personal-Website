@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import { Experience } from '../../types/global';
@@ -15,141 +15,182 @@ interface ModernCarouselProps {
 
 export function ModernCarousel({ 
   experiences, 
-  autoPlay = false, 
-  autoPlayInterval = 5000,
+  autoPlay = true, 
+  autoPlayInterval = 3000,
   showIndicators = true,
   className = '' 
 }: ModernCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  console.log('ModernCarousel - experiences received:', experiences); // Debug log
+  
+  // Safety check for empty or undefined experiences
+  if (!experiences || experiences.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-gray-500">No experiences to display</p>
+      </div>
+    );
+  }
+  
+  const [currentIndex, setCurrentIndex] = useState(experiences.length); // Start at first real item
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Create infinite loop by duplicating experiences
+  const infiniteExperiences = [
+    ...experiences, // Clone at start for backward infinite
+    ...experiences, // Original items
+    ...experiences  // Clone at end for forward infinite
+  ];
 
   const nextSlide = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % experiences.length);
-    setTimeout(() => setIsTransitioning(false), 500);
-  }, [experiences.length, isTransitioning]);
+    setCurrentIndex((prev) => prev + 1);
+  }, [isTransitioning]);
 
   const prevSlide = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? experiences.length - 1 : prevIndex - 1
-    );
-    setTimeout(() => setIsTransitioning(false), 500);
-  }, [experiences.length, isTransitioning]);
+    setCurrentIndex((prev) => prev - 1);
+  }, [isTransitioning]);
 
   const goToSlide = useCallback((index: number) => {
-    if (isTransitioning || index === currentIndex) return;
+    if (isTransitioning) return;
     setIsTransitioning(true);
-    setCurrentIndex(index);
-    setTimeout(() => setIsTransitioning(false), 500);
-  }, [currentIndex, isTransitioning]);
+    setCurrentIndex(experiences.length + index); // Jump to middle section
+  }, [isTransitioning, experiences.length]);
+
+  // Handle infinite loop reset
+  useEffect(() => {
+    if (!isTransitioning) return;
+
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+      
+      // Reset position for infinite loop without transition
+      if (currentIndex >= experiences.length * 2) {
+        // If we're at the end clones, jump back to start of original
+        setTimeout(() => {
+          if (containerRef.current) {
+            containerRef.current.style.transition = 'none';
+            setCurrentIndex(experiences.length);
+            // Force reflow then re-enable transitions
+            setTimeout(() => {
+              if (containerRef.current) {
+                containerRef.current.style.transition = '';
+              }
+            }, 10);
+          }
+        }, 10);
+      } else if (currentIndex < experiences.length) {
+        // If we're at the start clones, jump to end of original
+        setTimeout(() => {
+          if (containerRef.current) {
+            containerRef.current.style.transition = 'none';
+            setCurrentIndex(experiences.length * 2 - 1);
+            setTimeout(() => {
+              if (containerRef.current) {
+                containerRef.current.style.transition = '';
+              }
+            }, 10);
+          }
+        }, 10);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex, isTransitioning, experiences.length]);
 
   // Auto-play functionality
   useEffect(() => {
-    if (!autoPlay) return;
+    if (!autoPlay || isPaused || isTransitioning) return;
     
     const interval = setInterval(nextSlide, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [autoPlay, autoPlayInterval, nextSlide]);
+  }, [autoPlay, autoPlayInterval, nextSlide, isPaused, isTransitioning]);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        prevSlide();
-      } else if (event.key === 'ArrowRight') {
-        nextSlide();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide]);
+  // Get actual current index for indicators (0-based from original array)
+  const getActualIndex = () => {
+    const actualIndex = currentIndex % experiences.length;
+    return actualIndex;
+  };
 
   return (
-    <div className={`relative w-full ${className}`} role="region" aria-label="Experience carousel">
-      {/* Mobile View: Single Card */}
-      <div className="block sm:hidden">
-        <div className="relative w-full h-80 overflow-hidden rounded-lg">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out h-full"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {experiences.map((exp, index) => (
-              <div key={index} className="w-full h-full flex-shrink-0 px-2">
-                <ExperienceCard 
-                  experience={exp} 
-                  isActive={index === currentIndex}
-                  className="h-full"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop View: Three Card Carousel */}
-      <div className="hidden sm:block">
-        <div className="flex items-center justify-center space-x-4">
-          {/* Previous Button */}
-          <button
-            onClick={prevSlide}
-            disabled={isTransitioning}
-            className="flex-shrink-0 p-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 active:scale-95"
-            aria-label="Previous experience"
-          >
-            <ChevronLeft size={24} className="text-black" />
-          </button>
-
-          {/* Cards Container */}
-          <div className="relative overflow-hidden">
+    <div 
+      className={`relative w-full ${className}`} 
+      role="region" 
+      aria-label="Experience carousel"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Main Carousel Container */}
+      <div className="relative overflow-hidden rounded-xl">
+        {/* Mobile: Single card view */}
+        <div className="block sm:hidden">
+          <div className="overflow-hidden">
             <div 
+              ref={containerRef}
               className="flex transition-transform duration-500 ease-in-out"
               style={{ 
-                transform: `translateX(-${currentIndex * 280}px)`,
-                width: `${experiences.length * 280}px`
+                transform: `translateX(-${currentIndex * 100}%)`,
               }}
             >
-              {experiences.map((exp, index) => {
-                const distance = Math.abs(index - currentIndex);
-                const isActive = index === currentIndex;
-                const isVisible = distance <= 1;
-                
-                return (
-                  <div 
-                    key={index} 
-                    className={`w-64 mx-2 transition-all duration-500 ease-out ${
-                      isVisible ? 'opacity-100' : 'opacity-30'
-                    } ${
-                      isActive 
-                        ? 'scale-105 z-20' 
-                        : distance === 1 
-                          ? 'scale-95 z-10' 
-                          : 'scale-90 z-0'
-                    }`}
-                  >
-                    <ExperienceCard 
-                      experience={exp} 
-                      isActive={isActive}
-                      onClick={() => goToSlide(index)}
-                    />
-                  </div>
-                );
-              })}
+              {infiniteExperiences.map((exp, index) => (
+                <div key={`mobile-${index}`} className="w-full flex-shrink-0 px-4">
+                  <ExperienceCard experience={exp} isActive={true} />
+                </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Next Button */}
-          <button
-            onClick={nextSlide}
-            disabled={isTransitioning}
-            className="flex-shrink-0 p-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 active:scale-95"
-            aria-label="Next experience"
-          >
-            <ChevronRight size={24} className="text-black" />
-          </button>
+        {/* Desktop: Multiple cards view (3 cards visible) */}
+        <div className="hidden sm:block">
+          <div className="relative overflow-hidden">
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevSlide}
+              disabled={isTransitioning}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 disabled:opacity-50"
+              aria-label="Previous experience"
+            >
+              <ChevronLeft size={24} className="text-gray-700" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              disabled={isTransitioning}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 disabled:opacity-50"
+              aria-label="Next experience"
+            >
+              <ChevronRight size={24} className="text-gray-700" />
+            </button>
+
+            {/* Cards Container */}
+            <div className="px-16">
+              <div 
+                ref={containerRef}
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ 
+                  transform: `translateX(-${currentIndex * (100/3)}%)`,
+                }}
+              >
+                {infiniteExperiences.map((exp, index) => (
+                  <div key={`desktop-${index}`} className="flex-shrink-0 px-3" style={{ width: `${100/3}%` }}>
+                    <ExperienceCard 
+                      experience={exp} 
+                      isActive={Math.floor(index / experiences.length) === 1}
+                      onClick={() => {
+                        const actualIndex = index % experiences.length;
+                        goToSlide(actualIndex);
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -158,38 +199,59 @@ export function ModernCarousel({
         <button
           onClick={prevSlide}
           disabled={isTransitioning}
-          className="p-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 disabled:opacity-50"
+          className="p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 disabled:opacity-50"
           aria-label="Previous experience"
         >
-          <ChevronLeft size={20} className="text-black" />
+          <ChevronLeft size={20} className="text-gray-700" />
         </button>
         <button
           onClick={nextSlide}
           disabled={isTransitioning}
-          className="p-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 disabled:opacity-50"
+          className="p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 disabled:opacity-50"
           aria-label="Next experience"
         >
-          <ChevronRight size={20} className="text-black" />
+          <ChevronRight size={20} className="text-gray-700" />
         </button>
       </div>
 
       {/* Indicators */}
       {showIndicators && (
-        <div className="flex justify-center space-x-2 mt-6">
+        <div className="flex justify-center space-x-3 mt-6">
           {experiences.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 ${
-                index === currentIndex 
-                  ? 'bg-white scale-125' 
-                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              className={`transition-all duration-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+                index === getActualIndex()
+                  ? 'w-8 h-3 bg-blue-600' 
+                  : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Go to experience ${index + 1}`}
             />
           ))}
         </div>
       )}
+
+      {/* Progress Bar */}
+      {autoPlay && (
+        <div className="mt-4 w-full bg-gray-200 rounded-full h-1">
+          <div 
+            className={`bg-blue-600 h-1 rounded-full transition-all duration-100 ${
+              isPaused ? 'w-full' : 'w-0'
+            }`}
+            style={{
+              animation: isPaused ? 'none' : `progress ${autoPlayInterval}ms linear infinite`
+            }}
+          />
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes progress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
     </div>
   );
 }

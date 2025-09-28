@@ -13,15 +13,8 @@ import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { SkillsSection } from '../components/sections/SkillsSection';
 import { ScrollLockIndicator } from '../components/ui/ScrollLockIndicator';
 import { AnimatedNavbar } from '../components/ui/AnimatedNavbar';
+import { EXPERIENCES } from '../constants/data';
 
-// Experience data with proper typing
-interface Experience {
-  logo: string;
-  company: string;
-  duration: string;
-  role: string;
-  location: string;
-}
 export default function Home() {
   const {
     animations,
@@ -29,37 +22,6 @@ export default function Home() {
     refs: { heroRef, profileRef, experienceRef, worksRef, projectsRef }
   } = useScrollAnimations();
 
-  
-  const experiences: Experience[] = [
-    { 
-      logo: "/axrail_logo.png",
-      company: "Axrail Pte Ltd",
-      duration: "Jan 2020 - Present",
-      role: "AI/Data Engineer",
-      location: "Kuala Lumpur, Malaysia"
-    },
-    { 
-      logo: "/techbros_logo.png",
-      company: "Techbros Gmbh",
-      duration: "Mar 2018 - Dec 2019",
-      role: "Data Science Intern",
-      location: "Dusseldorf, Germany"
-    },
-    { 
-      logo: "/telkom_university_logo.png",
-      company: "Telkom University",
-      duration: "Mar 2018 - Dec 2019",
-      role: "Lecturer Assistant",
-      location: "Bandung, Indonesia"
-    },
-    { 
-      logo: "/metrodata_logo.png",
-      company: "PT Metrodata Electronics, Tbk.",
-      duration: "Apr 2024 - Current",
-      role: "Technical Consultant",
-      location: "Jakarta, Indonesia"
-    },
-  ];
   return (
     <main className="flex flex-col items-center relative bg-white">
       {/* Animated Navbar - appears on scroll */}
@@ -82,11 +44,10 @@ export default function Home() {
       />
 
       {/* Experiences Section */}
-      {/* <ExperienceSection experienceRef={experienceRef} animations={animations} /> */}
       <ExperienceSection 
         experienceRef={experienceRef} 
         animations={animations}
-        experiences={experiences}
+        experiences={EXPERIENCES}
       />
 
       {/* Works Section */}

@@ -45,7 +45,8 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
   );
 
   return (
-    <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10 border border-gray-300 rounded-lg">
+    <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10">
+    {/* <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10 border border-gray-300 rounded-lg"> */}
       <div 
         className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white relative px-4 sm:px-6 lg:px-8"
         style={{
@@ -65,7 +66,7 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
           {/* Profile Image */}
           <div className="w-full lg:w-1/3 relative order-2 lg:order-1 flex justify-center lg:justify-start mb-8 lg:mb-0">
             <Image
-              src="/background_1.png"
+              src="/studio-photo-edited.webp"
               alt="Ridhwan Nashir"
               width={400}
               height={500}
