@@ -9,6 +9,15 @@ interface ProfileSectionProps {
 }
 
 export function ProfileSection({ profileRef, animations, isTypewriterComplete }: ProfileSectionProps) {
+  // Position calculations for text transition - only within this section
+  // animations.profileTextProgress goes from 0 to 1 as user scrolls through ProfileSection
+  const startY = 60; // Start position when entering ProfileSection (percentage)
+  const endY = 40; // End position when leaving ProfileSection (percentage)  
+  const textTopPosition = startY - (startY - endY) * animations.profileTextProgress;
+  
+  // Add threshold to prevent abrupt position change
+  const shouldUseFixedPosition = animations.profileTextProgress > 0.1; // Start fixed positioning after 10% progress
+
   const textRows = [
     "Data-driven Software Engineer",
     "with a passion for machine learning,",
@@ -36,8 +45,21 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
   );
 
   return (
-    <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10">
-      <div className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white relative px-4 sm:px-6 lg:px-8">
+    <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10 border border-gray-300 rounded-lg">
+      <div 
+        className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white relative px-4 sm:px-6 lg:px-8"
+        style={{
+          position: shouldUseFixedPosition ? 'fixed' : 'relative',
+          top: shouldUseFixedPosition ? `${textTopPosition+9}vh` : 'auto',
+          left: shouldUseFixedPosition ? '50%' : 'auto',
+          right: shouldUseFixedPosition ? 'auto' : 'auto',
+          // transition: 'all 0.1s ease-out',
+          transform: shouldUseFixedPosition ? `translate(-50%, -50%)` : 'none',
+          zIndex: shouldUseFixedPosition ? 30 : 'auto',
+          width: shouldUseFixedPosition ? '100%' : 'auto',
+          maxWidth: shouldUseFixedPosition ? '1280px' : 'auto'
+        }}
+      >
         {/* Logo is now handled by HeroSection's transitioning logo */}
         <div className="flex flex-col lg:flex-row h-full py-20 lg:py-16">
           {/* Profile Image */}
@@ -54,7 +76,8 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
           {/* Profile Description */}
           <div className="w-full lg:w-2/3 p-4 sm:p-6 lg:p-8 flex items-center justify-center lg:justify-end order-1 lg:order-2">
             <div className="text-center lg:text-left lg:pr-12 max-w-2xl">
-              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans leading-tight">
+              <div 
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans leading-tight">
                 {textRows.map((text, index) => (
                   <React.Fragment key={index}>
                     {renderTextRow(text, index)}
@@ -71,8 +94,6 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
               >
                 See Curriculum Vitae
               </button>
-              
-              {/* Scroll Indicator - appears when typewriter is complete */}
 
             </div>
           </div>

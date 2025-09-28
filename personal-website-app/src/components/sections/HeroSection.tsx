@@ -39,7 +39,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
       <div
         className="fixed left-1/2 transform -translate-x-1/2 z-50"
         style={{
-          top: `${logoTopPosition-10}vh`,
+          top: `${logoTopPosition-9}vh`,
           transition: 'all 0.1s ease-out',
           opacity: animations.logoTransition < 0.95 ? 1 : 0 // Hide when almost at navbar position
         }}
