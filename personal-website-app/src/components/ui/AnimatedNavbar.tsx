@@ -19,7 +19,7 @@ export function AnimatedNavbar({ animations }: AnimatedNavbarProps) {
         transform: navbarTransform,
         backgroundColor: `rgba(255, 255, 255, ${navbarOpacity * 0.95})`,
         backdropFilter: navbarOpacity > 0.1 ? 'blur(10px)' : 'none',
-        borderBottom: navbarOpacity > 0.1 ? '1px solid rgba(0, 0, 0, 0.1)' : 'none'
+        // borderBottom: navbarOpacity > 0.1 ? '1px solid rgba(0, 0, 0, 0.1)' : 'none'
       }}
     >
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +31,7 @@ export function AnimatedNavbar({ animations }: AnimatedNavbarProps) {
               alt="Ridhwan Nashir Logo"
               width={40}
               height={40}
-              className="w-8 h-8 sm:w-10 sm:h-10"
+              className="w-8 h-auto sm:w-10 sm:h-auto"
             />
           </div>
         </div>

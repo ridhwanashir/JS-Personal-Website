@@ -66,10 +66,10 @@ export default function Home() {
       <AnimatedNavbar animations={animations} />
       
       {/* Scroll Lock Indicator */}
-      <ScrollLockIndicator 
+      {/* <ScrollLockIndicator 
         hasStartedTyping={hasStartedTyping}
         isTypewriterComplete={isTypewriterComplete}
-      />
+      /> */}
 
       {/* Hero Section */}
       <HeroSection heroRef={heroRef} animations={animations} />

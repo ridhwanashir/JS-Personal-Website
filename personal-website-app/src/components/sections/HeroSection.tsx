@@ -50,9 +50,36 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
           style={{
             width: `${200 * logoScale}px`,
             // height: `${200 * logoScale}px`,
-            transform: `scale(${logoScale})`
+            transform: `scale(${logoScale})`,
           }}
         />
+      </div>
+
+      {/* Scroll Indicator - positioned at bottom of viewport with fade effect */}
+      <div 
+        className="fixed bottom-8 left-0 right-0 flex justify-center animate-bounce z-40"
+        style={{
+          opacity: Math.max(0, 1 - animations.backgroundTransition * 3),
+          transition: 'opacity 0.3s ease-out'
+        }}
+      >
+        <div className="flex flex-col items-center space-y-2 text-black">
+          <p className="text-sm font-light">Scroll to explore</p>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
       </div>
 
       {/* Hero content section - now twice as tall */}
@@ -60,32 +87,6 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
         ref={heroRef}
         className="w-full h-[200vh] flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 lg:p-24 relative z-10"
       >
-        {/* Scroll Indicator - positioned at bottom of viewport with fade effect */}
-        <div 
-          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-40"
-          style={{
-            opacity: Math.max(0, 1 - animations.backgroundTransition * 3),
-            transition: 'opacity 0.3s ease-out'
-          }}
-        >
-          <div className="flex flex-col items-center space-y-2 text-black">
-            <p className="text-sm font-light">Scroll to explore</p>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
-        </div>
         {/* Text Content Only - Logo is now handled by fixed transitioning logo above */}
         <div
           // className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 transition-all duration-300 ease-out"
