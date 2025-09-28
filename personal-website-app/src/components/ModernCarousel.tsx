@@ -31,7 +31,7 @@ export function ModernCarousel({
     );
   }
   
-  const [currentIndex, setCurrentIndex] = useState(experiences.length); // Start at first real item
+  const [currentIndex, setCurrentIndex] = useState(experiences.length); // Start at first real item (middle section)
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,12 +70,11 @@ export function ModernCarousel({
       
       // Reset position for infinite loop without transition
       if (currentIndex >= experiences.length * 2) {
-        // If we're at the end clones, jump back to start of original
+        // If we're at the end clones, jump to start of original
         setTimeout(() => {
           if (containerRef.current) {
             containerRef.current.style.transition = 'none';
             setCurrentIndex(experiences.length);
-            // Force reflow then re-enable transitions
             setTimeout(() => {
               if (containerRef.current) {
                 containerRef.current.style.transition = '';
@@ -183,7 +182,7 @@ export function ModernCarousel({
                 ref={containerRef}
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ 
-                  transform: `translateX(-${currentIndex * (100/3)}%)`,
+                  transform: `translateX(-${(currentIndex - 1) * (100/3)}%)`,
                 }}
               >
                 {infiniteExperiences.map((exp, index) => {
