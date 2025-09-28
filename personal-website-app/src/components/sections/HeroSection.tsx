@@ -9,12 +9,16 @@ interface HeroSectionProps {
 
 export function HeroSection({ heroRef, animations }: HeroSectionProps) {
   // Calculate logo transition values for smooth movement to navbar
-  const logoScale = 1 - animations.logoTransition * 0.8; // Scale from 1 to 0.2 (smaller for navbar)
+  // Final size should match navbar logo: w-8 (32px) on mobile, w-10 (40px) on sm+
+  const startSize = 200;
+  const endSizeMobile = 32; // w-8
+  const endSizeDesktop = 40; // w-10 
+  const logoScale = 1 - animations.logoTransition * (1 - endSizeDesktop / startSize); // Scale from 1 to 0.2
   const logoOpacity = Math.max(0, 1 - animations.logoTransition); // Fade out as it transitions to navbar
   
   // Position calculations for logo transition to navbar center
   const startY = 50; // Center of viewport (percentage)
-  const endY = 10; // Navbar position (percentage, h-16 = 4rem = 64px ≈ 10vh)
+  const endY = 10; // Navbar center position (h-16 = 64px, center at 32px ≈ 8vh)
   const logoTopPosition = startY - (startY - endY) * animations.logoTransition;
   
   return (
@@ -35,9 +39,9 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
       <div
         className="fixed left-1/2 transform -translate-x-1/2 z-50"
         style={{
-          top: `${logoTopPosition-15}vh`,
+          top: `${logoTopPosition-10}vh`,
           transition: 'all 0.1s ease-out',
-          // opacity: logoOpacity
+          opacity: animations.logoTransition < 0.95 ? 1 : 0 // Hide when almost at navbar position
         }}
       >
         <Image
@@ -46,11 +50,11 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
           width={200}
           height={200}
           priority
-          className="transition-all duration-300 ease-out"
+          className="transition-all duration-100 ease-out"
           style={{
-            width: `${200 * logoScale}px`,
-            // height: `${200 * logoScale}px`,
-            transform: `scale(${logoScale})`,
+            width: `${startSize * logoScale - 10}px`,
+            height: 'auto', // Maintain aspect ratio
+            transform: `scale(1)` // Remove additional scaling since we're sizing with width
           }}
         />
       </div>
@@ -89,23 +93,14 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
       >
         {/* Text Content Only - Logo is now handled by fixed transitioning logo above */}
         <div
-          // className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 transition-all duration-300 ease-out"
-          className="fixed top-0 left-0 w-full  flex flex-col items-center justify-center transform -translate-x-1/3 z-50"
-
+          className="fixed top-0 left-0 w-full flex flex-col items-center justify-center z-30"
           style={{
             opacity: Math.max(0, 1 - animations.backgroundTransition * 2),
-            // opacity: logoOpacity,
             transition: 'all 0.1s ease-out',
-            top: `${logoTopPosition-20}vh`,
+            top: `${logoTopPosition + 10}vh`, // Position below the logo
             transform: `translateY(${animations.backgroundTransition * 30}px)`
-        // style={{
-        //   opacity: logoOpacity
-        // }}
           }}
         >
-          {/* Spacer for logo space */}
-          <div className="h-32 sm:h-40 md:h-48 lg:h-52"></div>
-          
           <h1
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight mt-4 sm:mt-6 md:mt-8 text-center transition-all duration-300 ease-out"
             style={{
