@@ -136,11 +136,21 @@ export function ModernCarousel({
                 transform: `translateX(-${currentIndex * 100}%)`,
               }}
             >
-              {infiniteExperiences.map((exp, index) => (
-                <div key={`mobile-${index}`} className="w-full flex-shrink-0 px-4">
-                  <ExperienceCard experience={exp} isActive={true} />
-                </div>
-              ))}
+              {infiniteExperiences.map((exp, index) => {
+                // Calculate if this card represents the currently active experience
+                const actualExperienceIndex = index % experiences.length;
+                const currentActualIndex = currentIndex % experiences.length;
+                const isActiveCard = actualExperienceIndex === currentActualIndex && Math.floor(index / experiences.length) === Math.floor(currentIndex / experiences.length);
+                
+                return (
+                  <div key={`mobile-${index}`} className="w-full flex-shrink-0 px-4">
+                    <ExperienceCard 
+                      experience={exp} 
+                      isActive={isActiveCard}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -176,18 +186,25 @@ export function ModernCarousel({
                   transform: `translateX(-${currentIndex * (100/3)}%)`,
                 }}
               >
-                {infiniteExperiences.map((exp, index) => (
-                  <div key={`desktop-${index}`} className="flex-shrink-0 px-3" style={{ width: `${100/3}%` }}>
-                    <ExperienceCard 
-                      experience={exp} 
-                      isActive={Math.floor(index / experiences.length) === 1}
-                      onClick={() => {
-                        const actualIndex = index % experiences.length;
-                        goToSlide(actualIndex);
-                      }}
-                    />
-                  </div>
-                ))}
+                {infiniteExperiences.map((exp, index) => {
+                  // Calculate if this card represents the currently active experience
+                  const actualExperienceIndex = index % experiences.length;
+                  const currentActualIndex = currentIndex % experiences.length;
+                  const isActiveCard = actualExperienceIndex === currentActualIndex && Math.floor(index / experiences.length) === Math.floor(currentIndex / experiences.length);
+                  
+                  return (
+                    <div key={`desktop-${index}`} className="flex-shrink-0 px-3" style={{ width: `${100/3}%` }}>
+                      <ExperienceCard 
+                        experience={exp} 
+                        isActive={isActiveCard}
+                        onClick={() => {
+                          const actualIndex = index % experiences.length;
+                          goToSlide(actualIndex);
+                        }}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -266,7 +283,7 @@ interface ExperienceCardProps {
 function ExperienceCard({ experience, isActive = false, onClick, className = '' }: ExperienceCardProps) {
   return (
     <article 
-      className={`bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl cursor-pointer group ${className}`}
+      className={`bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl cursor-pointer group min-h-[24rem] sm:h-80 flex flex-col ${className}`}
       onClick={onClick}
       tabIndex={onClick ? 0 : -1}
       onKeyDown={onClick ? (e) => {
@@ -277,7 +294,7 @@ function ExperienceCard({ experience, isActive = false, onClick, className = '' 
       } : undefined}
     >
       {/* Company Logo Section */}
-      <div className="h-32 bg-gray-50 flex items-center justify-center p-4 group-hover:bg-gray-100 transition-colors duration-300">
+      <div className="h-28 sm:h-32 bg-gray-50 flex items-center justify-center p-3 sm:p-4 group-hover:bg-gray-100 transition-colors duration-300 flex-shrink-0">
         <Image
           src={experience.logo}
           alt={`${experience.company} logo`}
@@ -288,13 +305,13 @@ function ExperienceCard({ experience, isActive = false, onClick, className = '' 
       </div>
       
       {/* Experience Details */}
-      <div className={`p-6 text-white transition-all duration-300 ${
+      <div className={`p-4 sm:p-6 text-white transition-all duration-300 flex-1 flex flex-col justify-center ${
         isActive ? 'bg-black' : 'bg-gray-800 group-hover:bg-gray-700'
       }`}>
-        <h3 className="text-lg font-semibold mb-2 text-center">{experience.company}</h3>
-        <p className="text-sm text-center mb-3 opacity-90">{experience.duration}</p>
-        <p className="text-base font-medium text-center mb-2">{experience.role}</p>
-        <p className="text-sm text-center opacity-80">{experience.location}</p>
+        <h3 className="text-base sm:text-lg font-semibold mb-2 text-center leading-tight min-h-[2.5rem] sm:min-h-[3.5rem] flex items-center justify-center px-1">{experience.company}</h3>
+        <p className="text-xs sm:text-sm text-center mb-2 sm:mb-3 opacity-90">{experience.duration}</p>
+        <p className="text-sm sm:text-base font-medium text-center mb-2 min-h-[1.2rem] sm:min-h-[1.5rem] flex items-center justify-center">{experience.role}</p>
+        <p className="text-xs sm:text-sm text-center opacity-80">{experience.location}</p>
       </div>
     </article>
   );
