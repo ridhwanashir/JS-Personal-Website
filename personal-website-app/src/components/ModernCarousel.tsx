@@ -307,10 +307,10 @@ function ExperienceCard({ experience, isActive = false, onClick, className = '' 
       <div className={`p-4 sm:p-6 text-white transition-all duration-300 flex-1 flex flex-col justify-center ${
         isActive ? 'bg-black' : 'bg-gray-800 group-hover:bg-gray-700'
       }`}>
-        <h3 className="text-base sm:text-lg font-semibold mb-2 text-center leading-tight min-h-[2.5rem] sm:min-h-[3.5rem] flex items-center justify-center px-1">{experience.company}</h3>
-        <p className="text-xs sm:text-sm text-center mb-2 sm:mb-3 opacity-90">{experience.duration}</p>
-        <p className="text-sm sm:text-base font-medium text-center mb-2 min-h-[1.2rem] sm:min-h-[1.5rem] flex items-center justify-center">{experience.role}</p>
-        <p className="text-xs sm:text-sm text-center opacity-80">{experience.location}</p>
+        <h3 className="text-base md:text-base lg:text-lg font-semibold mb-2 text-center leading-tight min-h-[2.5rem] sm:min-h-[3.5rem] flex items-center justify-center px-1">{experience.company}</h3>
+        <p className="text-xs md:text-xs lg:text-sm text-center mb-2 sm:mb-3 opacity-90">{experience.duration}</p>
+        <p className="text-sm md:text-sm lg:text-base font-medium text-center mb-2 min-h-[1.2rem] sm:min-h-[1.5rem] flex items-center justify-center">{experience.role}</p>
+        <p className="text-xs md:text-xs lg:text-sm text-center opacity-80">{experience.location}</p>
       </div>
     </article>
   );
