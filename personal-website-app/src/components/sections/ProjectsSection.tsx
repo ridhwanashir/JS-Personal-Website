@@ -19,8 +19,8 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
       </h2>
       
       <div className="flex flex-col sm:flex-row w-full max-w-6xl relative mt-8 sm:mt-0 mb-8 sm:mb-0">
-        {/* "See All Projects" link positioned absolutely above all items, aligned to fourth item's right edge */}
-        <div className="absolute -top-6 sm:-top-0 right-2 flex items-center space-x-2 z-10">
+        {/* "See All Projects" link - responsive positioning */}
+        <div className="absolute -bottom-6 right-2 sm:bottom-auto sm:left-auto sm:-top-0 sm:right-2 flex items-center space-x-2 z-10">
           <a
             href="https://example.com"
             target="_blank"
