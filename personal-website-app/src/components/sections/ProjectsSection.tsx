@@ -19,6 +19,19 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
       </h2>
       
       <div className="flex flex-col sm:flex-row w-full max-w-6xl relative mt-8 sm:mt-0 mb-8 sm:mb-0">
+        {/* "See All Projects" link positioned absolutely above all items, aligned to fourth item's right edge */}
+        <div className="absolute -top-6 sm:-top-0 right-2 flex items-center space-x-2 z-10">
+          <a
+            href="https://example.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white text-xs sm:text-sm hover:underline transition-all duration-300"
+          >
+            See All Projects
+          </a>
+          <ExternalLink color="white" size={14}/>
+        </div>
+        
         {[0, 1, 2].map((index) => (
           <div 
             key={index}
@@ -55,21 +68,10 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
             >
               <path d="M12 5v14M5 12h14" />
             </svg>
-            <p className="mt-2 text-white text-xs sm:text-sm text-center">
-              Your project
-            </p>
-            <div className="absolute -top-6 sm:-top-8 right-0 flex items-center space-x-2">
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-xs sm:text-sm underline decoration-transparent hover:decoration-white transition"
-              >
-                See All Projects
-              </a>
-              <ExternalLink color="white" size={14}/>
-            </div>
           </div>
+          <p className="mt-2 text-white text-xs sm:text-sm text-center">
+            Your project
+          </p>
         </div>
       </div>
       
