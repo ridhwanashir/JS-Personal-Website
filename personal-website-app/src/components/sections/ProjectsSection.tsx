@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ExternalLink } from 'react-feather';
-import { CERTIFICATIONS } from '../../constants/data';
+import { CERTIFICATIONS, PROJECTS } from '../../constants/data';
 import { AnimationState } from '../../hooks/useScrollAnimations';
 
 interface ProjectsSectionProps {
@@ -32,25 +32,53 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
           <ExternalLink color="white" size={14}/>
         </div>
         
-        {[0, 1, 2].map((index) => (
+        {/* Mobile: Show only first project */}
+        <div className="block sm:hidden w-full">
           <div 
-            key={index}
-            className={`relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-4 sm:mt-8 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 ${
+            className={`relative w-full flex items-center justify-center overflow-hidden m-2 mt-4 min-h-[200px] transition-all duration-1000 ${
               animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
-            style={{ transitionDelay: `${200 + index * 200}ms` }}
+            style={{ transitionDelay: '200ms' }}
           >
-            <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
+            <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110 rounded-lg overflow-hidden">
               <Image 
-                src="/under_construction.jpeg" 
-                alt="Project under construction" 
+                src={PROJECTS[0].image} 
+                alt={PROJECTS[0].title} 
                 className="w-full object-cover" 
                 width={500} 
                 height={300} 
               />
+              <div className="p-4 bg-gray-900">
+                <h3 className="text-white text-lg font-semibold mb-2">{PROJECTS[0].title}</h3>
+                <p className="text-gray-300 text-sm mb-2">{PROJECTS[0].description}</p>
+                <p className="text-gray-400 text-xs">{PROJECTS[0].status}</p>
+              </div>
             </div>
           </div>
-        ))}
+        </div>
+
+        {/* Desktop: Show all three projects */}
+        <div className="hidden sm:flex w-full">
+          {PROJECTS.map((project, index) => (
+            <div 
+              key={project.id}
+              className={`relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-4 sm:mt-8 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 ${
+                animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}
+              style={{ transitionDelay: `${200 + index * 200}ms` }}
+            >
+              <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
+                <Image 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full object-cover" 
+                  width={500} 
+                  height={300} 
+                />
+              </div>
+            </div>
+          ))}
+        </div>
         
         <div className={`flex-1 flex flex-col items-center justify-center mt-4 sm:mt-8 border border-gray-800 bg-black p-4 group relative m-2 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 ${
           animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'

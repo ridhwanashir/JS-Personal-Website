@@ -10,13 +10,13 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
     <div className={`w-full min-h-screen bg-black relative z-10 flex flex-col ${className}`}>
       <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8">
         {/* Small logo at the top */}
-        <Image
+        {/* <Image
           src="/ridhwan-logo.png"
           alt="Small logo"
           width={50}
           height={50}
           className="absolute top-8 sm:top-12 left-1/2 transform -translate-x-1/2 w-8 h-8 sm:w-12 sm:h-12"
-        />
+        /> */}
         
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extralight text-center mb-12 text-white font-poppins">
           Skills & Interests

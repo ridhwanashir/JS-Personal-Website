@@ -31,6 +31,33 @@ export const EXPERIENCES: Experience[] = [
   },
 ];
 
+export const PROJECTS = [
+  {
+    id: 1,
+    title: "AI-Powered Data Analytics Platform",
+    description: "Machine learning platform for predictive analytics",
+    image: "/under_construction.jpeg",
+    technologies: ["Python", "TensorFlow", "React", "AWS"],
+    status: "In Development"
+  },
+  {
+    id: 2,
+    title: "Enterprise Software Solution",
+    description: "Full-stack application for business process automation",
+    image: "/under_construction.jpeg",
+    technologies: ["Node.js", "React", "PostgreSQL", "Docker"],
+    status: "In Development"
+  },
+  {
+    id: 3,
+    title: "Mobile App Development",
+    description: "Cross-platform mobile application with real-time features",
+    image: "/under_construction.jpeg",
+    technologies: ["React Native", "Firebase", "TypeScript"],
+    status: "In Development"
+  }
+];
+
 export const CERTIFICATIONS = [
   { src: "/certifications-microsoft-ai.webp", alt: "Microsoft Azure AI Fundamentals certification", title: "Microsoft Azure", subtitle: "AI Fundamentals", date: "Issued Jun 2024" },
   { src: "/certifications-aws-sa.png", alt: "AWS Solution Architect certification", title: "AWS", subtitle: "Solution Architect", date: "Issued Apr 2024" },
