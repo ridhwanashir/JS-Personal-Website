@@ -57,7 +57,7 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
           </div>
         </div>
 
-        {/* Desktop: Show all three projects */}
+        {/* Desktop: Show all three projects + Your project */}
         <div className="hidden sm:flex w-full">
           {PROJECTS.map((project, index) => (
             <div 
@@ -78,28 +78,29 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
               </div>
             </div>
           ))}
-        </div>
-        
-        <div className={`flex-1 flex flex-col items-center justify-center mt-4 sm:mt-8 border border-gray-800 bg-black p-4 group relative m-2 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 ${
-          animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-        }`} style={{ transitionDelay: '800ms' }}>
-          <div className="transform transition-transform duration-500 group-hover:rotate-90">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
-            >
-              <path d="M12 5v14M5 12h14" />
-            </svg>
+          
+          {/* Your project item */}
+          <div className={`flex-1 flex flex-col items-center justify-center mt-4 sm:mt-8 border border-gray-800 bg-black p-4 group relative m-2 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 ${
+            animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`} style={{ transitionDelay: '800ms' }}>
+            <div className="transform transition-transform duration-500 group-hover:rotate-90">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </div>
+            <p className="mt-2 text-white text-xs sm:text-sm text-center">
+              Your project
+            </p>
           </div>
-          <p className="mt-2 text-white text-xs sm:text-sm text-center">
-            Your project
-          </p>
         </div>
       </div>
       
