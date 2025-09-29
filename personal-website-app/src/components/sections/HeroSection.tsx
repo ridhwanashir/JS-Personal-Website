@@ -18,7 +18,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
   
   // Position calculations for logo transition to navbar center
   const startY = 50; // Center of viewport (percentage)
-  const endY = 10; // Navbar center position (h-16 = 64px, center at 32px ≈ 8vh)
+  const endY = 21.5; // Navbar center position (h-16 = 64px, center at 32px ≈ 8vh)
   const logoTopPosition = startY - (startY - endY) * animations.logoTransition;
   
   return (
@@ -39,7 +39,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
       <div
         className="fixed left-1/2 transform -translate-x-1/2 z-50"
         style={{
-          top: `${logoTopPosition-9}vh`,
+          top: `${logoTopPosition -20}vh`,
           transition: 'all 0.1s ease-out',
           opacity: animations.logoTransition < 0.95 ? 1 : 0 // Hide when almost at navbar position
         }}
@@ -97,7 +97,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
           style={{
             opacity: Math.max(0, 1 - animations.backgroundTransition * 2),
             transition: 'all 0.1s ease-out',
-            top: `${logoTopPosition + 10}vh`, // Position below the logo
+            top: `${logoTopPosition}vh`, // Position below the logo
             transform: `translateY(${animations.backgroundTransition * 30}px)`
           }}
         >

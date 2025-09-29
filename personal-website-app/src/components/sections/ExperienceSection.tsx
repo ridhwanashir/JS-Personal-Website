@@ -12,7 +12,7 @@ interface ExperienceSectionProps {
 }
 
 export function ExperienceSection({ experienceRef, animations, experiences }: ExperienceSectionProps) {
-  console.log('ExperienceSection - experiences received:', experiences); // Debug log
+  // console.log('ExperienceSection - experiences received:', experiences); // Debug log
   
   return (
     <div ref={experienceRef} className="w-full bg-white relative z-10">

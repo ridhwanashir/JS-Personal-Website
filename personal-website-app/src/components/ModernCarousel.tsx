@@ -20,7 +20,7 @@ export function ModernCarousel({
   showIndicators = true,
   className = '' 
 }: ModernCarouselProps) {
-  console.log('ModernCarousel - experiences received:', experiences); // Debug log
+  // console.log('ModernCarousel - experiences received:', experiences); // Debug log
   
   // Safety check for empty or undefined experiences
   if (!experiences || experiences.length === 0) {
