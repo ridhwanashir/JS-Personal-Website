@@ -8,6 +8,7 @@ export interface AnimationState {
   worksVisible: boolean;
   projectsVisible: boolean;
   certificationsVisible: boolean;
+  contactVisible: boolean;
 }
 
 export interface ScrollRefs {
@@ -16,6 +17,7 @@ export interface ScrollRefs {
   experienceRef: RefObject<HTMLDivElement>;
   worksRef: RefObject<HTMLDivElement>;
   projectsRef: RefObject<HTMLDivElement>;
+  contactRef: RefObject<HTMLDivElement>;
 }
 
 export interface ScrollLockState {
@@ -37,6 +39,7 @@ export function useScrollAnimations() {
   const experienceRef = useRef<HTMLDivElement>(null);
   const worksRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
   
   const [animations, setAnimations] = useState<AnimationState>({
     backgroundTransition: 0,
@@ -45,7 +48,8 @@ export function useScrollAnimations() {
     experienceVisible: false,
     worksVisible: false,
     projectsVisible: false,
-    certificationsVisible: false
+    certificationsVisible: false,
+    contactVisible: false
   });
 
   useEffect(() => {
@@ -62,6 +66,7 @@ export function useScrollAnimations() {
       const experienceTop = experienceRef.current?.offsetTop || 0;
       const worksTop = worksRef.current?.offsetTop || 0;
       const projectsTop = projectsRef.current?.offsetTop || 0;
+      const contactTop = contactRef.current?.offsetTop || 0;
       
       // Background transition (hero to profile) - parallax fade out
       const transitionStart = heroHeight * 0.2; // Start fading at 20% of the doubled height
@@ -105,6 +110,7 @@ export function useScrollAnimations() {
       const worksVisible = currentScrollY + windowHeight > worksTop + 200;
       const projectsVisible = currentScrollY + windowHeight > projectsTop + 200;
       const certificationsVisible = currentScrollY + windowHeight > projectsTop + 400;
+      const contactVisible = currentScrollY + windowHeight > contactTop + 200;
       
       setAnimations({
         backgroundTransition: backgroundProgress,
@@ -113,7 +119,8 @@ export function useScrollAnimations() {
         experienceVisible,
         worksVisible,
         projectsVisible,
-        certificationsVisible
+        certificationsVisible,
+        contactVisible
       });
     };
 
@@ -179,7 +186,8 @@ export function useScrollAnimations() {
       profileRef,
       experienceRef,
       worksRef,
-      projectsRef
+      projectsRef,
+      contactRef
     },
     scrollY
   };

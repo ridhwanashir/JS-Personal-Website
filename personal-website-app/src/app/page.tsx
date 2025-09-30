@@ -11,6 +11,7 @@ import { ExperienceSection } from '../components/sections/ExperienceSection';
 import { WorksSection } from '../components/sections/WorksSection';
 import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { SkillsSection } from '../components/sections/SkillsSection';
+import { ContactSection } from '../components/sections/ContactSection';
 import { ScrollLockIndicator } from '../components/ui/ScrollLockIndicator';
 import { AnimatedNavbar } from '../components/ui/AnimatedNavbar';
 import { EXPERIENCES } from '../constants/data';
@@ -19,7 +20,7 @@ export default function Home() {
   const {
     animations,
     scrollLockState: { isTypewriterComplete, hasStartedTyping },
-    refs: { heroRef, profileRef, experienceRef, worksRef, projectsRef }
+    refs: { heroRef, profileRef, experienceRef, worksRef, projectsRef, contactRef }
   } = useScrollAnimations();
 
   return (
@@ -58,6 +59,9 @@ export default function Home() {
 
       {/* Skills Section */}
       <SkillsSection />
+
+      {/* Contact Section */}
+      <ContactSection contactRef={contactRef} animations={animations} />
     </main>
   );
 }
