@@ -35,12 +35,12 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
         {/* Mobile: Show only first project */}
         <div className="block sm:hidden w-full">
           <div 
-            className={`relative w-full flex items-center justify-center overflow-hidden m-2 mt-4 min-h-[200px] transition-all duration-1000 ${
+            className={`relative w-full flex items-center justify-center overflow-hidden  min-h-[200px] transition-all duration-1000 ${
               animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
             style={{ transitionDelay: '200ms' }}
           >
-            <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110 rounded-lg overflow-hidden">
+            <div className="w-full bg-black duration-500 ease-in-out transform hover:scale-110 rounded-lg overflow-hidden">
               <Image 
                 src={PROJECTS[0].image} 
                 alt={PROJECTS[0].title} 
@@ -48,7 +48,7 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
                 width={500} 
                 height={300} 
               />
-              <div className="p-4 bg-gray-900">
+                <div className="p-4 bg-black mt-4 mr-6 ml-6 mb-8 border border-gray-800 rounded-lg">
                 <h3 className="text-white text-lg font-semibold mb-2">{PROJECTS[0].title}</h3>
                 <p className="text-gray-300 text-sm mb-2">{PROJECTS[0].description}</p>
                 <p className="text-gray-400 text-xs">{PROJECTS[0].status}</p>
@@ -128,7 +128,7 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
             />
             <p className="text-xs sm:text-sm text-center text-white mt-2">{cert.title}</p>
             {cert.subtitle && <p className="text-xs sm:text-sm text-center text-white">{cert.subtitle}</p>}
-            <p className="text-xs text-center text-gray-500 font-thin">{cert.date}</p>
+            <p className="text-xs sm:text-sm text-center text-white font-thin">{cert.date}</p>
           </div>
         ))}
       </div>
