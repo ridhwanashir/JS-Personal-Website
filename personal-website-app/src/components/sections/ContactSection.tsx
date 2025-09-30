@@ -45,91 +45,101 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
   };
 
   return (
-    <div ref={contactRef} className="w-full min-h-screen bg-black relative flex items-center justify-center px-4 sm:px-6 lg:px-8 z-10">
-      <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <div 
+      ref={contactRef} 
+      className="w-full min-h-screen bg-black relative flex items-center justify-center px-4 sm:px-6 lg:px-8 z-10 py-12 sm:py-16 lg:py-20"
+    >
+      <div className="max-w-7xl w-full flex flex-col lg:flex-row items-start lg:items-center gap-8 sm:gap-12 lg:gap-20">
         
         {/* Left Side - Title and Social Links */}
-        <div className={`flex-1 text-center lg:text-left transition-all duration-1000 ${
+        <div className={`w-full lg:flex-1 text-center lg:text-left transition-all duration-1000 ${
           animations.contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-8 leading-tight">
-            LET'S WORKING<br />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 sm:mb-8 leading-tight">
+            LET'S WORK<br />
             TOGETHER !
           </h2>
           
           {/* Social Links */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start mb-6 sm:mb-8">
             <a 
               href="https://linkedin.com/in/ridhwanashir" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white hover:text-yellow-500 transition-colors duration-300"
+              className="flex items-center justify-center lg:justify-start gap-2 text-white hover:text-yellow-500 transition-colors duration-300"
             >
-              <span className="text-lg">LinkedIn</span>
+              <span className="text-base sm:text-lg">LinkedIn</span>
               <ExternalLink size={18} />
             </a>
-            <a 
+            {/* <a 
               href="https://behance.net/ridhwanashir" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white hover:text-yellow-500 transition-colors duration-300"
+              className="flex items-center justify-center lg:justify-start gap-2 text-white hover:text-yellow-500 transition-colors duration-300"
             >
-              <span className="text-lg">Behance</span>
+              <span className="text-base sm:text-lg">Behance</span>
               <ExternalLink size={18} />
-            </a>
+            </a> */}
             <a 
               href="https://github.com/ridhwanashir" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white hover:text-yellow-500 transition-colors duration-300"
+              className="flex items-center justify-center lg:justify-start gap-2 text-white hover:text-yellow-500 transition-colors duration-300"
             >
-              <span className="text-lg">GitHub</span>
+              <span className="text-base sm:text-lg">GitHub</span>
               <ExternalLink size={18} />
             </a>
           </div>
 
-          {/* Close Button */}
-          <div className="flex justify-center lg:justify-start mb-8">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition-colors duration-300">
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="black" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
+          {/* X Button */}
+          <div className="flex justify-center lg:justify-start mb-6 sm:mb-8">
+            <div
+              className="w-20 h-20 sm:w-28 sm:h-28 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition-colors duration-100 animate-spin"
+              style={{ 
+                transition: 'background-color 0.3s',
+                animationDuration: '4.2s'
+              }}
+            >
+              <svg
+                width="48"
+                height="48"
+                className="sm:w-12 sm:h-12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                strokeWidth="1.2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
+                <line x1="22" y1="2" x2="2" y2="22"></line>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
               </svg>
             </div>
           </div>
 
           {/* Email */}
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-xs sm:text-sm break-words">
             Say Hello! - ridhwanashir@gmail.com
           </p>
         </div>
 
         {/* Right Side - Contact Form */}
-        <div className={`flex-1 max-w-2xl transition-all duration-1000 ${
+        <div className={`w-full lg:flex-1 lg:max-w-2xl transition-all duration-1000 ${
           animations.contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`} style={{ transitionDelay: '200ms' }}>
-          <div className="bg-transparent border border-gray-600 rounded-3xl p-8">
-            <h3 className="text-white text-xl mb-6">Tell me about yourself</h3>
+          <div className="bg-transparent border border-gray-600 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8">
+            <h3 className="text-white text-lg sm:text-xl mb-4 sm:mb-6">Tell me about yourself</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Name and Email Row */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <input
                   type="text"
                   name="name"
                   placeholder="Name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="bg-transparent border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300"
+                  className="bg-transparent border border-gray-600 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-sm sm:text-base"
                 />
                 <input
                   type="email"
@@ -137,20 +147,20 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
                   placeholder="Email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="bg-transparent border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300"
+                  className="bg-transparent border border-gray-600 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-sm sm:text-base"
                 />
               </div>
 
               {/* Interest Selection */}
               <div>
-                <p className="text-white mb-4">What piques your interest</p>
-                <div className="flex flex-wrap gap-3">
+                <p className="text-white mb-3 sm:mb-4 text-sm sm:text-base">What piques your interest</p>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {interests.map((interest) => (
                     <button
                       key={interest}
                       type="button"
                       onClick={() => handleInterestToggle(interest)}
-                      className={`px-4 py-2 rounded-full border transition-all duration-300 text-sm ${
+                      className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border transition-all duration-300 text-xs sm:text-sm ${
                         selectedInterests.includes(interest)
                           ? 'bg-yellow-500 text-black border-yellow-500'
                           : 'bg-transparent text-white border-gray-600 hover:border-yellow-500'
@@ -164,21 +174,21 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
 
               {/* Details Textarea */}
               <div>
-                <p className="text-white mb-4">Can you share more about your needs?</p>
+                <p className="text-white mb-3 sm:mb-4 text-sm sm:text-base">Can you share more about your needs?</p>
                 <textarea
                   name="details"
                   placeholder="Details"
                   value={formData.details}
                   onChange={handleInputChange}
-                  rows={4}
-                  className="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300 resize-none"
+                  rows={3}
+                  className="w-full bg-transparent border border-gray-600 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300 resize-none text-sm sm:text-base"
                 />
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-transparent border border-gray-600 text-white py-4 rounded-lg hover:border-yellow-500 hover:bg-yellow-500 hover:text-black transition-all duration-300 text-lg font-medium"
+                className="w-full bg-transparent border border-gray-600 text-white py-3 sm:py-4 rounded-lg hover:border-yellow-500 hover:bg-yellow-500 hover:text-black transition-all duration-300 text-base sm:text-lg font-medium"
               >
                 Submit
               </button>
