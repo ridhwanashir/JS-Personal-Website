@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'react-feather';
+import emailjs from '@emailjs/browser';
 import { AnimationState } from '../../hooks/useScrollAnimations';
 
 interface ContactSectionProps {
@@ -16,6 +17,8 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
   });
 
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const interests = [
     'Any Design', 'UI/UX', 'Web Development',
@@ -38,10 +41,49 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', { ...formData, interests: selectedInterests });
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.details) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // EmailJS configuration
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        interests: selectedInterests.join(', '),
+        message: formData.details,
+        to_email: 'ridhwanashir@gmail.com', // Your email
+      };
+
+      // Replace these with your actual EmailJS credentials
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id',
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key'
+      );
+
+      console.log('Email sent successfully:', result);
+      setSubmitStatus('success');
+      
+      // Reset form
+      setFormData({ name: '', email: '', interest: '', details: '' });
+      setSelectedInterests([]);
+      
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -136,17 +178,19 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
                 <input
                   type="text"
                   name="name"
-                  placeholder="Name"
+                  placeholder="Name *"
                   value={formData.name}
                   onChange={handleInputChange}
+                  required
                   className="bg-transparent border border-gray-600 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-sm sm:text-base"
                 />
                 <input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Email *"
                   value={formData.email}
                   onChange={handleInputChange}
+                  required
                   className="bg-transparent border border-gray-600 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300 text-sm sm:text-base"
                 />
               </div>
@@ -177,9 +221,10 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
                 <p className="text-white mb-3 sm:mb-4 text-sm sm:text-base">Can you share more about your needs?</p>
                 <textarea
                   name="details"
-                  placeholder="Details"
+                  placeholder="Details *"
                   value={formData.details}
                   onChange={handleInputChange}
+                  required
                   rows={3}
                   className="w-full bg-transparent border border-gray-600 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors duration-300 resize-none text-sm sm:text-base"
                 />
@@ -188,10 +233,42 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-transparent border border-gray-600 text-white py-3 sm:py-4 rounded-lg hover:border-yellow-500 hover:bg-yellow-500 hover:text-black transition-all duration-300 text-base sm:text-lg font-medium"
+                disabled={isSubmitting}
+                className={`w-full border py-3 sm:py-4 rounded-lg text-base sm:text-lg font-medium transition-all duration-300 ${
+                  isSubmitting
+                    ? 'bg-gray-700 border-gray-700 text-gray-400 cursor-not-allowed'
+                    : submitStatus === 'success'
+                    ? 'bg-green-600 border-green-600 text-white'
+                    : submitStatus === 'error'
+                    ? 'bg-red-600 border-red-600 text-white'
+                    : 'bg-transparent border-gray-600 text-white hover:border-yellow-500 hover:bg-yellow-500 hover:text-black'
+                }`}
               >
-                Submit
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
+                  </div>
+                ) : submitStatus === 'success' ? (
+                  'Message Sent Successfully!'
+                ) : submitStatus === 'error' ? (
+                  'Failed to Send - Try Again'
+                ) : (
+                  'Submit'
+                )}
               </button>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="text-green-400 text-sm text-center mt-2">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="text-red-400 text-sm text-center mt-2">
+                  Something went wrong. Please try again or email directly.
+                </div>
+              )}
             </form>
           </div>
         </div>
