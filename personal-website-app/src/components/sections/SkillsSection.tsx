@@ -25,7 +25,7 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
       <div className="w-full h-screen bg-black relative">
         <div className="flex h-1/2">
           {/* Top Left - Interactive Skills Tags */}
-          <div className="flex-1 bg-black p-8 flex items-center justify-center relative overflow-hidden">
+          <div className="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
             {/* <div className="absolute inset-0">
               <Image 
                 src="/interactive_skills_bg.png" 
@@ -87,7 +87,7 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
         
         <div className="flex h-1/2">
           {/* Bottom Left - MY INTERESTS with landscape */}
-          <div className="relative flex-1 flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative flex-1 flex flex-col items-center justify-center overflow-hidden ">
             <div className="absolute inset-0 hover:scale-110 duration-500 transition-transform">
               <Image 
                 src="/interactive_interests_bg.png" 
@@ -105,33 +105,39 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
           </div>
           
           {/* Bottom Right - Interest circles */}
-          <div className="flex-1 bg-black p-8 flex items-center justify-center">
-            <div className="grid grid-cols-3 gap-4 max-w-xs">
-              {/* Top row */}
-              <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                AI/ML
-              </div>
-              <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 transform rotate-12">
-                DEV OPS
-              </div>
-              <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                PRODUCT
-              </div>
-              
-              {/* Bottom row */}
-              <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                DESIGN
-              </div>
-              <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                UI/UX
-              </div>
-              <div className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                CLOUD
+          <div className="flex-1 bg-black flex items-center justify-center ">
+            <div className="flex flex-col items-center gap-2">
+              {/* Top row - 3 circles */}
+              <div className="flex gap-4">
+                <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  AI/ML
+                </div>
+                <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  DEV OPS
+                </div>
+                <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  PRODUCT
+                </div>
               </div>
               
-              {/* Center bottom */}
-              <div className="col-start-2 w-16 h-16 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                ULM
+              {/* Middle row - 3 circles */}
+              <div className="flex gap-4">
+                <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  DESIGN
+                </div>
+                <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  UI/UX
+                </div>
+                <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  CLOUD
+                </div>
+              </div>
+              
+              {/* Bottom center - 1 circle */}
+              <div className="flex justify-center">
+                <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  ULM
+                </div>
               </div>
             </div>
           </div>
