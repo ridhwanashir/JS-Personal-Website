@@ -28,10 +28,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Ridhwan Nashir" }],
   creator: "Ridhwan Nashir",
+  metadataBase: new URL("https://ridhwanashir.my.id"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ridhwannashir.com",
+    url: "https://ridhwanashir.my.id",
     title: "Ridhwan Nashir - Software Engineer & Solution Architect",
     description: "Experienced Software Engineer and Solution Architect specializing in AI/ML, data engineering, and cloud solutions.",
     siteName: "Ridhwan Nashir Portfolio",
@@ -61,7 +65,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

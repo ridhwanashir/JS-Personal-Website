@@ -11,11 +11,15 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProps) {
   const scrollToContact = () => {
+    const offset = 60 // scroll 100px before the absolute bottom
+    const { scrollHeight, clientHeight } = document.documentElement
+    const targetPosition = scrollHeight - clientHeight - offset
+
     window.scrollTo({
-      top: document.documentElement.scrollHeight,
+      top: targetPosition,
       behavior: 'smooth'
-    });
-  };
+    })
+  }
   return (
     <div ref={projectsRef} className="w-full min-h-screen bg-black relative flex flex-col items-center px-4 sm:px-6 lg:px-8 z-10">
       <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extralight relative mt-16 sm:mt-24 text-white text-center transition-all duration-1000 ${
