@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { AnimationState } from '../../hooks/useScrollAnimations';
 
@@ -9,14 +9,79 @@ interface ProfileSectionProps {
 }
 
 export function ProfileSection({ profileRef, animations, isTypewriterComplete }: ProfileSectionProps) {
+  // State to track screen size for responsive positioning
+  const [screenSize, setScreenSize] = useState('mobile');
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setScreenSize('large');
+      } else if (width >= 768) {
+        setScreenSize('medium');
+      } else {
+        setScreenSize('mobile');
+      }
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    // Add resize listener
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   // Position calculations for text transition - only within this section
   // animations.profileTextProgress goes from 0 to 1 as user scrolls through ProfileSection
   const startY = 60; // Start position when entering ProfileSection (percentage)
   const endY = 40; // End position when leaving ProfileSection (percentage)  
-  const textTopPosition = startY - (startY - endY) * animations.profileTextProgress;
   
-  // Add threshold to prevent abrupt position change
-  const shouldUseFixedPosition = animations.profileTextProgress > 0.1; // Start fixed positioning after 10% progress
+  // NEW APPROACH: Use transform instead of position switching to avoid jumps
+  const lockThreshold = 0.08; // Lock at 8% progress for good balance
+  
+  // Calculate Y transform instead of top position
+  let yTransform;
+  if (animations.profileTextProgress <= lockThreshold) {
+    // Phase 1: Normal movement (0% to 8%) - moves up significantly
+    const progress = animations.profileTextProgress / lockThreshold;
+    yTransform = -20 * progress; // Move up 20vh in first 8%
+  } else {
+    // Phase 2: Locked with slow drift (8% to 100%) - long sticky period
+    const remainingProgress = (animations.profileTextProgress - lockThreshold) / (1 - lockThreshold);
+    yTransform = -20 - (2 * remainingProgress); // Continue moving slowly another 8vh over 92% of scroll
+  }
+  
+  // Use sticky positioning instead of fixed to avoid context switching
+  const shouldUseSticky = animations.profileTextProgress > 0.05; // Start sticky positioning early
+
+  // Calculate fade-out effect when sticky is about to exit
+  const fadeThreshold = 0.90; // Start fading at 85% progress
+  let contentOpacity = 1;
+  
+  if (animations.profileTextProgress > fadeThreshold) {
+    // Fade out in the last 15% of scroll (85% to 100%)
+    const fadeProgress = (animations.profileTextProgress - fadeThreshold) / (1 - fadeThreshold);
+    contentOpacity = 1.15 - fadeProgress; // Fade from 1 to 0
+  }
+
+  // Responsive top offset based on screen size
+  const getTopOffset = () => {
+    switch (screenSize) {
+      case 'large':  // ≥1024px (desktop)
+        return 8.5;
+      case 'medium': // 768px-1023px (tablet)
+        return 34;   // Medium value between mobile and desktop
+      case 'mobile': // <768px (mobile)
+        return 26;
+      default:
+        return 26;
+    }
+  };
+  
+  const topOffset = getTopOffset();
 
   const textRows = [
     "Data-driven Software Engineer",
@@ -45,20 +110,17 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
   );
 
   return (
-    <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10">
+    <div ref={profileRef} className="w-full h-[250vh] bg-white relative z-10">
     {/* <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10 border border-gray-300 rounded-lg"> */}
       <div 
-        className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white relative px-4 sm:px-6 lg:px-8"
+        className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white px-4 sm:px-6 lg:px-8"
         style={{
-          position: shouldUseFixedPosition ? 'fixed' : 'relative',
-          top: shouldUseFixedPosition ? `${textTopPosition+9}vh` : 'auto',
-          left: shouldUseFixedPosition ? '50%' : 'auto',
-          right: shouldUseFixedPosition ? 'auto' : 'auto',
-          // transition: 'all 0.1s ease-out',
-          transform: shouldUseFixedPosition ? `translate(-50%, -50%)` : 'none',
-          zIndex: shouldUseFixedPosition ? 30 : 'auto',
-          width: shouldUseFixedPosition ? '100%' : 'auto',
-          maxWidth: shouldUseFixedPosition ? '1280px' : 'auto'
+          position: shouldUseSticky ? 'sticky' : 'relative',
+          top: shouldUseSticky ? '23vh' : 'auto',
+          transform: `translateY(${yTransform}vh)`,
+          transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
+          zIndex: shouldUseSticky ? 30 : 'auto',
+          opacity: contentOpacity
         }}
       >
         {/* Logo is now handled by HeroSection's transitioning logo */}
