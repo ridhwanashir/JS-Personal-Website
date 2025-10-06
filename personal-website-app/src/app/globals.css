@@ -76,13 +76,13 @@ body {
 }
 
 .animate-scroll-left {
-  animation: scroll-left-sm 10s linear infinite;
+  animation: scroll-left-sm 3s linear infinite;
 }
 
 /* Medium screens and up */
 @media (min-width: 768px) {
   .animate-scroll-left {
-    animation: scroll-left-md 10s linear infinite;
+    animation: scroll-left-md 6s linear infinite;
   }
 }
 
