@@ -86,15 +86,18 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
                   </React.Fragment>
                 ))}
               </div>
-              <button 
-                className="mt-6 sm:mt-8 px-4 sm:px-6 py-2 bg-black text-white font-sans font-light rounded-full hover:bg-gray-800 transition-all duration-300 text-sm sm:text-base transform"
+              <a 
+                href="https://drive.google.com/file/d/1rNrhDI4Mxer8JgnHt7RwZh58V1WkdCHL/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-6 sm:mt-8 px-4 sm:px-6 py-2 bg-black text-white font-sans font-light rounded-full hover:bg-gray-800 transition-all duration-300 text-sm sm:text-base transform"
                 style={{
                   opacity: Math.max(0, Math.min(1, animations.profileTextProgress * 2 - 0.5)),
                   transform: `translateY(${Math.max(0, (1 - animations.profileTextProgress * 2) * 20)}px)`
                 }}
               >
                 See Curriculum Vitae
-              </button>
+              </a>
 
             </div>
           </div>

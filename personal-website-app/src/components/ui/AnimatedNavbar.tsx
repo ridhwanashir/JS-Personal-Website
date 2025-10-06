@@ -14,6 +14,13 @@ export function AnimatedNavbar({ animations }: AnimatedNavbarProps) {
   // Show navbar logo only when transition is almost complete
   const showNavbarLogo = animations.logoTransition > 0.95;
   
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  
   return (
     <nav
       className="fixed top-0 left-0 w-full z-40 transition-all duration-300 ease-out"
@@ -34,10 +41,11 @@ export function AnimatedNavbar({ animations }: AnimatedNavbarProps) {
               alt="Ridhwan Nashir Logo"
               width={40}
               height={40}
-              className="w-8 h-auto sm:w-10 sm:h-auto transition-opacity duration-100"
+              className="w-8 h-auto sm:w-10 sm:h-auto transition-opacity duration-100 cursor-pointer hover:opacity-80"
               style={{
                 opacity: showNavbarLogo ? 1 : 0
               }}
+              onClick={scrollToTop}
             />
           </div>
         </div>

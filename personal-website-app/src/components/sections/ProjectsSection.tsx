@@ -10,6 +10,12 @@ interface ProjectsSectionProps {
 }
 
 export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProps) {
+  const scrollToContact = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  };
   return (
     <div ref={projectsRef} className="w-full min-h-screen bg-black relative flex flex-col items-center px-4 sm:px-6 lg:px-8 z-10">
       <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extralight relative mt-16 sm:mt-24 text-white text-center transition-all duration-1000 ${
@@ -22,7 +28,7 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
         {/* "See All Projects" link - responsive positioning */}
         <div className="absolute -bottom-6 right-2 sm:bottom-auto sm:left-auto sm:-top-0 sm:right-2 flex items-center space-x-2 z-10">
           <a
-            href="https://example.com"
+            href="https://github.com/ridhwanashir"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white text-xs sm:text-sm hover:underline transition-all duration-300"
@@ -80,7 +86,9 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
           ))}
           
           {/* Your project item */}
-          <div className={`flex-1 flex flex-col items-center justify-center mt-4 sm:mt-8 border border-gray-800 bg-black p-4 group relative m-2 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 ${
+          <div 
+            onClick={scrollToContact}
+            className={`flex-1 flex flex-col items-center justify-center mt-4 sm:mt-8 border border-gray-800 bg-black p-4 group relative m-2 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 cursor-pointer hover:border-gray-600 ${
             animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`} style={{ transitionDelay: '800ms' }}>
             <div className="transform transition-transform duration-500 group-hover:rotate-90">

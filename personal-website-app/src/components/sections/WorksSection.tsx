@@ -12,12 +12,73 @@ interface WorksSectionProps {
 }
 
 export function WorksSection({ worksRef, animations }: WorksSectionProps) {
+  const companyLogos = [
+    { src: '/axrail_logo.png', alt: 'Axrail' },
+    { src: '/indosat_logo.png', alt: 'Indosat' },
+    { src: '/metrodata_logo.png', alt: 'Metrodata' },
+    { src: '/techbros_logo.png', alt: 'Techbros' },
+    { src: '/telkom_university_logo.png', alt: 'Telkom University' }
+  ];
+
   return (
-    <div ref={worksRef} className="w-full min-h-screen lg:h-screen bg-black relative z-10">
+    <div ref={worksRef} className="w-full min-h-[120vh] lg:min-h-[130vh] bg-black relative z-10">
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extralight text-center mb-8 lg:mb-12 font-poppins absolute top-8 sm:top-16 lg:top-24 left-1/2 transform -translate-x-1/2 text-white">Works</h2>
       
+      {/* Company Logos Animation Section - Above the works */}
+      <div className="absolute top-32 sm:top-40 lg:top-48 w-full z-20">
+        <h3 className="text-lg sm:text-l lg:text-xl font-light text-center mb-6 sm:mb-8 text-white">
+          Worked on Projects with
+        </h3>
+        
+        <div className="relative overflow-hidden mb-8 sm:mb-12 lg:mb-16">
+          {/* Fade overlay for smooth edges */}
+          <div className="absolute left-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-r from-black to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-l from-black to-transparent z-10"></div>
+          
+          {/* Scrolling logos container */}
+          <div className="flex animate-scroll-left">
+            {/* First set of logos */}
+            {companyLogos.map((logo, index) => (
+              <div key={`first-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={80}
+                  height={80}
+                  className="h-12 sm:h-16 lg:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                />
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {companyLogos.map((logo, index) => (
+              <div key={`second-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={80}
+                  height={80}
+                  className="h-12 sm:h-16 lg:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                />
+              </div>
+            ))}
+            {/* Triple set for extra smoothness */}
+            {companyLogos.map((logo, index) => (
+              <div key={`third-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={80}
+                  height={80}
+                  className="h-12 sm:h-16 lg:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
       {/* Mobile and Medium: Grid layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:hidden gap-4 p-4 pt-24 sm:pt-32 md:pt-40 h-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:hidden gap-4 p-4 pt-80 sm:pt-96 md:pt-96 pb-0">
         <div className="relative h-72 sm:h-80 md:h-96 flex items-center justify-center overflow-hidden rounded-lg group">
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform group-hover:scale-110">
             <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
@@ -60,7 +121,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
       </div>
 
       {/* Large screens: Original horizontal layout */}
-      <div className="hidden lg:flex h-3/4 w-full absolute bottom-0">
+      <div className="hidden lg:flex h-3/5 w-full absolute top-80 pt-20">
         <div className="relative flex-1 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
