@@ -44,5 +44,54 @@ body {
   }
 }
 
+/* Company logos scrolling animation */
+/* Small screens animation */
+@keyframes scroll-left-sm {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Better for smaller screens */
+  }
+}
+
+/* Medium screens animation */
+@keyframes scroll-left-md {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-70%); /* Intermediate value for medium screens */
+  }
+}
+
+/* Large screens animation */
+@keyframes scroll-left-lg {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-104%); /* Your preferred value for desktop */
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left-sm 10s linear infinite;
+}
+
+/* Medium screens and up */
+@media (min-width: 768px) {
+  .animate-scroll-left {
+    animation: scroll-left-md 10s linear infinite;
+  }
+}
+
+/* Large screens and up */
+@media (min-width: 1024px) {
+  .animate-scroll-left {
+    animation: scroll-left-lg 10s linear infinite;
+  }
+}
+
 
 
