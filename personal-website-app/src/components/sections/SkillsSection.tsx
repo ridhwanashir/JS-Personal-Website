@@ -29,10 +29,10 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
           <div className="flex items-center justify-center relative overflow-hidden min-h-[200px] sm:min-h-[250px]">
             <div className="relative z-10 flex flex-wrap justify-center items-center gap-2 sm:gap-3 max-w-xs sm:max-w-md">
               <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm hover:bg-white hover:text-black transition-all duration-300">
-                PROMPT ENGINEERING
+                GENERATIVE AI
               </div>
               <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
-                JAVASCRIPT
+                AZURE
               </div>
               <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 AWS
@@ -41,7 +41,7 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
                 GCP
               </div>
               <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm hover:bg-white hover:text-black transition-all duration-300">
-                DATA ANALYSIS
+                DATA SCIENCE
               </div>
               <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 ILLUSTRATOR
@@ -81,34 +81,34 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
             <div className="flex flex-col items-center gap-2">
               {/* Top row - 3 circles */}
               <div className="flex gap-3 sm:gap-4">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                   AI/ML
                 </div>
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                   DEV OPS
                 </div>
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                   PRODUCT
                 </div>
               </div>
               
               {/* Middle row - 3 circles */}
               <div className="flex gap-3 sm:gap-4">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                   DESIGN
                 </div>
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                   UI/UX
                 </div>
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                   CLOUD
                 </div>
               </div>
               
               {/* Bottom center - 1 circle */}
               <div className="flex justify-center">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                  ULM
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
+                  FINANCE
                 </div>
               </div>
             </div>
@@ -140,10 +140,10 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
             <div className="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
               <div className="relative z-10 flex flex-wrap justify-center items-center gap-3 max-w-md">
                 <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
-                  PROMPT ENGINEERING
+                  GENERATIVE AI
                 </div>
                 <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
-                  JAVASCRIPT
+                  AZURE
                 </div>
                 <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                   AWS
@@ -152,7 +152,7 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
                   GCP
                 </div>
                 <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
-                  DATA ANALYSIS
+                  DATA SCIENCE
                 </div>
                 <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                   ILLUSTRATOR
@@ -212,34 +212,34 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
               <div className="flex flex-col items-center gap-2">
                 {/* Top row - 3 circles */}
                 <div className="flex gap-4">
-                  <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                     AI/ML
                   </div>
-                  <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                     DEV OPS
                   </div>
-                  <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                     PRODUCT
                   </div>
                 </div>
                 
                 {/* Middle row - 3 circles */}
                 <div className="flex gap-4">
-                  <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                     DESIGN
                   </div>
-                  <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                     UI/UX
                   </div>
-                  <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
+                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
                     CLOUD
                   </div>
                 </div>
                 
                 {/* Bottom center - 1 circle */}
                 <div className="flex justify-center">
-                  <div className="w-14 h-14 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300">
-                    ULM
+                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-xs font-light hover:bg-white hover:text-black transition-all duration-300 text-center leading-tight">
+                    FINANCE
                   </div>
                 </div>
               </div>
