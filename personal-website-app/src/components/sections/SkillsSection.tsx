@@ -8,15 +8,6 @@ interface SkillsSectionProps {
 export function SkillsSection({ className = '' }: SkillsSectionProps) {
   return (
     <div className={`w-full min-h-screen bg-black relative z-10 flex flex-col ${className}`}>
-      {/* Small logo at the top */}
-      {/* <Image
-        src="/ridhwan-logo.png"
-        alt="Small logo"
-        width={50}
-        height={50}
-        className="absolute top-8 sm:top-12 left-1/2 transform -translate-x-1/2 w-8 h-8 sm:w-12 sm:h-12"
-      /> */}
-      
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extralight text-center mt-8 sm:mt-16 md:mt-24 mb-4 sm:mb-8 text-white font-poppins px-4">
         Skills and Interest
       </h2>
@@ -31,25 +22,25 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
               <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm hover:bg-white hover:text-black transition-all duration-300">
                 GENERATIVE AI
               </div>
-              <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+              <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 AZURE
               </div>
-              <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+              <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 AWS
               </div>
-              <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+              <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 GCP
               </div>
               <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm hover:bg-white hover:text-black transition-all duration-300">
                 DATA SCIENCE
               </div>
-              <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+              <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 ILLUSTRATOR
               </div>
-              <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+              <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 PYTHON
               </div>
-              <div className="bg-transparent border border-white rounded-full px-2 py-1 sm:px-3 sm:py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+              <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
                 FIGMA
               </div>
               <div className="bg-transparent border border-white rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm hover:bg-white hover:text-black transition-all duration-300">
@@ -142,25 +133,25 @@ export function SkillsSection({ className = '' }: SkillsSectionProps) {
                 <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   GENERATIVE AI
                 </div>
-                <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+                <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   AZURE
                 </div>
-                <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+                <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   AWS
                 </div>
-                <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+                <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   GCP
                 </div>
                 <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   DATA SCIENCE
                 </div>
-                <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+                <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   ILLUSTRATOR
                 </div>
-                <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+                <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   PYTHON
                 </div>
-                <div className="bg-transparent border border-white rounded-full px-3 py-1 text-white text-xs hover:bg-white hover:text-black transition-all duration-300">
+                <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
                   FIGMA
                 </div>
                 <div className="bg-transparent border border-white rounded-full px-4 py-2 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
