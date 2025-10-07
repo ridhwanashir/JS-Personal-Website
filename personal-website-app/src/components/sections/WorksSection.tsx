@@ -13,11 +13,11 @@ interface WorksSectionProps {
 
 export function WorksSection({ worksRef, animations }: WorksSectionProps) {
   const companyLogos = [
+    { src: '/logo_dana_2.png', alt: 'Dana Indonesia' },
+    { src: '/logo_gys.webp', alt: 'Garuda Yamato Steel' },
+    { src: '/logo_haleon_2.png', alt: 'Haleon' },
+    { src: '/logo_kemenkeu.png', alt: 'Kementrian Keuangan' },
     { src: '/axrail_logo.png', alt: 'Axrail' },
-    { src: '/indosat_logo.png', alt: 'Indosat' },
-    { src: '/metrodata_logo.png', alt: 'Metrodata' },
-    { src: '/techbros_logo.png', alt: 'Techbros' },
-    { src: '/telkom_university_logo.png', alt: 'Telkom University' }
   ];
 
   const handleWorkItemClick = () => {
