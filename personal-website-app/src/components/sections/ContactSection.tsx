@@ -21,8 +21,8 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const interests = [
-    'Any Design', 'UI/UX', 'Web Development',
-    'Machine Learning', 'Prompt Engineering', 'Data Analysis',
+    'Design', 'UI/UX', 'Web Development',
+    'Machine Learning', 'Generative AI', 'Data Analysis',
     'Cloud Solution', 'Discussion', 'Other'
   ];
 
