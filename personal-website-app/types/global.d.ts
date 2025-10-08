@@ -32,6 +32,7 @@ export interface Experience {
   duration: string;
   role: string;
   location: string;
+  companyUrl?: string;
 }
 
 export interface Certification {

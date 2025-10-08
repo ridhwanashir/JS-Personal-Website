@@ -13,11 +13,11 @@ interface WorksSectionProps {
 
 export function WorksSection({ worksRef, animations }: WorksSectionProps) {
   const companyLogos = [
-    { src: '/logo_dana_2.png', alt: 'Dana Indonesia' },
-    { src: '/logo_gys.webp', alt: 'Garuda Yamato Steel' },
-    { src: '/logo_haleon_2.png', alt: 'Haleon' },
-    { src: '/logo_kemenkeu.png', alt: 'Kementrian Keuangan' },
-    { src: '/axrail_logo.png', alt: 'Axrail' },
+    { src: '/logo_dana_2.png', alt: 'Dana Indonesia', url: 'https://www.dana.id/' },
+    { src: '/logo_gys.webp', alt: 'Garuda Yamato Steel', url: 'https://garudayamato.co.id/' },
+    { src: '/logo_haleon_2.png', alt: 'Haleon', url: 'https://www.haleon.com/' },
+    { src: '/logo_kemenkeu.png', alt: 'Kementrian Keuangan', url: 'https://www.kemenkeu.go.id/' },
+    { src: '/logo_axrail.avif', alt: 'Axrail', url: 'https://www.axrail.ai/' },
   ];
 
   const handleWorkItemClick = () => {
@@ -44,25 +44,41 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
             {/* First set of logos */}
             {companyLogos.map((logo, index) => (
               <div key={`first-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={80}
-                  height={80}
-                  className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-                />
+                <a 
+                  href={logo.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block cursor-pointer"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={80}
+                    height={80}
+                    className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                  />
+                </a>
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
             {companyLogos.map((logo, index) => (
               <div key={`second-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={80}
-                  height={80}
-                  className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-                />
+                <a 
+                  href={logo.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block cursor-pointer"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={80}
+                    height={80}
+                    className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                  />
+                </a>
               </div>
             ))}
           </div>

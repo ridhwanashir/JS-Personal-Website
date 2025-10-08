@@ -6,35 +6,40 @@ export const EXPERIENCES: Experience[] = [
     company: "Indosat Ooredoo Hutchison",
     duration: "Sep 2025 - Current",
     role: "Data Scientist",
-    location: "Jakarta, Indonesia"
+    location: "Jakarta, Indonesia",
+    companyUrl: "https://ioh.co.id/portal/en/iohindex"
   },
   { 
     logo: "/metrodata_logo.png",
     company: "PT Metrodata Electronics, Tbk.",
     duration: "Apr 2024 - Sep 2025",
     role: "Technical Consultant",
-    location: "Jakarta, Indonesia"
+    location: "Jakarta, Indonesia",
+    companyUrl: "https://www.metrodata.co.id/"
   },
   { 
-    logo: "/axrail_logo.png",
+    logo: "/logo_axrail_2.png",
     company: "Axrail Pte Ltd",
     duration: "Feb 2023 - Jun 2023",
     role: "AI/Data Engineer",
-    location: "Kuala Lumpur, Malaysia"
+    location: "Kuala Lumpur, Malaysia",
+    companyUrl: "https://www.axrail.ai/"
   },
   { 
     logo: "/techbros_logo.png",
     company: "Techbros Gmbh",
     duration: "Jun 2021 - Oct 2021",
     role: "Data Science Intern",
-    location: "Dusseldorf, Germany"
+    location: "Dusseldorf, Germany",
+    companyUrl: "https://techbros.io"
   },
   { 
     logo: "/telkom_university_logo.png",
     company: "Telkom University",
     duration: "Aug 2019 - Jul 2021",
     role: "Lecturer Assistant",
-    location: "Bandung, Indonesia"
+    location: "Bandung, Indonesia",
+    companyUrl: "https://telkomuniversity.ac.id/"
   },
 ];
 

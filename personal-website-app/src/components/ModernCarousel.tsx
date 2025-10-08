@@ -294,13 +294,31 @@ function ExperienceCard({ experience, isActive = false, onClick, className = '' 
     >
       {/* Company Logo Section */}
       <div className="h-28 sm:h-32 bg-gray-50 flex items-center justify-center p-3 sm:p-4 group-hover:bg-gray-100 transition-colors duration-300 flex-shrink-0">
-        <Image
-          src={experience.logo}
-          alt={`${experience.company} logo`}
-          width={120}
-          height={80}
-          className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
-        />
+        {experience.companyUrl ? (
+          <a 
+            href={experience.companyUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block cursor-pointer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={experience.logo}
+              alt={`${experience.company} logo`}
+              width={120}
+              height={80}
+              className="max-w-[120px] max-h-[80px] object-contain transition-transform duration-300 group-hover:scale-110 hover:scale-125"
+            />
+          </a>
+        ) : (
+          <Image
+            src={experience.logo}
+            alt={`${experience.company} logo`}
+            width={120}
+            height={80}
+            className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+          />
+        )}
       </div>
       
       {/* Experience Details */}
