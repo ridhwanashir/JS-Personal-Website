@@ -23,7 +23,7 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
   const interests = [
     'Design', 'UI/UX', 'Web Development',
     'Machine Learning', 'Generative AI', 'Data Analysis',
-    'Cloud Solution', 'Discussion', 'Other'
+    'Cloud Solution', 'Other'
   ];
 
   const handleInterestToggle = (interest: string) => {

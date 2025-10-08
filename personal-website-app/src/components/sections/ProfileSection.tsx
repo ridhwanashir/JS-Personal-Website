@@ -64,7 +64,7 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
   if (animations.profileTextProgress > fadeThreshold) {
     // Fade out in the last 15% of scroll (85% to 100%)
     const fadeProgress = (animations.profileTextProgress - fadeThreshold) / (1 - fadeThreshold);
-    contentOpacity = 1.15 - fadeProgress; // Fade from 1 to 0
+    contentOpacity = 1.10 - fadeProgress; // Fade from 1 to 0
   }
 
   // Responsive top offset based on screen size
@@ -110,7 +110,7 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
   );
 
   return (
-    <div ref={profileRef} className="w-full h-[250vh] bg-white relative z-10">
+    <div ref={profileRef} className="w-full h-[280vh] bg-white relative z-10">
     {/* <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10 border border-gray-300 rounded-lg"> */}
       <div 
         className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white px-4 sm:px-6 lg:px-8"
@@ -124,7 +124,7 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
         }}
       >
         {/* Logo is now handled by HeroSection's transitioning logo */}
-        <div className="flex flex-col lg:flex-row h-full py-20 lg:py-16">
+        <div className="flex flex-col lg:flex-row h-full ">
           {/* Profile Image */}
           <div className="w-full lg:w-1/3 relative order-2 lg:order-1 flex justify-center lg:justify-start mb-8 lg:mb-0">
             <Image
@@ -133,7 +133,7 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
               width={400}
               height={500}
               style={{objectFit:"cover"}}
-              className="relative lg:absolute bottom-0 w-64 h-80 sm:w-80 sm:h-96 lg:w-full lg:h-full max-w-full object-center rounded-lg lg:rounded-none"
+              className="relative lg:absolute bottom-0 w-64 h-80 sm:w-80 sm:h-96 lg:w-full lg:h-[100vh] max-w-full object-center rounded-lg lg:rounded-none"
             />
           </div>
           {/* Profile Description */}

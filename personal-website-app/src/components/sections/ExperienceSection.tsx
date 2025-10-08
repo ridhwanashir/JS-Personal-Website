@@ -16,7 +16,7 @@ export function ExperienceSection({ experienceRef, animations, experiences }: Ex
   
   return (
     <div ref={experienceRef} className="w-full bg-white relative z-10">
-      <div className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white relative px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl mx-auto h-screen flex flex-col justify-start w-full bg-white relative px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extralight text-center mb-12 font-poppins opacity-100 translate-y-0">
           Experiences
         </h2>
