@@ -2,6 +2,11 @@ main = ".open-next/worker.js"
 name = "ridhwan-personal-website"
 compatibility_date = "2025-03-25"
 compatibility_flags = ["nodejs_compat"]
+
+[[routes]]
+pattern = "ridhwanashir.my.id"
+custom_domain = true
+
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
