@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     default: "Ridhwan Nashir - Software Engineer & Solution Architect",
     template: "%s | Ridhwan Nashir",
   },
+  icons: {
+    icon: '/ridhwan-logo.png', // or '/favicon.png'
+  },
   description: "Experienced Software Engineer and Solution Architect specializing in AI/ML, data engineering, and cloud solutions. AWS certified with expertise in machine learning and scalable software architecture.",
   keywords: [
     "software engineer",
