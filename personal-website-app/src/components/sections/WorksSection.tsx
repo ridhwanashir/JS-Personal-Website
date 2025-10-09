@@ -14,7 +14,7 @@ interface WorksSectionProps {
 export function WorksSection({ worksRef, animations }: WorksSectionProps) {
   const companyLogos = [
     { src: '/logo_dana_2.png', alt: 'Dana Indonesia', url: 'https://www.dana.id/' },
-    { src: '/logo_gys.webp', alt: 'Garuda Yamato Steel', url: 'https://garudayamato.co.id/' },
+    { src: '/logo_gys.webp', alt: 'Garuda Yamato Steel', url: 'https://www.garudayamatosteel.com/' },
     { src: '/logo_haleon_2.png', alt: 'Haleon', url: 'https://www.haleon.com/' },
     { src: '/logo_kemenkeu.png', alt: 'Kementrian Keuangan', url: 'https://www.kemenkeu.go.id/' },
     { src: '/logo_axrail.avif', alt: 'Axrail', url: 'https://www.axrail.ai/' },
