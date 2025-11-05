@@ -45,10 +45,11 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
         {/* Mobile: Show only first project */}
         <div className="block sm:hidden w-full">
           <div 
-            className={`relative w-full flex items-center justify-center overflow-hidden  min-h-[200px] transition-all duration-1000 ${
+            className={`relative w-full flex items-center justify-center overflow-hidden  min-h-[200px] transition-all duration-1000 cursor-pointer ${
               animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
             style={{ transitionDelay: '200ms' }}
+            onClick={() => window.location.href = `/playground?article=${PROJECTS[0].id}`}
           >
             <div className="w-full bg-black duration-500 ease-in-out transform hover:scale-110 rounded-lg overflow-hidden">
               <Image 
@@ -72,10 +73,11 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
           {PROJECTS.map((project, index) => (
             <div 
               key={project.id}
-              className={`relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-4 sm:mt-8 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 ${
+              className={`relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-4 sm:mt-8 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 cursor-pointer ${
                 animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${200 + index * 200}ms` }}
+              onClick={() => window.location.href = `/playground?article=${project.id}`}
             >
               <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
                 <Image 

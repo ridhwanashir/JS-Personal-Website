@@ -20,8 +20,8 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
     { src: '/logo_axrail.avif', alt: 'Axrail', url: 'https://www.axrail.ai/' },
   ];
 
-  const handleWorkItemClick = () => {
-    window.open('https://drive.google.com/file/d/1wA1Ez_wumMSTN6vje7AkpI8qvFUO1iLJ/view?usp=sharing', '_blank');
+  const handleWorkItemClick = (category: string) => {
+    window.location.href = `/playground?category=${encodeURIComponent(category)}`;
   };
 
   return (
@@ -89,7 +89,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:hidden gap-4 p-4 pt-80 sm:pt-96 md:pt-96 pb-0">
         <div 
           className="relative h-72 sm:h-80 md:h-96 flex items-center justify-center overflow-hidden rounded-lg group cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Data & ML')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform group-hover:scale-110">
             <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
@@ -102,7 +102,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
         
         <div 
           className="relative h-72 sm:h-80 md:h-96 flex items-center justify-center overflow-hidden rounded-lg group cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Design & Art')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform group-hover:scale-110">
             <Image src={worksbg_design} alt="background design" className="w-full h-full object-cover" />
@@ -115,7 +115,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
         
         <div 
           className="relative h-72 sm:h-80 md:h-96 flex items-center justify-center overflow-hidden rounded-lg group cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Software Engineering')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform group-hover:scale-110">
             <Image src={worksbg_software} alt="background software" className="w-full h-full object-cover" />
@@ -128,7 +128,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
         
         <div 
           className="relative h-72 sm:h-80 md:h-96 flex items-center justify-center overflow-hidden rounded-lg group cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Research & Blogs')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform group-hover:scale-110">
             <Image src={worksbg_research} alt="background research" className="w-full h-full object-cover" />
@@ -144,7 +144,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
       <div className="hidden lg:flex h-3/5 w-full absolute top-80 pt-20">
         <div 
           className="relative flex-1 flex items-center justify-center overflow-hidden cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Data & ML')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
@@ -156,7 +156,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
         </div>
         <div 
           className="relative flex-1 flex items-center justify-center overflow-hidden cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Design & Art')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image src={worksbg_design} alt="background design" className="w-full h-full object-cover" />
@@ -168,7 +168,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
         </div>
         <div 
           className="relative flex-1 flex items-center justify-center overflow-hidden cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Software Engineering')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image src={worksbg_software} alt="background software" className="w-full h-full object-cover" />
@@ -180,7 +180,7 @@ export function WorksSection({ worksRef, animations }: WorksSectionProps) {
         </div>
         <div 
           className="relative flex-1 flex items-center justify-center overflow-hidden cursor-pointer"
-          onClick={handleWorkItemClick}
+          onClick={() => handleWorkItemClick('Research & Blogs')}
         >
           <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image src={worksbg_research} alt="background research" className="w-full h-full object-cover" />

@@ -1,14 +1,45 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ArticleCard } from '../../components/ArticleCard';
 import { ArticleModal } from '../../components/ArticleModal';
 import { ARTICLES } from '../../constants/data';
 import { Article } from '../../../types/global';
 
 export default function PlaygroundPage() {
+  const searchParams = useSearchParams();
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+
+  // Get unique categories
+  const categories = ['All', ...Array.from(new Set(ARTICLES.map(article => article.category)))];
+
+  // Handle URL parameters on mount
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    const articleParam = searchParams.get('article');
+
+    // Set category from URL
+    if (categoryParam && categories.includes(categoryParam)) {
+      setSelectedCategory(categoryParam);
+    }
+
+    // Open specific article modal from URL
+    if (articleParam) {
+      const article = ARTICLES.find(a => a.id === articleParam);
+      if (article) {
+        setSelectedArticle(article);
+        setIsModalOpen(true);
+      }
+    }
+  }, [searchParams]);
+
+  // Filter articles by category
+  const filteredArticles = selectedCategory === 'All' 
+    ? ARTICLES 
+    : ARTICLES.filter(article => article.category === selectedCategory);
 
   const handleArticleClick = (article: Article) => {
     setSelectedArticle(article);
@@ -18,6 +49,18 @@ export default function PlaygroundPage() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setTimeout(() => setSelectedArticle(null), 300); // Wait for animation to complete
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    // Update URL without page reload
+    const url = new URL(window.location.href);
+    if (category === 'All') {
+      url.searchParams.delete('category');
+    } else {
+      url.searchParams.set('category', category);
+    }
+    window.history.pushState({}, '', url);
   };
 
   return (
@@ -49,25 +92,35 @@ export default function PlaygroundPage() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Filter/Category Section (Optional for future) */}
+        {/* Filter/Category Section */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 text-sm text-gray-600">
+          <div className="flex items-center gap-3 text-sm text-gray-600 flex-wrap">
             <span className="font-semibold">Categories:</span>
-            <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full cursor-pointer hover:bg-blue-200 transition-colors">
-              All
-            </span>
-            <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full cursor-pointer hover:bg-gray-200 transition-colors">
-              Machine Learning
-            </span>
-            <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full cursor-pointer hover:bg-gray-200 transition-colors">
-              Cloud Computing
-            </span>
+            {categories.map((category) => (
+              <span
+                key={category}
+                onClick={() => handleCategoryChange(category)}
+                className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${
+                  selectedCategory === category
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {category}
+              </span>
+            ))}
           </div>
+        </div>
+
+        {/* Articles Count */}
+        <div className="mb-4 text-gray-600 text-sm">
+          Showing {filteredArticles.length} {filteredArticles.length === 1 ? 'article' : 'articles'}
+          {selectedCategory !== 'All' && ` in ${selectedCategory}`}
         </div>
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {ARTICLES.map((article) => (
+          {filteredArticles.map((article) => (
             <ArticleCard
               key={article.id}
               article={article}
@@ -77,15 +130,21 @@ export default function PlaygroundPage() {
         </div>
 
         {/* Empty State (if no articles) */}
-        {ARTICLES.length === 0 && (
+        {filteredArticles.length === 0 && (
           <div className="text-center py-20">
             <div className="text-gray-400 mb-4">
               <svg className="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">No Articles Yet</h3>
-            <p className="text-gray-500">Check back soon for new content!</p>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">No Articles Found</h3>
+            <p className="text-gray-500">Try selecting a different category</p>
+            <button
+              onClick={() => handleCategoryChange('All')}
+              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              View All Articles
+            </button>
           </div>
         )}
       </main>
