@@ -52,6 +52,17 @@ export interface Project {
   github?: string;
 }
 
+export interface Article {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  summary: string;
+  category: string;
+  date: string;
+  readTime: string;
+}
+
 // Layout props
 export interface LayoutProps {
   children: React.ReactNode;

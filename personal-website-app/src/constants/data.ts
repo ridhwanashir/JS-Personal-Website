@@ -101,3 +101,66 @@ export const WORKS_CATEGORIES = [
     alt: "Research and Blogs background"
   }
 ];
+
+export const ARTICLES = [
+  {
+    id: "1",
+    title: "Building Scalable Machine Learning Pipelines with MLOps",
+    subtitle: "A comprehensive guide to implementing production-ready ML systems",
+    image: "/project_x.jpg",
+    category: "Machine Learning",
+    date: "October 15, 2025",
+    readTime: "8 min read",
+    summary: "In this article, we explore the essential components of building scalable machine learning pipelines using modern MLOps practices. Learn how to automate model training, deployment, and monitoring while ensuring reproducibility and reliability. We'll cover tools like MLflow, Kubernetes, and CI/CD integration to create robust ML systems that can handle production workloads efficiently."
+  },
+  {
+    id: "2",
+    title: "Understanding Transformer Architecture in Deep Learning",
+    subtitle: "From attention mechanisms to modern language models",
+    image: "/project_x.jpg",
+    category: "AI & Deep Learning",
+    date: "September 28, 2025",
+    readTime: "12 min read",
+    summary: "Dive deep into the transformer architecture that revolutionized natural language processing. This article breaks down the self-attention mechanism, positional encoding, and multi-head attention that power models like GPT and BERT. We'll explore the mathematical foundations and practical implementations, making it accessible for both beginners and experienced practitioners."
+  },
+  {
+    id: "3",
+    title: "Cloud Native Architecture: Best Practices for AWS",
+    subtitle: "Designing resilient and cost-effective cloud solutions",
+    image: "/project_x.jpg",
+    category: "Cloud Computing",
+    date: "September 10, 2025",
+    readTime: "10 min read",
+    summary: "Master the art of building cloud-native applications on AWS. This guide covers architectural patterns like microservices, serverless computing, and containerization. Learn about AWS services including Lambda, ECS, and EKS, along with best practices for security, scalability, and cost optimization. Perfect for solution architects and cloud engineers looking to design enterprise-grade systems."
+  },
+  {
+    id: "4",
+    title: "Data Engineering: From ETL to Modern Data Lakes",
+    subtitle: "Building efficient data pipelines for analytics",
+    image: "/project_x.jpg",
+    category: "Data Engineering",
+    date: "August 22, 2025",
+    readTime: "9 min read",
+    summary: "Explore the evolution of data engineering from traditional ETL processes to modern data lake architectures. Learn about Apache Spark, Delta Lake, and cloud data warehouses like Snowflake and BigQuery. This article provides practical insights into designing data pipelines that can handle massive volumes while maintaining data quality and governance."
+  },
+  {
+    id: "5",
+    title: "Introduction to Reinforcement Learning",
+    subtitle: "Teaching machines to learn through trial and error",
+    image: "/project_x.jpg",
+    category: "Machine Learning",
+    date: "August 5, 2025",
+    readTime: "11 min read",
+    summary: "Get started with reinforcement learning, one of the most exciting areas of AI. This article explains core concepts like agents, environments, rewards, and policies. We'll walk through practical examples using OpenAI Gym and implement basic algorithms like Q-learning and Deep Q-Networks (DQN). Perfect for those looking to understand how machines learn to play games and make decisions."
+  },
+  {
+    id: "6",
+    title: "Microservices vs Monoliths: Making the Right Choice",
+    subtitle: "Architectural decisions for scalable applications",
+    image: "/project_x.jpg",
+    category: "Software Architecture",
+    date: "July 18, 2025",
+    readTime: "7 min read",
+    summary: "Navigate the complex decision between microservices and monolithic architectures. This article presents a balanced view of both approaches, discussing trade-offs in terms of complexity, scalability, deployment, and team organization. Learn when to choose each architecture based on your project requirements, team size, and business goals."
+  }
+];
