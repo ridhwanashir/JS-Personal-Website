@@ -4,14 +4,12 @@ import worksbg_data_ml from "../../../public/works_data_ml_bg.png";
 import worksbg_design from "../../../public/works_design_bg.png";
 import worksbg_software from "../../../public/works_software_bg.png";
 import worksbg_research from "../../../public/works_research_bg.png";
-import { AnimationState } from '../../hooks/useScrollAnimations';
 
 interface WorksSectionProps {
   worksRef: React.RefObject<HTMLDivElement>;
-  animations: AnimationState;
 }
 
-export function WorksSection({ worksRef, animations }: WorksSectionProps) {
+export function WorksSection({ worksRef }: WorksSectionProps) {
   const companyLogos = [
     { src: '/logo_dana_2.png', alt: 'Dana Indonesia', url: 'https://www.dana.id/' },
     { src: '/logo_gys.webp', alt: 'Garuda Yamato Steel', url: 'https://www.garudayamatosteel.com/' },

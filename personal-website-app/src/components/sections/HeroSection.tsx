@@ -11,7 +11,6 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
   // Calculate logo transition values for smooth movement to navbar
   // Final size should match navbar logo: w-8 (32px) on mobile, w-10 (40px) on sm+
   const startSize = 200;
-  const endSizeMobile = 32; // w-8
   const endSizeDesktop = 40; // w-10 
   const logoScale = 1 - animations.logoTransition * (1 - endSizeDesktop / startSize); // Scale from 1 to 0.2
   const logoOpacity = Math.max(0, 1 - animations.logoTransition); // Fade out as it transitions to navbar
@@ -41,7 +40,7 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
         style={{
           top: `${logoTopPosition -20}vh`,
           transition: 'all 0.1s ease-out',
-          opacity: animations.logoTransition < 0.95 ? 1 : 0 // Hide when almost at navbar position
+          opacity: animations.logoTransition < 0.95 ? logoOpacity : 0 // Hide when almost at navbar position
         }}
       >
         <Image

@@ -1,17 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
 import { ModernCarousel } from '../ModernCarousel';
-import { EXPERIENCES } from '../../constants/data';
-import { AnimationState } from '../../hooks/useScrollAnimations';
 import { Experience } from '../../../types/global';
 
 interface ExperienceSectionProps {
   experienceRef: React.RefObject<HTMLDivElement>;
-  animations: AnimationState;
   experiences: Experience[];
 }
 
-export function ExperienceSection({ experienceRef, animations, experiences }: ExperienceSectionProps) {
+export function ExperienceSection({ experienceRef, experiences }: ExperienceSectionProps) {
   // console.log('ExperienceSection - experiences received:', experiences); // Debug log
   
   return (

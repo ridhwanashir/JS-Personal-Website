@@ -64,14 +64,12 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
       };
 
       // Replace these with your actual EmailJS credentials
-      const result = await emailjs.send(
+      await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id',
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id',
         templateParams,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key'
       );
-
-      console.log('Email sent successfully:', result);
       setSubmitStatus('success');
       
       // Reset form
@@ -79,7 +77,6 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
       setSelectedInterests([]);
       
     } catch (error) {
-      console.error('Failed to send email:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -98,7 +95,7 @@ export function ContactSection({ contactRef, animations }: ContactSectionProps) 
           animations.contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 sm:mb-8 leading-tight">
-            LET'S WORK<br />
+            LET&rsquo;S WORK<br />
             TOGETHER !
           </h2>
           

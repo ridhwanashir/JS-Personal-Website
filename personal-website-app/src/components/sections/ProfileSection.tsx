@@ -5,12 +5,12 @@ import { AnimationState } from '../../hooks/useScrollAnimations';
 interface ProfileSectionProps {
   profileRef: React.RefObject<HTMLDivElement>;
   animations: AnimationState;
-  isTypewriterComplete: boolean;
 }
 
-export function ProfileSection({ profileRef, animations, isTypewriterComplete }: ProfileSectionProps) {
+export function ProfileSection({ profileRef, animations }: ProfileSectionProps) {
   // State to track screen size for responsive positioning
   const [screenSize, setScreenSize] = useState('mobile');
+  const isMobile = screenSize === 'mobile';
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -34,11 +34,6 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Position calculations for text transition - only within this section
-  // animations.profileTextProgress goes from 0 to 1 as user scrolls through ProfileSection
-  const startY = 60; // Start position when entering ProfileSection (percentage)
-  const endY = 40; // End position when leaving ProfileSection (percentage)  
-  
   // NEW APPROACH: Use transform instead of position switching to avoid jumps
   const lockThreshold = 0.08; // Lock at 8% progress for good balance
   
@@ -67,22 +62,6 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
     contentOpacity = 1.10 - fadeProgress; // Fade from 1 to 0
   }
 
-  // Responsive top offset based on screen size
-  const getTopOffset = () => {
-    switch (screenSize) {
-      case 'large':  // ≥1024px (desktop)
-        return 8.5;
-      case 'medium': // 768px-1023px (tablet)
-        return 34;   // Medium value between mobile and desktop
-      case 'mobile': // <768px (mobile)
-        return 26;
-      default:
-        return 26;
-    }
-  };
-  
-  const topOffset = getTopOffset();
-
   const textRows = [
     "Data-driven Software Engineer",
     "with a passion for machine learning,",
@@ -91,23 +70,38 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
     "problems."
   ];
 
-  const renderTextRow = (text: string, index: number) => (
-    <div key={index} className="overflow-hidden">
-      <span 
-        className="inline-block transition-all duration-1000 ease-out"
-        style={{
-          backgroundImage: `linear-gradient(90deg, 
-            black ${Math.max(0, Math.min(100, (animations.profileTextProgress * 5 - index) * 100))}%, 
-            #d1d5db ${Math.max(0, Math.min(100, (animations.profileTextProgress * 5 - index) * 100))}%)`,
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
-        }}
-      >
-        {text}
-      </span>
-    </div>
-  );
+  const renderTextRow = (text: string, index: number) => {
+    if (isMobile) {
+      return (
+        <div className="overflow-hidden">
+          <span
+            className="inline-block text-black text-sm"
+            style={{ display: 'block', lineHeight: 1.15, marginBottom: '0.1rem'}}
+          >
+            {text}
+          </span>
+        </div>
+      );
+    }
+
+    const gradientProgress = Math.max(0, Math.min(100, (animations.profileTextProgress * 5 - index) * 100));
+
+    return (
+      <div key={index} className="overflow-hidden">
+        <span 
+          className="inline-block transition-all duration-1000 ease-out"
+          style={{
+            backgroundImage: `linear-gradient(90deg, black ${gradientProgress}%, #d1d5db ${gradientProgress}%)`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}
+        >
+          {text}
+        </span>
+      </div>
+    );
+  };
 
   return (
     <div ref={profileRef} className="w-full h-[280vh] bg-white relative z-10">
@@ -139,15 +133,15 @@ export function ProfileSection({ profileRef, animations, isTypewriterComplete }:
           {/* Profile Description */}
           <div className="w-full lg:w-2/3 p-4 sm:p-6 lg:p-8 flex items-center justify-center lg:justify-end order-1 lg:order-2">
             <div className="text-center lg:text-left lg:pr-12 max-w-2xl">
-              <div 
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans leading-tight">
+                <div
+                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans leading-tight ${isMobile ? 'pt-10' : ''}`}>
                 {textRows.map((text, index) => (
                   <React.Fragment key={index}>
-                    {renderTextRow(text, index)}
-                    {index < textRows.length - 1 && <br />}
+                  {renderTextRow(text, index)}
+                  {index < textRows.length - 1 && <br />}
                   </React.Fragment>
                 ))}
-              </div>
+                </div>
               <a 
                 href="https://drive.google.com/file/d/1rNrhDI4Mxer8JgnHt7RwZh58V1WkdCHL/view?usp=sharing"
                 target="_blank"

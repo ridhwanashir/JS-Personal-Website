@@ -20,28 +20,20 @@ export function ModernCarousel({
   showIndicators = true,
   className = '' 
 }: ModernCarouselProps) {
-  // console.log('ModernCarousel - experiences received:', experiences); // Debug log
-  
-  // Safety check for empty or undefined experiences
-  if (!experiences || experiences.length === 0) {
-    return (
-      <div className="text-center py-8">
-        <p className="text-gray-500">No experiences to display</p>
-      </div>
-    );
-  }
-  
-  const [currentIndex, setCurrentIndex] = useState(experiences.length); // Start at first real item (middle section)
+  const hasExperiences = experiences && experiences.length > 0;
+  const [currentIndex, setCurrentIndex] = useState(() => (hasExperiences ? experiences.length : 0)); // Start at first real item (middle section)
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Create infinite loop by duplicating experiences
-  const infiniteExperiences = [
-    ...experiences, // Clone at start for backward infinite
-    ...experiences, // Original items
-    ...experiences  // Clone at end for forward infinite
-  ];
+  const infiniteExperiences = hasExperiences
+    ? [
+        ...experiences, // Clone at start for backward infinite
+        ...experiences, // Original items
+        ...experiences  // Clone at end for forward infinite
+      ]
+    : [];
 
   const nextSlide = useCallback(() => {
     if (isTransitioning) return;
@@ -63,6 +55,7 @@ export function ModernCarousel({
 
   // Handle infinite loop reset
   useEffect(() => {
+    if (!hasExperiences) return;
     if (!isTransitioning) return;
 
     const timer = setTimeout(() => {
@@ -99,21 +92,30 @@ export function ModernCarousel({
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, isTransitioning, experiences.length]);
+  }, [currentIndex, isTransitioning, experiences.length, hasExperiences]);
 
   // Auto-play functionality
   useEffect(() => {
-    if (!autoPlay || isPaused || isTransitioning) return;
+    if (!hasExperiences || !autoPlay || isPaused || isTransitioning) return;
     
     const interval = setInterval(nextSlide, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [autoPlay, autoPlayInterval, nextSlide, isPaused, isTransitioning]);
+  }, [hasExperiences, autoPlay, autoPlayInterval, nextSlide, isPaused, isTransitioning]);
 
   // Get actual current index for indicators (0-based from original array)
   const getActualIndex = () => {
+    if (!hasExperiences) return 0;
     const actualIndex = currentIndex % experiences.length;
     return actualIndex;
   };
+
+  if (!hasExperiences) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-gray-500">No experiences to display</p>
+      </div>
+    );
+  }
 
   return (
     <div 
