@@ -1,20 +1,29 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ArticleCard } from '../../components/ArticleCard';
 import { ArticleModal } from '../../components/ArticleModal';
 import { ARTICLES } from '../../constants/data';
 import { Article } from '../../../types/global';
 
+const CATEGORIES = ['All', ...Array.from(new Set(ARTICLES.map(article => article.category)))];
+
 export default function PlaygroundPage() {
+  return (
+    <Suspense fallback={<PlaygroundFallback />}> 
+      <PlaygroundContent />
+    </Suspense>
+  );
+}
+
+function PlaygroundContent() {
   const searchParams = useSearchParams();
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  // Get unique categories
-  const categories = ['All', ...Array.from(new Set(ARTICLES.map(article => article.category)))];
+  const categories = CATEGORIES;
 
   // Handle URL parameters on mount
   useEffect(() => {
@@ -34,7 +43,7 @@ export default function PlaygroundPage() {
         setIsModalOpen(true);
       }
     }
-  }, [searchParams]);
+  }, [searchParams, categories]);
 
   // Filter articles by category
   const filteredArticles = selectedCategory === 'All' 
@@ -155,6 +164,14 @@ export default function PlaygroundPage() {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />
+    </div>
+  );
+}
+
+function PlaygroundFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+      <p className="text-gray-500">Loading playground...</p>
     </div>
   );
 }
