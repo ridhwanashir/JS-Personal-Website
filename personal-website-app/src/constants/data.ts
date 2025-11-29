@@ -8,7 +8,7 @@ export const EXPERIENCES: Experience[] = [
     role: "Data Scientist",
     location: "Jakarta, Indonesia",
     companyUrl: "https://ioh.co.id/portal/en/iohindex",
-    summary: "Leading Indonesian telecommunications and digital services company serving millions of customers nationwide.",
+    summary: "Indosat is one of the leading Indonesian telecommunications and digital services companies serving millions of customers nationwide.",
     achievements: [
       "Driving data-driven initiatives to enhance customer experience and operational efficiency",
       "Leveraging advanced analytics and machine learning for business insights"
@@ -23,7 +23,7 @@ export const EXPERIENCES: Experience[] = [
     role: "Technical Consultant",
     location: "Jakarta, Indonesia",
     companyUrl: "https://www.metrodata.co.id/",
-    summary: "The leading information communication technology (ICT) company in Indonesia, delivering enterprise solutions.",
+    summary: "Metrodata is a leading information communication technology (ICT) company in Indonesia, delivering enterprise solutions.",
     achievements: [
       "Integrated AI capabilities on new and existing products leveraging Azure services (Azure AI, Function App, App Service, CosmosDB, SQL, AI Search) with RAG and Agentic AI using Langchain and Langgraph",
       "Leveraged Microsoft Fabric to gain insights and Fabric SDK to retrieve context for Agentic AI tools",
@@ -41,7 +41,7 @@ export const EXPERIENCES: Experience[] = [
     role: "AI/Data Engineer",
     location: "Kuala Lumpur, Malaysia",
     companyUrl: "https://www.axrail.ai/",
-    summary: "Data and AI solutions company leveraging AWS cloud technologies to help businesses grow revenue streams and reduce IT infrastructure costs.",
+    summary: "Axrail is a data and AI solutions company leveraging AWS cloud technologies to help businesses grow revenue streams and reduce IT infrastructure costs.",
     achievements: [
       "Developed custom automation system to track employee performance and generate reports using Google Spreadsheet, Apps Script, and AWS services, improving resource allocation by 50%",
       "Built WhatsApp Chatbot CRM enabling multi-language responses with broad functionality using ChatGPT LLM with Langchain and AWS services",
@@ -57,7 +57,7 @@ export const EXPERIENCES: Experience[] = [
     role: "Data Science Intern",
     location: "Düsseldorf, Germany",
     companyUrl: "https://techbros.io",
-    summary: "German technology company focused on innovative data solutions and digital transformation.",
+    summary: "Techbros is a German technology company focused on innovative data solutions and digital transformation.",
     achievements: [
       "Applied machine learning techniques to solve business problems",
       "Contributed to data pipeline development and analytics projects"
@@ -72,7 +72,7 @@ export const EXPERIENCES: Experience[] = [
     role: "Lecturer Assistant",
     location: "Bandung, Indonesia",
     companyUrl: "https://telkomuniversity.ac.id/",
-    summary: "Top-ranked private university in Indonesia, consistently recognized among the best universities nationwide.",
+    summary: "Telkom University is a top-ranked private university in Indonesia, consistently recognized among the best universities nationwide.",
     achievements: [
       "Assisted 4 different lecturers on Basic Algorithm, Data Structure, Object Oriented Programming, Algorithm Complexity Analysis, and Digital System",
       "Served as substitute instructor in several classes",
@@ -80,7 +80,7 @@ export const EXPERIENCES: Experience[] = [
       "Led mentor division at FORTRAN 2020 - Computer Science new student orientation"
     ],
     technologies: ["Python", "Java", "C++", "Data Structures", "Algorithms"],
-    highlight: "Head of Mentor Division - FORTRAN 2020"
+    highlight: ""
   },
 ];
 

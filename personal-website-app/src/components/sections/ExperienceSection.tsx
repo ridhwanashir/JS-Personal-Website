@@ -20,11 +20,11 @@ export function ExperienceSection({ experienceRef, experiences }: ExperienceSect
       
       <div className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-start w-full relative px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extralight text-white text-center sm:text-left mb-4">
+        <div className="mb-12 sm:mb-16 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extralight text-white mb-4">
             Experience
           </h2>
-          <p className="text-white/50 text-base sm:text-lg font-light text-center sm:text-left max-w-2xl">
+          <p className="text-white/50 text-base sm:text-lg font-light max-w-2xl mx-auto">
             A journey through roles that shaped my expertise in AI, cloud architecture, and data engineering.
           </p>
         </div>
@@ -32,11 +32,10 @@ export function ExperienceSection({ experienceRef, experiences }: ExperienceSect
         {/* Accordion Experience Cards */}
         <AccordionExperience 
           experiences={experiences}
-          className="max-w-4xl"
+          className="max-w-4xl mx-auto w-full"
         />
 
-        {/* Timeline indicator on the left - desktop only */}
-        <div className="hidden lg:block absolute left-8 top-48 bottom-24 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent" />
+
       </div>
     </div>
   );

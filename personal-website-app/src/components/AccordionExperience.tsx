@@ -74,7 +74,7 @@ export function AccordionExperience({ experiences, className = '' }: AccordionEx
                           alt={`${experience.company} logo`}
                           width={48}
                           height={48}
-                          className="w-8 h-8 sm:w-12 sm:h-12 object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                          className="w-8 h-8 sm:w-12 sm:h-12 object-contain opacity-90 hover:opacity-100 transition-opacity"
                         />
                       </a>
                     ) : (
@@ -83,7 +83,7 @@ export function AccordionExperience({ experiences, className = '' }: AccordionEx
                         alt={`${experience.company} logo`}
                         width={48}
                         height={48}
-                        className="w-8 h-8 sm:w-12 sm:h-12 object-contain filter brightness-0 invert opacity-80"
+                        className="w-8 h-8 sm:w-12 sm:h-12 object-contain opacity-90"
                       />
                     )}
                   </div>
@@ -148,9 +148,9 @@ export function AccordionExperience({ experiences, className = '' }: AccordionEx
               <div className="px-4 sm:px-6 pb-6 pt-2 ml-0 sm:ml-20">
                 {/* Summary */}
                 {experience.summary && (
-                  <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-4 border-l-2 border-white/20 pl-4">
+                <p className="text-white/60 text-xs sm:text-sm leading-snug mb-4 border-l-2 border-white/20 pl-4 italic">
                     {experience.summary}
-                  </p>
+                </p>
                 )}
 
                 {/* Achievements */}
