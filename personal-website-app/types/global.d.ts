@@ -33,6 +33,11 @@ export interface Experience {
   role: string;
   location: string;
   companyUrl?: string;
+  // Storytelling fields
+  summary?: string;
+  achievements?: string[];
+  technologies?: string[];
+  highlight?: string;
 }
 
 export interface Certification {
