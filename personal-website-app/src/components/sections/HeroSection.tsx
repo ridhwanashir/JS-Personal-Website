@@ -8,6 +8,16 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ heroRef, animations }: HeroSectionProps) {
+  // Detect mobile for different behaviors
+  const [isMobile, setIsMobile] = React.useState(false);
+  
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Calculate logo transition values for smooth movement to navbar
   // Final size should match navbar logo: w-8 (32px) on mobile, w-10 (40px) on sm+
   const startSize = 200;
@@ -22,25 +32,47 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
   
   return (
     <>
-      {/* Fixed parallax background */}
-      <div
-        className="fixed inset-0 w-full h-screen bg-cover bg-center z-0"
-        style={{
-          backgroundImage: "url('/background_1.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          opacity: Math.max(0, 1 - animations.backgroundTransition * 2) // Ensure complete fade to 0
-        }}
-      />
+      {/* Background wrapper with gradient fade edges */}
+      <div className={`${isMobile ? 'absolute' : 'fixed'} inset-0 w-full h-screen z-0`}>
+        {/* Top gradient fade */}
+        <div 
+          className="absolute top-0 left-0 right-0 h-24 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0))'
+          }}
+        />
+        
+        {/* Background image */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/background_1.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: isMobile 
+              ? Math.max(0, 1 - animations.backgroundTransition * 3)
+              : Math.max(0, 1 - animations.backgroundTransition * 2)
+          }}
+        />
+        
+        {/* Bottom gradient fade */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-24 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0))'
+          }}
+        />
+      </div>
 
-      {/* Transitioning Logo - Fixed position for smooth animation to navbar */}
+      {/* Transitioning Logo - Fixed on desktop, static on mobile */}
       <div
-        className="fixed left-1/2 transform -translate-x-1/2 z-50"
+        className={`${isMobile ? 'absolute' : 'fixed'} left-1/2 transform -translate-x-1/2 z-50`}
         style={{
-          top: `${logoTopPosition -20}vh`,
-          transition: 'all 0.1s ease-out',
-          opacity: animations.logoTransition < 0.95 ? logoOpacity : 0 // Hide when almost at navbar position
+          top: isMobile ? '30vh' : `${logoTopPosition - 20}vh`,
+          transition: isMobile ? 'none' : 'all 0.1s ease-out',
+          opacity: isMobile 
+            ? Math.max(0, 1 - animations.backgroundTransition * 3)
+            : (animations.logoTransition < 0.95 ? logoOpacity : 0)
         }}
       >
         <Image
@@ -60,9 +92,9 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
 
       {/* Scroll Indicator - positioned at bottom of viewport with fade effect */}
       <div 
-        className="fixed bottom-8 left-0 right-0 flex justify-center animate-bounce z-40"
+        className={`${isMobile ? 'fixed' : 'fixed'} bottom-8 left-0 right-0 flex justify-center animate-bounce z-40`}
         style={{
-          opacity: Math.max(0, 1 - animations.backgroundTransition * 3),
+          opacity: isMobile ? Math.max(0, 1 - animations.backgroundTransition * 200) : Math.max(0, 1 - animations.backgroundTransition * 3),
           transition: 'opacity 0.3s ease-out'
         }}
       >
@@ -88,23 +120,25 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
       {/* Hero content section - now twice as tall */}
       <div
         ref={heroRef}
-        className="w-full h-[200vh] flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 lg:p-24 relative z-10"
+        className={`w-full ${isMobile ? 'h-screen' : 'h-[200vh]'} flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 lg:p-24 relative z-10`}
       >
         {/* Text Content Only - Logo is now handled by fixed transitioning logo above */}
         <div
-          className="fixed top-0 left-0 w-full flex flex-col items-center justify-center z-30"
+          className={`${isMobile ? 'absolute pt-20' : 'fixed'} left-0 w-full flex flex-col items-center justify-center z-30`}
           style={{
-            opacity: Math.max(0, 1 - animations.backgroundTransition * 2),
-            transition: 'all 0.1s ease-out',
-            top: `${logoTopPosition}vh`, // Position below the logo
-            transform: `translateY(${animations.backgroundTransition * 30}px)`
+            opacity: isMobile 
+              ? Math.max(0, 1 - animations.backgroundTransition * 3)
+              : Math.max(0, 1 - animations.backgroundTransition * 2),
+            transition: isMobile ? 'none' : 'all 0.1s ease-out',
+            top: isMobile ? '42vh' : `${logoTopPosition + 2}vh`,
+            transform: isMobile ? 'none' : `translateY(${animations.backgroundTransition * 30}px)`
           }}
         >
           <h1
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight mt-4 sm:mt-6 md:mt-8 text-center transition-all duration-300 ease-out"
             style={{
-              opacity: 1 - animations.backgroundTransition * 1.3,
-              transform: `translateY(${animations.backgroundTransition * 20}px)`
+              opacity: isMobile ? 1 : 1 - animations.backgroundTransition * 1.3,
+              transform: isMobile ? 'none' : `translateY(${animations.backgroundTransition * 20}px)`
             }}
           >
             Ridhwan Nashir
@@ -112,8 +146,8 @@ export function HeroSection({ heroRef, animations }: HeroSectionProps) {
           <h2
             className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light text-center px-4 transition-all duration-300 ease-out"
             style={{
-              opacity: 1 - animations.backgroundTransition * 1.4,
-              transform: `translateY(${animations.backgroundTransition * 25}px)`
+              opacity: isMobile ? 1 : 1 - animations.backgroundTransition * 1.4,
+              transform: isMobile ? 'none' : `translateY(${animations.backgroundTransition * 25}px)`
             }}
           >
             Software Engineer <span className="mx-1 sm:mx-2 hidden sm:inline">•</span>

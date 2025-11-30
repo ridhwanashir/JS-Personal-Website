@@ -104,11 +104,11 @@ export function ProfileSection({ profileRef, animations }: ProfileSectionProps) 
   };
 
   return (
-    <div ref={profileRef} className="w-full h-[280vh] bg-white relative z-10">
+    <div ref={profileRef} className={`w-full ${isMobile ? 'min-h-screen' : 'h-[280vh]'} bg-white relative z-10`}>
     {/* <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10 border border-gray-300 rounded-lg"> */}
       <div 
         className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white px-4 sm:px-6 lg:px-8"
-        style={{
+        style={isMobile ? {} : {
           position: shouldUseSticky ? 'sticky' : 'relative',
           top: shouldUseSticky ? '23vh' : 'auto',
           transform: `translateY(${yTransform}vh)`,
@@ -118,7 +118,7 @@ export function ProfileSection({ profileRef, animations }: ProfileSectionProps) 
         }}
       >
         {/* Logo is now handled by HeroSection's transitioning logo */}
-        <div className="flex flex-col lg:flex-row h-full ">
+        <div className={`flex flex-col lg:flex-row ${isMobile ? 'min-h-screen' : 'h-[100vh]'}`}>
           {/* Profile Image */}
           <div className="w-full lg:w-1/3 relative order-2 lg:order-1 flex justify-center lg:justify-start mb-8 lg:mb-0">
             <Image
@@ -126,8 +126,8 @@ export function ProfileSection({ profileRef, animations }: ProfileSectionProps) 
               alt="Ridhwan Nashir"
               width={400}
               height={600}
-              style={{objectFit:"scale-down"}}
-              className="relative lg:absolute bottom-0 pt-24 w-64 h-80 sm:w-80 sm:h-96 lg:w-full lg:h-[100vh] max-w-full object-center rounded-lg lg:rounded-none"
+              style={{objectFit: 'scale-down'}}
+              className="relative lg:absolute bottom-0 pt-8 lg:pt-24 w-64 h-80 sm:w-80 sm:h-96 lg:w-full lg:h-[100vh] max-w-full object-center rounded-lg lg:rounded-none"
             />
           </div>
           {/* Profile Description */}
@@ -147,7 +147,7 @@ export function ProfileSection({ profileRef, animations }: ProfileSectionProps) 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-6 sm:mt-8 px-4 sm:px-6 py-2 bg-black text-white font-sans font-light rounded-full hover:bg-gray-800 transition-all duration-300 text-sm sm:text-base transform"
-                style={{
+                style={isMobile ? {} : {
                   opacity: Math.max(0, Math.min(1, animations.profileTextProgress * 2 - 0.5)),
                   transform: `translateY(${Math.max(0, (1 - animations.profileTextProgress * 2) * 20)}px)`
                 }}

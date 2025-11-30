@@ -22,10 +22,10 @@ export function ExperienceSection({ experienceRef, experiences }: ExperienceSect
         {/* Section Header */}
         <div className="mb-12 sm:mb-16 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extralight text-white mb-4">
-            Experience
+            Experiences
           </h2>
           <p className="text-white/50 text-base sm:text-lg font-light max-w-2xl mx-auto">
-            A journey through roles that shaped my expertise in AI, cloud architecture, and data engineering.
+            A journey through roles that shaped my expertise in AI, cloud architecture, and software engineering.
           </p>
         </div>
         
