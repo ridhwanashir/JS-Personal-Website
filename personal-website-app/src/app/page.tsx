@@ -46,6 +46,7 @@ export default function Home() {
         <ExperienceSection 
           experienceRef={experienceRef} 
           experiences={EXPERIENCES}
+          animations={animations}
         />
 
         {/* Works Section */}

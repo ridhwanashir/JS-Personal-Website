@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface LoadingScreenProps {
   onLoadingComplete?: () => void;
@@ -51,14 +52,16 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         isFading ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      {/* Logo/Name */}
+      {/* Logo */}
       <div className={`mb-8 transition-all duration-500 ${isFading ? 'scale-110 opacity-0' : 'scale-100 opacity-100'}`}>
-        <h1 className="text-4xl md:text-5xl font-extralight text-black tracking-wider">
-          RIDHWAN
-        </h1>
-        <p className="text-center text-sm text-gray-500 tracking-widest mt-2">
-          NASHIR
-        </p>
+        <Image
+          src="/ridhwan-logo.png"
+          alt="Logo of Ridhwan Nashir"
+          width={150}
+          height={150}
+          priority
+          className="w-32 h-auto md:w-40"
+        />
       </div>
 
       {/* Loading bar */}

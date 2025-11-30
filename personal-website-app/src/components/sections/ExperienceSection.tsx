@@ -1,13 +1,15 @@
 import React from 'react';
 import { AccordionExperience } from '../AccordionExperience';
 import { Experience } from '../../../types/global';
+import { AnimationState } from '../../hooks/useScrollAnimations';
 
 interface ExperienceSectionProps {
   experienceRef: React.RefObject<HTMLDivElement>;
   experiences: Experience[];
+  animations: AnimationState;
 }
 
-export function ExperienceSection({ experienceRef, experiences }: ExperienceSectionProps) {
+export function ExperienceSection({ experienceRef, experiences, animations }: ExperienceSectionProps) {
   return (
     <div ref={experienceRef} className="w-full bg-black relative z-10">
       {/* Subtle gradient background */}
@@ -20,7 +22,7 @@ export function ExperienceSection({ experienceRef, experiences }: ExperienceSect
       
       <div className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-start w-full relative px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16 text-center">
+        <div className={`mb-12 sm:mb-16 text-center transition-all duration-1000 ${animations.experienceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extralight text-white mb-4">
             Experiences
           </h2>
@@ -33,6 +35,7 @@ export function ExperienceSection({ experienceRef, experiences }: ExperienceSect
         <AccordionExperience 
           experiences={experiences}
           className="max-w-4xl mx-auto w-full"
+          isVisible={animations.experienceVisible}
         />
 
 

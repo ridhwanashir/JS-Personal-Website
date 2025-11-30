@@ -44,9 +44,9 @@ export default function PostPage() {
       <header className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-500 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
           <button
-            onClick={() => router.back()}
+            onClick={() => router.push('/playground')}
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-            aria-label="Go back"
+            aria-label="Go back to playground"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -208,7 +208,7 @@ export default function PostPage() {
         {/* Footer */}
         <footer className="border-t border-gray-200 py-8 mb-16">
           <button
-            onClick={() => router.back()}
+            onClick={() => router.push('/playground')}
             className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

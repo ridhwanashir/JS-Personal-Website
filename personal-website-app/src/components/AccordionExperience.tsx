@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'react-feather';
 import { Experience } from '../../types/global';
@@ -8,10 +8,22 @@ import { Experience } from '../../types/global';
 interface AccordionExperienceProps {
   experiences: Experience[];
   className?: string;
+  isVisible?: boolean;
 }
 
-export function AccordionExperience({ experiences, className = '' }: AccordionExperienceProps) {
+export function AccordionExperience({ experiences, className = '', isVisible: externalVisible }: AccordionExperienceProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0); // First item expanded by default
+  const [internalVisible, setInternalVisible] = useState(false);
+  
+  // Use external visibility if provided, otherwise use internal
+  const isVisible = externalVisible !== undefined ? externalVisible : internalVisible;
+
+  useEffect(() => {
+    if (externalVisible === undefined) {
+      const timer = setTimeout(() => setInternalVisible(true), 200);
+      return () => clearTimeout(timer);
+    }
+  }, [externalVisible]);
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -40,10 +52,12 @@ export function AccordionExperience({ experiences, className = '' }: AccordionEx
                 ? 'bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl' 
                 : 'bg-black/80 border border-white/5 hover:border-white/10'
               }
+              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
             `}
             style={{
               // Sharp edges - no rounded corners
               borderRadius: '0px',
+              transitionDelay: `${index * 100}ms`,
             }}
           >
             {/* Collapsed Header - Always Visible */}

@@ -10,6 +10,7 @@ interface ProfileSectionProps {
 export function ProfileSection({ profileRef, animations }: ProfileSectionProps) {
   // State to track screen size for responsive positioning
   const [screenSize, setScreenSize] = useState('mobile');
+  const [isMounted, setIsMounted] = useState(false);
   const isMobile = screenSize === 'mobile';
 
   useEffect(() => {
@@ -30,8 +31,14 @@ export function ProfileSection({ profileRef, animations }: ProfileSectionProps) 
     // Add resize listener
     window.addEventListener('resize', checkScreenSize);
 
+    // Trigger entrance animation
+    const timer = setTimeout(() => setIsMounted(true), 100);
+
     // Cleanup
-    return () => window.removeEventListener('resize', checkScreenSize);
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+      clearTimeout(timer);
+    };
   }, []);
 
   // NEW APPROACH: Use transform instead of position switching to avoid jumps
@@ -107,7 +114,7 @@ export function ProfileSection({ profileRef, animations }: ProfileSectionProps) 
     <div ref={profileRef} className={`w-full ${isMobile ? 'min-h-screen' : 'h-[280vh]'} bg-white relative z-10`}>
     {/* <div ref={profileRef} className="w-full h-[200vh] bg-white relative z-10 border border-gray-300 rounded-lg"> */}
       <div 
-        className="max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white px-4 sm:px-6 lg:px-8"
+        className={`max-w-screen-xl mx-auto min-h-screen flex flex-col justify-center w-full bg-white px-4 sm:px-6 lg:px-8 ${isMobile ? 'transition-all duration-700' : ''} ${isMobile && isMounted ? 'opacity-100 translate-y-0' : isMobile ? 'opacity-0 translate-y-8' : ''}`}
         style={isMobile ? {} : {
           position: shouldUseSticky ? 'sticky' : 'relative',
           top: shouldUseSticky ? '23vh' : 'auto',
