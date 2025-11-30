@@ -45,48 +45,107 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
         {/* Mobile: Show only first project */}
         <div className="block sm:hidden w-full">
           <div 
-            className={`relative w-full flex items-center justify-center overflow-hidden  min-h-[200px] transition-all duration-1000 cursor-pointer ${
+            className={`relative w-full overflow-hidden transition-all duration-1000 cursor-pointer border border-white/10 ${
               animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
             style={{ transitionDelay: '200ms' }}
             onClick={() => window.location.href = `/playground?article=${PROJECTS[0].id}`}
           >
-            <div className="w-full bg-black duration-500 ease-in-out transform hover:scale-110 rounded-lg overflow-hidden">
+            {/* Image Section */}
+            <div className="relative h-48 overflow-hidden">
               <Image 
                 src={PROJECTS[0].image} 
                 alt={PROJECTS[0].title} 
-                className="w-full object-cover" 
-                width={500} 
-                height={300} 
+                className="w-full h-full object-cover" 
+                fill
+                sizes="100vw"
               />
-                <div className="p-4 bg-black mt-4 mr-6 ml-6 mb-8 border border-gray-800 rounded-lg">
-                <h3 className="text-white text-lg font-semibold mb-2">{PROJECTS[0].title}</h3>
-                <p className="text-gray-300 text-sm mb-2">{PROJECTS[0].description}</p>
-                <p className="text-gray-400 text-xs">{PROJECTS[0].status}</p>
+              {/* Gradient blend */}
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent" />
+            </div>
+            
+            {/* Content Section */}
+            <div className="bg-black/80 backdrop-blur-sm p-4">
+              {/* Status Badge */}
+              <span className="inline-block px-2 py-1 bg-white/10 border border-white/20 text-white/70 text-xs font-light mb-3">
+                {PROJECTS[0].status}
+              </span>
+              
+              <h3 className="text-white text-lg font-medium mb-2">{PROJECTS[0].title}</h3>
+              <p className="text-white/60 text-sm mb-3">{PROJECTS[0].description}</p>
+              
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-2">
+                {PROJECTS[0].technologies.slice(0, 3).map((tech, techIndex) => (
+                  <span 
+                    key={techIndex}
+                    className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/50 text-xs"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
         {/* Desktop: Show all three projects + Your project */}
-        <div className="hidden sm:flex w-full">
+        <div className="hidden sm:flex w-full gap-4">
           {PROJECTS.map((project, index) => (
             <div 
               key={project.id}
-              className={`relative flex-1 flex items-center justify-center overflow-hidden m-2 mt-4 sm:mt-8 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 cursor-pointer ${
+              className={`relative flex-1 overflow-hidden transition-all duration-1000 cursor-pointer group mt-8 border border-white/10 hover:border-white/20 ${
                 animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${200 + index * 200}ms` }}
               onClick={() => window.location.href = `/playground?article=${project.id}`}
             >
-              <div className="w-full bg-white duration-500 ease-in-out transform hover:scale-110">
+              {/* Image Section - Top */}
+              <div className="relative h-40 lg:h-48 overflow-hidden">
                 <Image 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full object-cover" 
-                  width={500} 
-                  height={300} 
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
+                {/* Subtle gradient at bottom of image to blend into content */}
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent" />
+              </div>
+              
+              {/* Content Section - Bottom */}
+              <div className="relative bg-black/80 backdrop-blur-sm p-4 lg:p-5">
+                {/* Status Badge */}
+                <span className="inline-block px-2 py-1 bg-white/10 border border-white/20 text-white/70 text-xs font-light mb-3">
+                  {project.status}
+                </span>
+                
+                {/* Title */}
+                <h3 className="text-white text-base lg:text-lg font-medium mb-2 line-clamp-2">
+                  {project.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-white/60 text-sm leading-relaxed line-clamp-2 mb-3">
+                  {project.description}
+                </p>
+                
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                    <span 
+                      key={techIndex}
+                      className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/50 text-xs"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 3 && (
+                    <span className="text-white/40 text-xs self-center">
+                      +{project.technologies.length - 3}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -94,7 +153,7 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
           {/* Your project item */}
           <div 
             onClick={scrollToContact}
-            className={`flex-1 flex flex-col items-center justify-center mt-4 sm:mt-8 border border-gray-800 bg-black p-4 group relative m-2 min-h-[150px] sm:min-h-[200px] transition-all duration-1000 cursor-pointer hover:border-gray-600 ${
+            className={`flex-1 flex flex-col items-center justify-center mt-8 bg-white/5 backdrop-blur-sm border border-white/10 p-4 group relative min-h-[280px] lg:min-h-[320px] transition-all duration-1000 cursor-pointer hover:bg-white/10 hover:border-white/20 ${
             animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`} style={{ transitionDelay: '800ms' }}>
             <div className="transform transition-transform duration-500 group-hover:rotate-90">
@@ -106,12 +165,12 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-60 group-hover:opacity-100 transition-opacity"
               >
                 <path d="M12 5v14M5 12h14" />
               </svg>
             </div>
-            <p className="mt-2 text-white text-xs sm:text-sm text-center">
+            <p className="mt-4 text-white/70 text-sm text-center group-hover:text-white transition-colors">
               Your project
             </p>
           </div>

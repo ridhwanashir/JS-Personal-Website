@@ -10,10 +10,11 @@ export const EXPERIENCES: Experience[] = [
     companyUrl: "https://ioh.co.id/portal/en/iohindex",
     summary: "Indosat is one of the leading Indonesian telecommunications and digital services companies serving millions of customers nationwide.",
     achievements: [
-      "Driving data-driven initiatives to enhance customer experience and operational efficiency",
-      "Leveraging advanced analytics and machine learning for business insights"
+      "Driving data-driven initiatives by finding actionable insights from telco big data to support business decisions",
+      "Leveraging advanced analytics and machine learning for business insights and B2B opportunities",
+      "Developing agentic AI capabilities to existing products and services using Google Agent Development Kit (ADK)",
     ],
-    technologies: ["Python", "Azure", "Machine Learning", "Data Analytics"],
+    technologies: ["Python", "Google Cloud Platform", "Machine Learning", "Data Analytics", "Agentic AI", "Google Agent Development Kit (ADK)"],
     highlight: "Current Role"
   },
   { 
@@ -48,22 +49,39 @@ export const EXPERIENCES: Experience[] = [
       "Created Question Generation application that scans books/PDFs and generates custom questions automatically using OpenAI GPT with Langchain and prompt engineering"
     ],
     technologies: ["AWS", "Langchain", "OpenAI GPT", "Python", "Apps Script"],
-    highlight: "50% Resource Allocation Improvement"
+    highlight: "50% Resource Allocation Improvement and Leveraged LLM for Business Solutions"
+  },
+  { 
+    logo: "/techbros_logo.png",
+    company: "Techbros",
+    duration: "Sep 2021 - Nov 2021",
+    role: "One Day CEO (Apprenticeship)",
+    location: "Düsseldorf, North Rhine-Westphalia, Germany",
+    companyUrl: "https://techbros.io",
+    summary: "A short leadership program by Techbros focused on entrepreneurship, leadership, and practical business planning.",
+    achievements: [
+      "Participated in mentorship sessions with the Techbros CEO on entrepreneurship and leadership",
+      "Developed a business model canvas for a project leveraging Techbros resources",
+      "Served as 'One Day CEO' presenting project plans and receiving team feedback"
+    ],
+    technologies: ["Leadership", "Business Modeling"],
+    highlight: "One Day CEO Finalist"
   },
   { 
     logo: "/techbros_logo.png",
     company: "Techbros GmbH",
     duration: "Jun 2021 - Oct 2021",
-    role: "Data Science Intern",
-    location: "Düsseldorf, Germany",
+    role: "Data Science Engineer Intern",
+    location: "Düsseldorf, North Rhine-Westphalia, Germany",
     companyUrl: "https://techbros.io",
-    summary: "Techbros is a German technology company focused on innovative data solutions and digital transformation.",
+    summary: "Contributed to data and web projects including product aggregation, web scraping, and sentiment analysis to support business insights.",
     achievements: [
-      "Applied machine learning techniques to solve business problems",
-      "Contributed to data pipeline development and analytics projects"
+      "Built a product aggregator website and designed UI mockups",
+      "Implemented a web scraper for Blibli and developed sentiment analysis for telecom providers",
+      "Improved data workflows using Python, NumPy, and Pandas"
     ],
-    technologies: ["Python", "Machine Learning", "Data Analytics"],
-    highlight: "International Experience"
+    technologies: ["Python", "NumPy", "Pandas", "Web Scraping", "Sentiment Analysis"],
+    highlight: "Internship Completion Certificate"
   },
   { 
     logo: "/telkom_university_logo.png",

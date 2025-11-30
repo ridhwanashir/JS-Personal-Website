@@ -125,16 +125,16 @@ export function ProfileSection({ profileRef, animations }: ProfileSectionProps) 
               src="/studio-photo-edited.webp"
               alt="Ridhwan Nashir"
               width={400}
-              height={500}
-              style={{objectFit:"cover"}}
-              className="relative lg:absolute bottom-0 w-64 h-80 sm:w-80 sm:h-96 lg:w-full lg:h-[100vh] max-w-full object-center rounded-lg lg:rounded-none"
+              height={600}
+              style={{objectFit:"scale-down"}}
+              className="relative lg:absolute bottom-0 pt-24 w-64 h-80 sm:w-80 sm:h-96 lg:w-full lg:h-[100vh] max-w-full object-center rounded-lg lg:rounded-none"
             />
           </div>
           {/* Profile Description */}
           <div className="w-full lg:w-2/3 p-4 sm:p-6 lg:p-8 flex items-center justify-center lg:justify-end order-1 lg:order-2">
             <div className="text-center lg:text-left lg:pr-12 max-w-2xl">
                 <div
-                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-sans leading-tight ${isMobile ? 'pt-10' : ''}`}>
+                className={`text-xl sm:text-xl sm:pt-14 md:text-2xl md:pt-32 lg:text-4xl font-sans leading-tight ${isMobile ? 'pt-10' : ''}`}>
                 {textRows.map((text, index) => (
                   <React.Fragment key={index}>
                   {renderTextRow(text, index)}
