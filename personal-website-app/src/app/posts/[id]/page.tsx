@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { POSTS } from '../../../constants/data';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -11,8 +12,14 @@ export default function PostPage() {
   const params = useParams();
   const router = useRouter();
   const postId = params.id as string;
+  const [isLoaded, setIsLoaded] = useState(false);
   
   const post = POSTS.find(p => p.id === postId);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
   
   if (!post) {
     return (
@@ -32,9 +39,9 @@ export default function PostPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen bg-white transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Header with back button */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <header className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-500 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
           <button
             onClick={() => router.back()}
@@ -48,7 +55,7 @@ export default function PostPage() {
       </header>
 
       {/* Hero Image */}
-      <div className="relative w-full h-[50vh] mt-16">
+      <div className={`relative w-full h-[50vh] mt-16 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
         <Image
           src={post.image}
           alt={post.title}
@@ -60,7 +67,7 @@ export default function PostPage() {
       </div>
 
       {/* Content */}
-      <article className="max-w-3xl mx-auto px-6 -mt-20 relative z-10">
+      <article className={`max-w-3xl mx-auto px-6 -mt-20 relative z-10 transition-all duration-500 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
         {/* Meta info */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
           <span className="px-3 py-1 bg-black text-white rounded-full text-xs font-medium">

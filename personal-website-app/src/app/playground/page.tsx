@@ -2,6 +2,7 @@
 
 import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { ArticleCard } from '../../components/ArticleCard';
 import { PostModal } from '../../components/ArticleModal';
 import { POSTS } from '../../constants/data';
@@ -22,8 +23,15 @@ function PlaygroundContent() {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const categories = CATEGORIES;
+
+  // Trigger entrance animation
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Handle URL parameters on mount
   useEffect(() => {
@@ -73,9 +81,9 @@ function PlaygroundContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className={`min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Header Section */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
+      <header className={`bg-white shadow-sm sticky top-0 z-40 transition-all duration-500 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
@@ -86,7 +94,7 @@ function PlaygroundContent() {
                 Explore projects, articles, experiments, and insights
               </p>
             </div>
-            <a 
+            <Link 
               href="/"
               className="text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-2"
             >
@@ -94,13 +102,13 @@ function PlaygroundContent() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 transition-all duration-500 delay-200 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
         {/* Filter/Category Section */}
         <div className="mb-8">
           <div className="flex items-center gap-3 text-sm text-gray-600 flex-wrap">
