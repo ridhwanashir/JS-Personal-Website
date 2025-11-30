@@ -1,4 +1,4 @@
-import { Experience } from '../../types/global';
+import { Experience, Post } from '../../types/global';
 
 export const EXPERIENCES: Experience[] = [
   { 
@@ -102,30 +102,139 @@ export const EXPERIENCES: Experience[] = [
   },
 ];
 
-export const PROJECTS = [
+export const POSTS: Post[] = [
   {
-    id: 1,
+    id: "1",
+    type: "article",
+    title: "Go for Ph.D. or Work in the Industry?",
+    subtitle: "What's next? A master's degree graduate dilemma",
+    image: "/project_x.jpg",
+    category: "Research & Blogs",
+    date: "April 14, 2024",
+    readTime: "2 min read",
+    content: `As a fresh master's graduate from Telkom University with a degree in Informatics, I stand at a crossroads. The thrill of academic achievement is behind me, and ahead of me lies a pivotal decision: pursue a Ph.D. or dive into the industry?
+
+## The Crossroads
+
+For some, the path is clear-cut. A Ph.D. is a no-brainer for those with a passion for academia, a desire to delve deeper into research, and the drive to contribute to the vast ocean of knowledge. Yet, for others like myself, it can be really confusing as the decision is shrouded in uncertainty.
+
+## Factors to Consider
+
+The choice between academia and industry is influenced by many factors. A significant consideration is the **widening salary gap**. On average, professionals in the industry earn about 30% more than their counterparts in academia. This difference in salary is even more pronounced at the onset of one's career, where industry roles often offer a more appealing starting point.
+
+![Career Decision](/project_x.jpg)
+
+Top-tier academic institutions also present formidable barriers with their stringent requirements, which can be discouraging for aspiring academics. Furthermore, government policies sometimes emphasize the quantity of research output over quality, potentially leading to less impactful research and more paperwork for academics.
+
+## The Industry Perspective
+
+In contrast, the industry landscape has evolved to value practical skills over formal qualifications. Companies are increasingly seeking candidates with:
+
+- Technical prowess and adaptable skills
+- Real-world problem-solving abilities
+- Practical experience over theoretical knowledge
+
+## My Personal Journey
+
+Ultimately, the decision may rest on individual opportunities and personal inclinations. Me personally, I'm currently open to any opportunity that presents itself first. By applying to countless job vacancies while still looking for Ph.D. scholarships.
+
+> Within this NEET period, I have found that maybe what truly matters is adopting a lifelong learning mindset.
+
+During this time also, I am really glad that I have friends and family that support me emotionally, financially, and intellectually.
+
+## Final Thoughts
+
+For those who also share my confusion, remember that regardless of the path you choose, the right mindset will pave the way to success. By having the right mindset, no matter what path we choose, we will thrive and excel!
+
+So here's to seizing opportunities, embracing the journey, and navigating the future with an open heart and an eager mind. May we all find our way, be it in the hallowed halls of academia or the dynamic realm of the industry.`
+  },
+  {
+    id: "2",
+    type: "project",
     title: "AI-Powered Data Analytics Platform",
-    description: "Machine learning platform for predictive analytics",
+    subtitle: "Machine learning platform for predictive analytics",
     image: "/project_x.jpg",
+    category: "Data & ML",
+    date: "2024",
+    readTime: "5 min read",
     technologies: ["Python", "TensorFlow", "React", "AWS"],
-    status: "In Development"
+    status: "In Development",
+    content: `# AI-Powered Data Analytics Platform
+
+A comprehensive machine learning platform designed for predictive analytics, enabling businesses to make data-driven decisions with confidence.
+
+## Overview
+
+This platform leverages cutting-edge machine learning algorithms to provide actionable insights from complex datasets. Built with scalability in mind, it handles everything from small business analytics to enterprise-level data processing.
+
+## Key Features
+
+- **Predictive Modeling**: Advanced algorithms for forecasting trends
+- **Real-time Analytics**: Live dashboard with instant updates
+- **Custom Visualizations**: Interactive charts and graphs
+- **API Integration**: Seamless connection with existing systems
+
+## Tech Stack
+
+The platform is built using modern technologies:
+- **Python** for backend processing and ML models
+- **TensorFlow** for deep learning capabilities
+- **React** for the frontend dashboard
+- **AWS** for cloud infrastructure and scaling
+
+*More details coming soon as the project progresses.*`
   },
   {
-    id: 2,
+    id: "3",
+    type: "project",
     title: "Enterprise Software Solution",
-    description: "Full-stack application for business process automation",
+    subtitle: "Full-stack application for business process automation",
     image: "/project_x.jpg",
+    category: "Software Engineering",
+    date: "2024",
+    readTime: "4 min read",
     technologies: ["Node.js", "React", "PostgreSQL", "Docker"],
-    status: "In Development"
+    status: "In Development",
+    content: `# Enterprise Software Solution
+
+A full-stack application designed to automate and streamline business processes, reducing manual work and increasing operational efficiency.
+
+## Project Goals
+
+- Automate repetitive business tasks
+- Provide real-time process monitoring
+- Enable seamless team collaboration
+- Ensure data security and compliance
+
+## Architecture
+
+Built on a microservices architecture for maximum flexibility and scalability.
+
+*More details coming soon as the project progresses.*`
   },
   {
-    id: 3,
+    id: "4",
+    type: "project",
     title: "Mobile App Development",
-    description: "Cross-platform mobile application with real-time features",
+    subtitle: "Cross-platform mobile application with real-time features",
     image: "/project_x.jpg",
+    category: "Software Engineering",
+    date: "2024",
+    readTime: "3 min read",
     technologies: ["React Native", "Firebase", "TypeScript"],
-    status: "In Development"
+    status: "In Development",
+    content: `# Mobile App Development
+
+A cross-platform mobile application featuring real-time synchronization and modern UI/UX design.
+
+## Features
+
+- Cross-platform compatibility (iOS & Android)
+- Real-time data synchronization
+- Push notifications
+- Offline-first architecture
+
+*More details coming soon as the project progresses.*`
   }
 ];
 
@@ -158,88 +267,5 @@ export const WORKS_CATEGORIES = [
     title: "Research and Blogs",
     image: "/works_research_bg.png",
     alt: "Research and Blogs background"
-  }
-];
-
-export const ARTICLES = [
-  {
-    id: "1",
-    title: "Building Scalable Machine Learning Pipelines with MLOps",
-    subtitle: "A comprehensive guide to implementing production-ready ML systems",
-    image: "/project_x.jpg",
-    category: "Data & ML",
-    date: "October 15, 2025",
-    readTime: "8 min read",
-    summary: "In this article, we explore the essential components of building scalable machine learning pipelines using modern MLOps practices. Learn how to automate model training, deployment, and monitoring while ensuring reproducibility and reliability. We'll cover tools like MLflow, Kubernetes, and CI/CD integration to create robust ML systems that can handle production workloads efficiently."
-  },
-  {
-    id: "2",
-    title: "Understanding Transformer Architecture in Deep Learning",
-    subtitle: "From attention mechanisms to modern language models",
-    image: "/project_x.jpg",
-    category: "Data & ML",
-    date: "September 28, 2025",
-    readTime: "12 min read",
-    summary: "Dive deep into the transformer architecture that revolutionized natural language processing. This article breaks down the self-attention mechanism, positional encoding, and multi-head attention that power models like GPT and BERT. We'll explore the mathematical foundations and practical implementations, making it accessible for both beginners and experienced practitioners."
-  },
-  {
-    id: "3",
-    title: "Cloud Native Architecture: Best Practices for AWS",
-    subtitle: "Designing resilient and cost-effective cloud solutions",
-    image: "/project_x.jpg",
-    category: "Software Engineering",
-    date: "September 10, 2025",
-    readTime: "10 min read",
-    summary: "Master the art of building cloud-native applications on AWS. This guide covers architectural patterns like microservices, serverless computing, and containerization. Learn about AWS services including Lambda, ECS, and EKS, along with best practices for security, scalability, and cost optimization. Perfect for solution architects and cloud engineers looking to design enterprise-grade systems."
-  },
-  {
-    id: "4",
-    title: "Data Engineering: From ETL to Modern Data Lakes",
-    subtitle: "Building efficient data pipelines for analytics",
-    image: "/project_x.jpg",
-    category: "Data & ML",
-    date: "August 22, 2025",
-    readTime: "9 min read",
-    summary: "Explore the evolution of data engineering from traditional ETL processes to modern data lake architectures. Learn about Apache Spark, Delta Lake, and cloud data warehouses like Snowflake and BigQuery. This article provides practical insights into designing data pipelines that can handle massive volumes while maintaining data quality and governance."
-  },
-  {
-    id: "5",
-    title: "Introduction to Reinforcement Learning",
-    subtitle: "Teaching machines to learn through trial and error",
-    image: "/project_x.jpg",
-    category: "Data & ML",
-    date: "August 5, 2025",
-    readTime: "11 min read",
-    summary: "Get started with reinforcement learning, one of the most exciting areas of AI. This article explains core concepts like agents, environments, rewards, and policies. We'll walk through practical examples using OpenAI Gym and implement basic algorithms like Q-learning and Deep Q-Networks (DQN). Perfect for those looking to understand how machines learn to play games and make decisions."
-  },
-  {
-    id: "6",
-    title: "Microservices vs Monoliths: Making the Right Choice",
-    subtitle: "Architectural decisions for scalable applications",
-    image: "/project_x.jpg",
-    category: "Software Engineering",
-    date: "July 18, 2025",
-    readTime: "7 min read",
-    summary: "Navigate the complex decision between microservices and monolithic architectures. This article presents a balanced view of both approaches, discussing trade-offs in terms of complexity, scalability, deployment, and team organization. Learn when to choose each architecture based on your project requirements, team size, and business goals."
-  },
-  {
-    id: "7",
-    title: "The Art of UI/UX Design: Creating Intuitive Interfaces",
-    subtitle: "Principles and practices for exceptional user experiences",
-    image: "/project_x.jpg",
-    category: "Design & Art",
-    date: "July 5, 2025",
-    readTime: "8 min read",
-    summary: "Explore the fundamental principles of UI/UX design that create memorable user experiences. This article covers color theory, typography, layout composition, and interaction design. Learn how to balance aesthetics with functionality, conduct user research, and iterate on designs based on feedback. Perfect for designers and developers looking to create interfaces that users love."
-  },
-  {
-    id: "8",
-    title: "Research Methods in Data Science",
-    subtitle: "From hypothesis to publication-ready findings",
-    image: "/project_x.jpg",
-    category: "Research & Blogs",
-    date: "June 28, 2025",
-    readTime: "10 min read",
-    summary: "A comprehensive guide to conducting rigorous research in data science. Learn about experimental design, statistical significance, reproducibility, and ethical considerations. This article walks through the entire research lifecycle from formulating hypotheses to publishing findings, with practical tips for avoiding common pitfalls and ensuring your work stands up to peer review."
   }
 ];

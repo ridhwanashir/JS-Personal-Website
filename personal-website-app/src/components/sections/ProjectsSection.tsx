@@ -1,8 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { ExternalLink } from 'react-feather';
-import { CERTIFICATIONS, PROJECTS } from '../../constants/data';
+import { CERTIFICATIONS, POSTS } from '../../constants/data';
 import { AnimationState } from '../../hooks/useScrollAnimations';
+
+// Filter only projects from POSTS
+const PROJECTS = POSTS.filter(post => post.type === 'project');
 
 interface ProjectsSectionProps {
   projectsRef: React.RefObject<HTMLDivElement>;
@@ -10,6 +13,10 @@ interface ProjectsSectionProps {
 }
 
 export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProps) {
+  const handleProjectClick = (projectId: string) => {
+    window.location.href = `/playground?post=${projectId}`;
+  };
+
   const scrollToContact = () => {
     const offset = 60 // scroll 100px before the absolute bottom
     const { scrollHeight, clientHeight } = document.documentElement
@@ -32,9 +39,7 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
         {/* "See All Projects" link - responsive positioning */}
         <div className="absolute -bottom-6 right-2 sm:bottom-auto sm:left-auto sm:-top-0 sm:right-2 flex items-center space-x-2 z-10">
           <a
-            href="https://github.com/ridhwanashir"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/playground"
             className="text-white text-xs sm:text-sm hover:underline transition-all duration-300"
           >
             See All Projects
@@ -43,51 +48,57 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
         </div>
         
         {/* Mobile: Show only first project */}
-        <div className="block sm:hidden w-full">
-          <div 
-            className={`relative w-full overflow-hidden transition-all duration-1000 cursor-pointer border border-white/10 ${
-              animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-            }`}
-            style={{ transitionDelay: '200ms' }}
-            onClick={() => window.location.href = `/playground?article=${PROJECTS[0].id}`}
-          >
-            {/* Image Section */}
-            <div className="relative h-48 overflow-hidden">
-              <Image 
-                src={PROJECTS[0].image} 
-                alt={PROJECTS[0].title} 
-                className="w-full h-full object-cover" 
-                fill
-                sizes="100vw"
-              />
-              {/* Gradient blend */}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent" />
-            </div>
-            
-            {/* Content Section */}
-            <div className="bg-black/80 backdrop-blur-sm p-4">
-              {/* Status Badge */}
-              <span className="inline-block px-2 py-1 bg-white/10 border border-white/20 text-white/70 text-xs font-light mb-3">
-                {PROJECTS[0].status}
-              </span>
+        {PROJECTS.length > 0 && (
+          <div className="block sm:hidden w-full">
+            <div 
+              className={`relative w-full overflow-hidden transition-all duration-1000 cursor-pointer border border-white/10 ${
+                animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}
+              style={{ transitionDelay: '200ms' }}
+              onClick={() => handleProjectClick(PROJECTS[0].id)}
+            >
+              {/* Image Section */}
+              <div className="relative h-48 overflow-hidden">
+                <Image 
+                  src={PROJECTS[0].image} 
+                  alt={PROJECTS[0].title} 
+                  className="w-full h-full object-cover" 
+                  fill
+                  sizes="100vw"
+                />
+                {/* Gradient blend */}
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent" />
+              </div>
               
-              <h3 className="text-white text-lg font-medium mb-2">{PROJECTS[0].title}</h3>
-              <p className="text-white/60 text-sm mb-3">{PROJECTS[0].description}</p>
-              
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2">
-                {PROJECTS[0].technologies.slice(0, 3).map((tech, techIndex) => (
-                  <span 
-                    key={techIndex}
-                    className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/50 text-xs"
-                  >
-                    {tech}
+              {/* Content Section */}
+              <div className="bg-black/80 backdrop-blur-sm p-4">
+                {/* Status Badge */}
+                {PROJECTS[0].status && (
+                  <span className="inline-block px-2 py-1 bg-white/10 border border-white/20 text-white/70 text-xs font-light mb-3">
+                    {PROJECTS[0].status}
                   </span>
-                ))}
+                )}
+                
+                <h3 className="text-white text-lg font-medium mb-2">{PROJECTS[0].title}</h3>
+                <p className="text-white/60 text-sm mb-3">{PROJECTS[0].subtitle}</p>
+                
+                {/* Technologies */}
+                {PROJECTS[0].technologies && (
+                  <div className="flex flex-wrap gap-2">
+                    {PROJECTS[0].technologies.slice(0, 3).map((tech, techIndex) => (
+                      <span 
+                        key={techIndex}
+                        className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/50 text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Desktop: Show all three projects + Your project */}
         <div className="hidden sm:flex w-full gap-4">
@@ -98,7 +109,7 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
                 animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${200 + index * 200}ms` }}
-              onClick={() => window.location.href = `/playground?article=${project.id}`}
+              onClick={() => handleProjectClick(project.id)}
             >
               {/* Image Section - Top */}
               <div className="relative h-40 lg:h-48 overflow-hidden">
@@ -116,9 +127,11 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
               {/* Content Section - Bottom */}
               <div className="relative bg-black/80 backdrop-blur-sm p-4 lg:p-5">
                 {/* Status Badge */}
-                <span className="inline-block px-2 py-1 bg-white/10 border border-white/20 text-white/70 text-xs font-light mb-3">
-                  {project.status}
-                </span>
+                {project.status && (
+                  <span className="inline-block px-2 py-1 bg-white/10 border border-white/20 text-white/70 text-xs font-light mb-3">
+                    {project.status}
+                  </span>
+                )}
                 
                 {/* Title */}
                 <h3 className="text-white text-base lg:text-lg font-medium mb-2 line-clamp-2">
@@ -127,25 +140,27 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
                 
                 {/* Description */}
                 <p className="text-white/60 text-sm leading-relaxed line-clamp-2 mb-3">
-                  {project.description}
+                  {project.subtitle}
                 </p>
                 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span 
-                      key={techIndex}
-                      className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/50 text-xs"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-white/40 text-xs self-center">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
+                {project.technologies && project.technologies.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                      <span 
+                        key={techIndex}
+                        className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/50 text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <span className="text-white/40 text-xs self-center">
+                        +{project.technologies.length - 3}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}

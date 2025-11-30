@@ -68,6 +68,25 @@ export interface Article {
   readTime: string;
 }
 
+// Unified Post type for projects and articles
+export interface Post {
+  id: string;
+  type: 'project' | 'article';
+  title: string;
+  subtitle: string;
+  image: string;
+  category: string;
+  date: string;
+  readTime: string;
+  content: string; // Markdown content for full page render
+  summary?: string; // Optional preview text for modal
+  // Project-specific fields
+  technologies?: string[];
+  status?: string;
+  url?: string;
+  github?: string;
+}
+
 // Layout props
 export interface LayoutProps {
   children: React.ReactNode;

@@ -3,11 +3,11 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ArticleCard } from '../../components/ArticleCard';
-import { ArticleModal } from '../../components/ArticleModal';
-import { ARTICLES } from '../../constants/data';
-import { Article } from '../../../types/global';
+import { PostModal } from '../../components/ArticleModal';
+import { POSTS } from '../../constants/data';
+import { Post } from '../../../types/global';
 
-const CATEGORIES = ['All', ...Array.from(new Set(ARTICLES.map(article => article.category)))];
+const CATEGORIES = ['All', ...Array.from(new Set(POSTS.map(post => post.category)))];
 
 export default function PlaygroundPage() {
   return (
@@ -19,7 +19,7 @@ export default function PlaygroundPage() {
 
 function PlaygroundContent() {
   const searchParams = useSearchParams();
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
@@ -28,36 +28,36 @@ function PlaygroundContent() {
   // Handle URL parameters on mount
   useEffect(() => {
     const categoryParam = searchParams.get('category');
-    const articleParam = searchParams.get('article');
+    const postParam = searchParams.get('post');
 
     // Set category from URL
     if (categoryParam && categories.includes(categoryParam)) {
       setSelectedCategory(categoryParam);
     }
 
-    // Open specific article modal from URL
-    if (articleParam) {
-      const article = ARTICLES.find(a => a.id === articleParam);
-      if (article) {
-        setSelectedArticle(article);
+    // Open specific post modal from URL
+    if (postParam) {
+      const post = POSTS.find(p => p.id === postParam);
+      if (post) {
+        setSelectedPost(post);
         setIsModalOpen(true);
       }
     }
   }, [searchParams, categories]);
 
-  // Filter articles by category
-  const filteredArticles = selectedCategory === 'All' 
-    ? ARTICLES 
-    : ARTICLES.filter(article => article.category === selectedCategory);
+  // Filter posts by category
+  const filteredPosts = selectedCategory === 'All' 
+    ? POSTS 
+    : POSTS.filter(post => post.category === selectedCategory);
 
-  const handleArticleClick = (article: Article) => {
-    setSelectedArticle(article);
+  const handlePostClick = (post: Post) => {
+    setSelectedPost(post);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => setSelectedArticle(null), 300); // Wait for animation to complete
+    setTimeout(() => setSelectedPost(null), 300); // Wait for animation to complete
   };
 
   const handleCategoryChange = (category: string) => {
@@ -83,7 +83,7 @@ function PlaygroundContent() {
                 Playground
               </h1>
               <p className="text-gray-600 mt-2">
-                Explore articles, experiments, and insights
+                Explore projects, articles, experiments, and insights
               </p>
             </div>
             <a 
@@ -121,46 +121,46 @@ function PlaygroundContent() {
           </div>
         </div>
 
-        {/* Articles Count */}
+        {/* Posts Count */}
         <div className="mb-4 text-gray-600 text-sm">
-          Showing {filteredArticles.length} {filteredArticles.length === 1 ? 'article' : 'articles'}
+          Showing {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
           {selectedCategory !== 'All' && ` in ${selectedCategory}`}
         </div>
 
-        {/* Articles Grid */}
+        {/* Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredArticles.map((article) => (
+          {filteredPosts.map((post) => (
             <ArticleCard
-              key={article.id}
-              article={article}
-              onClick={() => handleArticleClick(article)}
+              key={post.id}
+              article={post}
+              onClick={() => handlePostClick(post)}
             />
           ))}
         </div>
 
-        {/* Empty State (if no articles) */}
-        {filteredArticles.length === 0 && (
+        {/* Empty State (if no posts) */}
+        {filteredPosts.length === 0 && (
           <div className="text-center py-20">
             <div className="text-gray-400 mb-4">
               <svg className="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">No Articles Found</h3>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">No Posts Found</h3>
             <p className="text-gray-500">Try selecting a different category</p>
             <button
               onClick={() => handleCategoryChange('All')}
               className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
-              View All Articles
+              View All Posts
             </button>
           </div>
         )}
       </main>
 
-      {/* Article Modal */}
-      <ArticleModal
-        article={selectedArticle}
+      {/* Post Modal */}
+      <PostModal
+        post={selectedPost}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />

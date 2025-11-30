@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import { Article } from '../../types/global';
+import { Post } from '../../types/global';
 
 interface ArticleCardProps {
-  article: Article;
+  article: Post;
   onClick: () => void;
 }
 
@@ -21,9 +21,12 @@ export function ArticleCard({ article, onClick }: ArticleCardProps) {
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-110"
         />
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 flex gap-2">
           <span className="bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium">
             {article.category}
+          </span>
+          <span className="bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
+            {article.type === 'project' ? 'Project' : 'Article'}
           </span>
         </div>
       </div>
