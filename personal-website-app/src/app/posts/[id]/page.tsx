@@ -65,7 +65,8 @@ export default function PostPage() {
     <div className={`min-h-screen bg-white transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Header with back button - hides on scroll down, shows on scroll up */}
       <header className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
+        <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
+          {/* Left: Back button */}
           <button
             onClick={() => router.push('/playground')}
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -73,6 +74,23 @@ export default function PostPage() {
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
+          
+          {/* Center: Logo linking to home */}
+          <button
+            onClick={() => router.push('/')}
+            className="hover:opacity-80 transition-opacity"
+            aria-label="Go to home"
+          >
+            <Image
+              src="/ridhwan-logo.png"
+              alt="Ridhwan Nashir Logo"
+              width={80}
+              height={40}
+              className="w-8 h-auto"
+            />
+          </button>
+          
+          {/* Right: Post type label */}
           <span className="text-sm text-gray-500">{post.type === 'project' ? 'Project' : 'Article'}</span>
         </div>
       </header>
