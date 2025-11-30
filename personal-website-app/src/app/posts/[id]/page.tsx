@@ -2,23 +2,46 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { POSTS } from '../../../constants/data';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
+import { Footer } from '../../../components/Footer';
 
 export default function PostPage() {
   const params = useParams();
   const router = useRouter();
   const postId = params.id as string;
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
   
   const post = POSTS.find(p => p.id === postId);
   
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Handle scroll direction to show/hide header
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show header when scrolling up or at the top
+      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+        setIsHeaderVisible(true);
+      } else {
+        // Hide header when scrolling down
+        setIsHeaderVisible(false);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   if (!post) {
@@ -40,8 +63,8 @@ export default function PostPage() {
 
   return (
     <div className={`min-h-screen bg-white transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-      {/* Header with back button */}
-      <header className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-500 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
+      {/* Header with back button - hides on scroll down, shows on scroll up */}
+      <header className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
           <button
             onClick={() => router.push('/playground')}
@@ -67,7 +90,7 @@ export default function PostPage() {
       </div>
 
       {/* Content */}
-      <article className={`max-w-3xl mx-auto px-6 -mt-20 relative z-10 transition-all duration-500 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+      <article className={`max-w-3xl mx-auto px-6 -mt-20 relative z-10 transition-all duration-500 delay-300 pt-16 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
         {/* Meta info */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
           <span className="px-3 py-1 bg-black text-white rounded-full text-xs font-medium">
@@ -205,8 +228,8 @@ export default function PostPage() {
           </ReactMarkdown>
         </div>
 
-        {/* Footer */}
-        <footer className="border-t border-gray-200 py-8 mb-16">
+        {/* Back to posts link */}
+        <div className="border-t border-gray-200 py-8 mb-8">
           <button
             onClick={() => router.push('/playground')}
             className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
@@ -214,8 +237,11 @@ export default function PostPage() {
             <ArrowLeft className="w-4 h-4" />
             Back to all posts
           </button>
-        </footer>
+        </div>
       </article>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
