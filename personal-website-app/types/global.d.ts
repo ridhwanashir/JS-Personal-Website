@@ -85,6 +85,8 @@ export interface Post {
   status?: string;
   url?: string;
   github?: string;
+  // Article-specific fields
+  mediumUrl?: string; // Link to Medium article
 }
 
 // Layout props

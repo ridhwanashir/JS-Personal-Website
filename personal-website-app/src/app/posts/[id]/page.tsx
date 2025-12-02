@@ -130,9 +130,29 @@ export default function PostPage() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl text-gray-600 mb-8">
+        <p className="text-xl text-gray-600 mb-6">
           {post.subtitle}
         </p>
+
+        {/* Read on Medium button (for articles) */}
+        {post.mediumUrl && (
+          <a
+            href={post.mediumUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors mb-8"
+          >
+            <svg 
+              className="w-4 h-4" 
+              fill="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+            </svg>
+            Read on Medium
+          </a>
+        )}
 
         {/* Technologies (for projects) */}
         {post.technologies && post.technologies.length > 0 && (
@@ -158,23 +178,31 @@ export default function PostPage() {
             remarkPlugins={[remarkGfm]}
             components={{
               // Custom image rendering for Medium-like inline images
-              img: ({ src, alt }) => (
-                <figure className="my-8">
-                  <div className="relative w-full aspect-video rounded-lg overflow-hidden">
-                    <Image
-                      src={src || ''}
-                      alt={alt || ''}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  {alt && (
-                    <figcaption className="text-center text-sm text-gray-500 mt-2">
-                      {alt}
-                    </figcaption>
-                  )}
-                </figure>
-              ),
+              img: ({ src, alt }) => {
+                // Use object-contain for charts/screenshots that shouldn't be cropped
+                const shouldContain = alt?.toLowerCase().includes('adjustment') || 
+                                     alt?.toLowerCase().includes('skus') ||
+                                     alt?.toLowerCase().includes('breakdown') ||
+                                     alt?.toLowerCase().includes('chart') ||
+                                     alt?.toLowerCase().includes('screenshot');
+                return (
+                  <figure className="my-8">
+                    <div className={`relative w-full rounded-lg overflow-hidden ${shouldContain ? 'aspect-auto min-h-[300px]' : 'aspect-video'}`}>
+                      <Image
+                        src={src || ''}
+                        alt={alt || ''}
+                        fill
+                        className={shouldContain ? 'object-contain' : 'object-cover'}
+                      />
+                    </div>
+                    {alt && (
+                      <figcaption className="text-center text-sm text-gray-500 mt-2">
+                        {alt}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              },
               // Custom heading styles
               h1: ({ children }) => (
                 <h1 className="text-3xl font-bold text-gray-900 mt-12 mb-6">{children}</h1>
@@ -212,6 +240,7 @@ export default function PostPage() {
                   className="text-blue-600 hover:text-blue-800 underline underline-offset-2"
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ color: 'black' }}
                 >
                   {children}
                 </a>

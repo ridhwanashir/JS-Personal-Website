@@ -47,7 +47,7 @@ export function AccordionExperience({ experiences, className = '', isVisible: ex
           <div
             key={index}
             className={`
-              relative overflow-hidden transition-all duration-500 ease-out
+              relative overflow-hidden transition-all duration-500 ease-in-out
               ${isExpanded 
                 ? 'bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl' 
                 : 'bg-black/80 border border-white/5 hover:border-white/10'
@@ -155,7 +155,7 @@ export function AccordionExperience({ experiences, className = '', isVisible: ex
             {/* Expanded Content */}
             <div
               className={`
-                overflow-hidden transition-all duration-500 ease-out
+                overflow-hidden transition-all duration-500 ease-in-out
                 ${isExpanded ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}
               `}
             >
