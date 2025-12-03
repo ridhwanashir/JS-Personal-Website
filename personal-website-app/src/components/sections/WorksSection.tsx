@@ -54,8 +54,8 @@ export function WorksSection({ worksRef }: WorksSectionProps) {
                       src={logo.src}
                       alt={logo.alt}
                       width={80}
-                      height={80}
-                      className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 hover:scale-125 transition-all duration-300 grayscale hover:grayscale-0"
+                      height={60}
+                      className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 hover:scale-105 transition-all duration-300 grayscale hover:grayscale-0"
                     />
                   </a>
                 </div>
@@ -81,8 +81,8 @@ export function WorksSection({ worksRef }: WorksSectionProps) {
                       src={logo.src}
                       alt=""
                       width={80}
-                      height={80}
-                      className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 hover:scale-125 transition-all duration-300 grayscale hover:grayscale-0"
+                      height={60}
+                      className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 hover:scale-105 transition-all duration-300 grayscale hover:grayscale-0"
                     />
                   </a>
                 </div>
@@ -98,7 +98,7 @@ export function WorksSection({ worksRef }: WorksSectionProps) {
           className="relative h-72 sm:h-80 md:h-96 flex items-center justify-center overflow-hidden rounded-lg group cursor-pointer"
           onClick={() => handleWorkItemClick('Data & ML')}
         >
-          <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform group-hover:scale-110">
+          <div className="absolute inset-0 transition-transform duration-500 ease-in-out transform group-hover:scale-105">
             <Image src={worksbg_data_ml} alt="background data and ml" className="w-full h-full object-cover" />
           </div>
           <div className="relative inset-0 flex items-center justify-center w-full h-full">
