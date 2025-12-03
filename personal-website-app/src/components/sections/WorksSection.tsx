@@ -33,52 +33,61 @@ export function WorksSection({ worksRef }: WorksSectionProps) {
         </h3>
         
         <div className="relative overflow-hidden mb-8 sm:mb-12 lg:mb-16">
-          {/* Fade overlay for smooth edges */}
-          <div className="absolute left-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-r from-black to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-l from-black to-transparent z-10"></div>
+          {/* Fade overlay for smooth edges - pointer-events-none allows clicking through */}
+          <div className="absolute left-0 top-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
           
-          {/* Scrolling logos container */}
-          <div className="flex animate-scroll-left">
-            {/* First set of logos */}
-            {companyLogos.map((logo, index) => (
-              <div key={`first-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
-                <a 
-                  href={logo.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block cursor-pointer"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={80}
-                    height={80}
-                    className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-                  />
-                </a>
-              </div>
-            ))}
-            {/* Duplicate set for seamless loop */}
-            {companyLogos.map((logo, index) => (
-              <div key={`second-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
-                <a 
-                  href={logo.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block cursor-pointer"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={80}
-                    height={80}
-                    className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-                  />
-                </a>
-              </div>
-            ))}
+          {/* Marquee container - continuous animation */}
+          <div className="flex">
+            {/* First set of logos - shrink-0 prevents flex shrinking, animate-marquee moves it */}
+            <div className="flex shrink-0 animate-marquee">
+              {companyLogos.map((logo, index) => (
+                <div key={`first-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
+                  <a 
+                    href={logo.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={80}
+                      height={80}
+                      className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 hover:scale-125 transition-all duration-300 grayscale hover:grayscale-0"
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
+            
+            {/* Duplicate set - identical to first, creates seamless infinite loop */}
+            <div 
+              className="flex shrink-0 animate-marquee"
+              aria-hidden="true"
+            >
+              {companyLogos.map((logo, index) => (
+                <div key={`second-${index}`} className="flex-shrink-0 mx-8 sm:mx-12 lg:mx-16">
+                  <a 
+                    href={logo.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                    onClick={(e) => e.stopPropagation()}
+                    tabIndex={-1}
+                  >
+                    <Image
+                      src={logo.src}
+                      alt=""
+                      width={80}
+                      height={80}
+                      className="h-12 sm:h-16 lg:h-20 w-40 object-contain opacity-70 hover:opacity-100 hover:scale-125 transition-all duration-300 grayscale hover:grayscale-0"
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
