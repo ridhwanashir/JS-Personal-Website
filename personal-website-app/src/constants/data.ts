@@ -300,92 +300,1389 @@ I found that in other cases, sometimes people forget to turn off their billing a
 > I hope this writing can help you, and don't give up on learning!`
   },
   {
-    id: "ai-powered-data-analytics-platform",
+    id: "stock-sentiment-analysis-bmri",
     type: "project",
-    title: "AI-Powered Data Analytics Platform",
-    subtitle: "Machine learning platform for predictive analytics",
+    title: "Stock Price Sentiment Analysis (Bank Mandiri)",
+    subtitle: "The Influence of Sentiment on the Movement of Bank Mandiri (BMRI) Stock Price with Word2Vec Feature Expansion and NBSVM Classifier",
     image: "/project_x.jpg",
     category: "Data & ML",
-    date: "2024",
+    date: "2020",
+    readTime: "8 min read",
+    technologies: ["Python", "Word2Vec", "NBSVM", "TF-IDF", "Web Scraping", "NLP"],
+    status: "Completed",
+    content: `# Stock Price Sentiment Analysis (Bank Mandiri)
+
+This academic research project analyzes the correlation between social media/news sentiment and stock price movements for Bank Mandiri (BMRI), one of Indonesia's largest state-owned banks.
+
+## Research Overview
+
+The study investigates whether public sentiment extracted from news articles and social media can predict or explain stock price fluctuations. This is a fundamental question in computational finance that bridges natural language processing with quantitative analysis.
+
+## Methodology
+
+The research pipeline consists of several sophisticated stages:
+
+### 1. Data Collection
+- **Web Crawling**: Automated collection of news articles and social media posts mentioning Bank Mandiri
+- **Stock Data**: Historical BMRI stock prices from the Indonesia Stock Exchange (IDX)
+- **Dataset Size**: 21,684 sentiment-labeled data points
+
+### 2. Text Processing Pipeline
+\`\`\`
+Crawling Data → Dataset → Preprocessing → Feature Extraction → Classification → Evaluation
+\`\`\`
+
+### 3. Feature Engineering
+- **TF-IDF Vectorization**: Converting text to numerical features
+- **Word2Vec Expansion**: Using word embeddings to expand vocabulary and reduce out-of-vocabulary errors
+- **Feature Fusion**: Combining traditional and neural features
+
+### 4. Classification
+The **Naïve Bayes-Support Vector Machine (NBSVM)** classifier was chosen for its effectiveness in text classification tasks, combining the probabilistic foundation of Naive Bayes with the discriminative power of SVMs.
+
+## Key Findings
+
+### Weak Correlation Discovery
+One of the most significant findings was the **weak relationship between sentiment and immediate stock price movements**. This challenges the common assumption that positive news directly leads to price increases.
+
+### Time-Shifting Effect
+The analysis revealed a **time-shifting phenomenon** where sentiment impact on stock prices is not immediate but delayed. This suggests that:
+- Market participants don't react instantaneously to sentiment
+- There may be information processing delays
+- Other market factors often dominate short-term price movements
+
+### Model Performance
+The classification model achieved an accuracy of **70.42%**, demonstrating reasonable predictive capability for sentiment classification despite the challenges of:
+- **Tiny Dataset**: Only 21,684 labeled sentiments
+- **Uneven Data Distribution**: Imbalanced class representation
+- **Vocabulary Variations**: Indonesian language complexities
+
+## Technical Challenges
+
+### Data Quality Issues
+- Limited labeled data availability
+- Noise in social media text
+- Sarcasm and context-dependent sentiment
+
+### Feature Space
+The Word2Vec expansion helped address vocabulary mismatch problems, reducing errors when encountering new or misspelled words.
+
+## System Architecture
+
+The solution integrates multiple components:
+- NBSVM classification engine
+- TF-IDF feature extraction
+- Word2Vec embedding layer for vocabulary expansion
+- Evaluation metrics pipeline
+
+---
+
+*This project was completed as part of undergraduate research. Full thesis and detailed methodology available upon request.*
+
+**[🔗 More details coming soon...]**`
+  },
+  {
+    id: "indonesian-stock-index-prediction-sbu-lstm",
+    type: "project",
+    title: "Indonesian Stock Index Prediction (SBU-LSTM)",
+    subtitle: "IHSG Price Prediction using Stacked Bidirectional Unidirectional LSTM with GDELT News Sentiment",
+    image: "/project_x.jpg",
+    category: "Data & ML",
+    date: "2022",
+    readTime: "10 min read",
+    technologies: ["TensorFlow", "Python", "BigQuery", "GDELT", "LSTM", "Deep Learning"],
+    status: "Completed",
+    content: `# Indonesian Stock Index Prediction (SBU-LSTM)
+
+A master's thesis project focused on predicting the Indonesian Composite Stock Index (IHSG) using advanced deep learning architectures combined with global news sentiment analysis.
+
+## Research Motivation
+
+### The Problem
+Transactional decisions in stock markets are often driven by **emotion rather than rational analysis**, causing excessive market volatility. This emotional trading behavior creates inefficiencies that sophisticated models might be able to exploit or at least predict.
+
+### Research Question
+Can we improve stock index predictions by incorporating global news sentiment as an additional feature alongside traditional technical indicators?
+
+## Technical Approach
+
+### Model Architecture: SBU-LSTM
+
+The **Stacked Bidirectional Unidirectional Long Short-Term Memory** network was designed to:
+- Capture temporal dependencies in both directions (bidirectional layers)
+- Stack multiple LSTM layers for hierarchical feature learning
+- Handle the sequential nature of time-series data
+
+### Data Sources
+
+#### 1. GDELT Event Dataset
+The **Global Database of Events, Language, and Tone (GDELT)** provides:
+- Real-time monitoring of global news
+- Sentiment scores for events
+- Geographic and thematic classification
+- Historical data accessed via **Google BigQuery**
+
+#### 2. IHSG Historical Data
+- Daily opening, closing, high, and low prices
+- Trading volume
+- Technical indicators
+
+## Processing Pipeline
+
+\`\`\`
+Data Preparation → Preprocessing → Data Splitting → Model Training → Evaluation
+\`\`\`
+
+### Feature Engineering
+Multiple sentiment variables were extracted and tested:
+- **4 Sentiment Variables**: Comprehensive sentiment features
+- **Tone Change**: Relative sentiment shifts
+- **Optimism Score**: Positive sentiment indicator
+- Combined and individual variable experiments
+
+## Experimental Results
+
+The model was evaluated using standard regression metrics:
+
+| Experiment | MAE | RMSE | MAPE |
+|------------|-----|------|------|
+| 4 Sentiment Variables | ... | ... | ... |
+| Only Tone Change | ... | ... | ... |
+| **Only Optimism** | ... | ... | **0.800%** |
+
+### Key Finding
+The **"Only Optimism"** variable experiment yielded the best performance with a MAPE of **0.800%**, suggesting that positive sentiment is the most predictive sentiment dimension for index movements.
+
+## Technical Stack
+
+- **TensorFlow/Keras**: Deep learning framework
+- **Python**: Primary programming language
+- **Google BigQuery**: GDELT data access and processing
+- **Pandas/NumPy**: Data manipulation
+- **Matplotlib/Seaborn**: Visualization
+
+## Implications
+
+This research demonstrates that:
+1. News sentiment can enhance traditional technical analysis
+2. Not all sentiment features are equally predictive
+3. Deep learning architectures can effectively model complex market dynamics
+
+---
+
+*This project was completed as part of master's thesis research at Telkom University. Full thesis available upon request.*
+
+**[🔗 More details coming soon...]**`
+  },
+  {
+    id: "coca-cola-logo-classification",
+    type: "project",
+    title: "Coca-Cola Logo Classification",
+    subtitle: "Computer vision model to detect Coca-Cola logos in images using transfer learning",
+    image: "/project_x.jpg",
+    category: "Data & ML",
+    date: "2021",
     readTime: "5 min read",
-    technologies: ["Python", "TensorFlow", "React", "AWS"],
-    status: "In Development",
-    content: `# AI-Powered Data Analytics Platform
+    technologies: ["TensorFlow", "InceptionV3", "Python", "Transfer Learning", "Computer Vision"],
+    status: "Completed",
+    content: `# Coca-Cola Logo Classification
 
-A comprehensive machine learning platform designed for predictive analytics, enabling businesses to make data-driven decisions with confidence.
+A computer vision project designed to detect and classify whether an image contains a Coca-Cola logo, demonstrating the power of transfer learning for brand recognition tasks.
 
-## Overview
+## Project Goal
 
-This platform leverages cutting-edge machine learning algorithms to provide actionable insights from complex datasets. Built with scalability in mind, it handles everything from small business analytics to enterprise-level data processing.
+Build a binary classifier that can accurately determine:
+- **Coca-Cola**: Image contains the Coca-Cola logo
+- **Not Coca-Cola**: Image does not contain the logo
 
-## Key Features
+This type of model has practical applications in:
+- Brand monitoring on social media
+- Advertising effectiveness measurement
+- Retail shelf analysis
+- Trademark infringement detection
 
-- **Predictive Modeling**: Advanced algorithms for forecasting trends
-- **Real-time Analytics**: Live dashboard with instant updates
-- **Custom Visualizations**: Interactive charts and graphs
-- **API Integration**: Seamless connection with existing systems
+## Technical Approach
 
-## Tech Stack
+### Transfer Learning with InceptionV3
 
-The platform is built using modern technologies:
-- **Python** for backend processing and ML models
-- **TensorFlow** for deep learning capabilities
-- **React** for the frontend dashboard
-- **AWS** for cloud infrastructure and scaling
+Rather than training a deep neural network from scratch (which requires massive datasets and computational resources), this project leverages **transfer learning**:
 
-*More details coming soon as the project progresses.*`
+- **Base Model**: InceptionV3 pre-trained on ImageNet
+- **Weights**: Using ImageNet weights as starting point
+- **Fine-tuning**: Adapting the model to our specific logo detection task
+
+### Why InceptionV3?
+
+- Proven performance on image classification tasks
+- Efficient architecture with inception modules
+- Good balance between accuracy and computational cost
+- Pre-trained on 1000+ object categories
+
+## Implementation Details
+
+### Data Pipeline
+\`\`\`python
+# ImageDataGenerator for data augmentation and scaling
+datagen = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True,
+    validation_split=0.2
+)
+\`\`\`
+
+### Model Architecture
+- InceptionV3 base (frozen initial layers)
+- Custom classification head
+- Binary output with sigmoid activation
+
+### Training Configuration
+- Optimizer: Adam
+- Loss: Binary Crossentropy
+- Early stopping with patience
+
+## Results
+
+### Performance Metrics
+Training was remarkably efficient due to transfer learning:
+
+| Metric | Value |
+|--------|-------|
+| Training Accuracy | **95%** |
+| Validation Accuracy | **94%** |
+| Epochs to Convergence | **2** |
+
+### Key Observations
+- The model converged extremely quickly (only 2 epochs!)
+- High validation accuracy indicates good generalization
+- Transfer learning dramatically reduced training time
+
+## Dataset
+
+The training data includes:
+- Various Coca-Cola logo images (different angles, lighting, contexts)
+- Negative examples (other beverages, random objects, similar red logos)
+- Data augmentation to increase variety
+
+## Challenges & Learnings
+
+### Challenges
+- Distinguishing similar red logos (Pepsi variations, generic cola brands)
+- Handling partial logo visibility
+- Various logo orientations and scales
+
+### Solutions
+- Robust data augmentation
+- Diverse training examples
+- Transfer learning providing strong feature extractors
+
+---
+
+*This project demonstrates practical application of transfer learning for brand recognition.*
+
+**[🔗 More details coming soon...]**`
   },
   {
-    id: "enterprise-software-solution",
+    id: "hotel-recommendation-deepfm",
     type: "project",
-    title: "Enterprise Software Solution",
-    subtitle: "Full-stack application for business process automation",
+    title: "Hotel Recommendation Optimization",
+    subtitle: "User-based hotel recommendation system using DeepFM for Bangkit Academy x Traveloka",
     image: "/project_x.jpg",
-    category: "Software Engineering",
-    date: "2024",
-    readTime: "4 min read",
-    technologies: ["Node.js", "React", "PostgreSQL", "Docker"],
-    status: "In Development",
-    content: `# Enterprise Software Solution
+    category: "Data & ML",
+    date: "2022",
+    readTime: "7 min read",
+    technologies: ["TensorFlow", "DeepFM", "Python", "Collaborative Filtering", "Content-Based Filtering"],
+    status: "Completed",
+    content: `# Hotel Recommendation Optimization
 
-A full-stack application designed to automate and streamline business processes, reducing manual work and increasing operational efficiency.
+A capstone project for **Bangkit Academy** in collaboration with **Traveloka**, building a sophisticated hotel recommendation system that combines multiple recommendation strategies.
 
-## Project Goals
+## Project Overview
 
-- Automate repetitive business tasks
-- Provide real-time process monitoring
-- Enable seamless team collaboration
-- Ensure data security and compliance
+### The Challenge
+Travelers often struggle to find hotels that match their preferences among thousands of options. Traditional filtering (by price, rating, location) doesn't capture the nuanced preferences that make a hotel truly suitable for a specific user.
 
-## Architecture
+### Our Solution
+A hybrid recommendation system utilizing **DeepFM (Deep Factorization Machines)** that learns complex user-hotel interactions to provide personalized recommendations.
 
-Built on a microservices architecture for maximum flexibility and scalability.
+## Technical Architecture
 
-*More details coming soon as the project progresses.*`
+### Recommendation Strategies
+
+#### 1. Content-Based Filtering
+Recommends hotels based on **hotel attributes and facilities**:
+- Amenities (pool, gym, spa, wifi)
+- Room features
+- Location characteristics
+- Price range
+
+#### 2. Collaborative Filtering
+Leverages **user similarities** to recommend hotels:
+- Users who liked similar hotels
+- Booking patterns
+- Rating behaviors
+
+#### 3. DeepFM: The Best of Both Worlds
+DeepFM combines:
+- **FM Component**: Captures low-order feature interactions (like traditional factorization machines)
+- **Deep Component**: Learns high-order feature interactions through neural networks
+
+This hybrid approach outperforms both individual strategies.
+
+## Data Sources
+
+### 1. Datafiniti Hotel Review Datasets
+- User reviews and ratings
+- Hotel metadata
+- Geographic information
+
+### 2. Goibibo Indian Hotels Datasets
+- Additional hotel features
+- Pricing information
+- Booking patterns
+
+### Data Pipeline
+\`\`\`
+Review Dataset ──┐
+                 ├──→ Data Merging ──→ Feature Engineering ──→ Final Hotel Dataset
+User Dataset ────┤
+                 │
+Hotel Dataset ───┘
+\`\`\`
+
+## Model Training
+
+### Feature Engineering
+- User embedding features
+- Hotel embedding features
+- Cross features (user-hotel interactions)
+- Contextual features (seasonality, booking time)
+
+### Training Process
+- Train/validation/test split
+- Early stopping
+- Hyperparameter tuning
+
+## Application Prototype
+
+### Mobile UI Features
+- Personalized hotel recommendations
+- Hotel listing with prices and ratings
+- Detailed hotel information
+- Booking integration
+
+### User Experience
+- Seamless browsing experience
+- Real-time recommendations
+- Filter and sort options
+
+## Results & Impact
+
+The DeepFM-based system showed significant improvements over baseline methods:
+- Better personalization
+- Higher user engagement
+- Improved booking conversion
+
+---
+
+*This project was completed as the capstone for Bangkit Academy 2022, a collaboration between Google, Tokopedia, Gojek, and Traveloka.*
+
+**[🔗 More details coming soon...]**`
   },
   {
-    id: "mobile-app-development",
+    id: "data-visualization-exercises",
     type: "project",
-    title: "Mobile App Development",
-    subtitle: "Cross-platform mobile application with real-time features",
+    title: "Data Visualization Exercises",
+    subtitle: "Collection of visualization projects exploring various datasets with Python",
     image: "/project_x.jpg",
-    category: "Software Engineering",
-    date: "2024",
-    readTime: "3 min read",
-    technologies: ["React Native", "Firebase", "TypeScript"],
-    status: "In Development",
-    content: `# Mobile App Development
+    category: "Data & ML",
+    date: "2021",
+    readTime: "5 min read",
+    technologies: ["Python", "Matplotlib", "Seaborn", "Plotly", "GeoPandas", "WordCloud"],
+    status: "Completed",
+    content: `# Data Visualization Exercises
 
-A cross-platform mobile application featuring real-time synchronization and modern UI/UX design.
+A collection of data visualization projects demonstrating various techniques for exploring and presenting data insights using Python.
+
+## Projects Overview
+
+### 1. Video Game Sales WordCloud
+**Dataset**: Global video game sales data
+
+Visualizing the most popular games through word cloud representation:
+- Games like "Wii Sports" and "Super Mario Bros" prominently featured
+- Size represents global sales volume
+- Color coding by genre or platform
+
+| Rank | Name | Global Sales |
+|------|------|--------------|
+| 1 | Wii Sports | 82.74M |
+| 2 | Super Mario Bros | 40.24M |
+| 3 | Mario Kart Wii | 35.82M |
+
+### 2. COVID-19 Active Cases Geoplot
+**Dataset**: Indonesian COVID-19 data (May 2, 2021)
+
+Geographic visualization of active COVID-19 cases across Indonesia:
+- Color-coded provinces by case count
+- Interactive tooltips with detailed statistics
+- Choropleth map using GeoPandas
+
+### 3. Game Genre Distribution
+**Dataset**: Video game sales by genre
+
+Bar chart analysis showing:
+- **Action**: Most popular genre
+- **Sports**: Second highest
+- **Shooter**: Third position
+
+Insights into gaming industry trends and consumer preferences.
+
+### 4. Interactive Stock Price Visualization
+**Dataset**: NIKKEI stock index
+
+Interactive line graph features:
+- Adjusted Close price over time
+- Zoom and pan capabilities
+- Hover details for specific dates
+- Built with Plotly for interactivity
+
+## Technical Stack
+
+\`\`\`python
+# Core visualization libraries
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import geopandas as gpd
+from wordcloud import WordCloud
+\`\`\`
+
+## Visualization Techniques Demonstrated
+
+### Static Visualizations
+- Bar charts for categorical comparisons
+- Line plots for time series
+- Scatter plots for correlations
+- Word clouds for text data
+
+### Geographic Visualizations
+- Choropleth maps
+- Point maps
+- Heat maps on geographic data
+
+### Interactive Visualizations
+- Zoomable charts
+- Hover interactions
+- Dynamic filtering
+- Animated transitions
+
+## Key Learnings
+
+1. **Choose the right visualization** for the data type
+2. **Color theory** matters for readability
+3. **Interactivity** enhances exploration
+4. **Geographic context** adds meaning to location data
+
+---
+
+*These exercises were completed as part of data science coursework and personal learning.*
+
+**[🔗 More details coming soon...]**`
+  },
+  {
+    id: "weather-forecast-classification",
+    type: "project",
+    title: "Weather Forecast Classification",
+    subtitle: "Comparative study of ML algorithms for weather prediction (specifically snow forecasting)",
+    image: "/project_x.jpg",
+    category: "Data & ML",
+    date: "2021",
+    readTime: "6 min read",
+    technologies: ["Python", "Scikit-learn", "SVM", "Random Forest", "Logistic Regression", "KNN"],
+    status: "Completed",
+    content: `# Weather Forecast Classification
+
+A comparative study evaluating multiple machine learning algorithms for weather prediction, with a specific focus on snow forecasting.
+
+## Research Objective
+
+Determine which machine learning algorithm performs best for predicting weather conditions, particularly snowfall, using historical meteorological data.
+
+## Algorithms Compared
+
+### 1. Support Vector Machine (SVM)
+- Kernel-based classification
+- Effective for high-dimensional data
+- Robust to outliers
+
+### 2. Random Forest
+- Ensemble of decision trees
+- Built-in feature importance
+- Handles non-linear relationships
+
+### 3. Logistic Regression
+- Probabilistic classifier
+- Interpretable coefficients
+- Baseline comparison
+
+### 4. K-Nearest Neighbor (KNN)
+- Instance-based learning
+- No training phase
+- Sensitive to feature scaling
+
+### 5. Naive Bayes
+- Probabilistic approach
+- Fast training
+- Assumes feature independence
+
+### 6. Decision Tree
+- Rule-based classification
+- Highly interpretable
+- Prone to overfitting
+
+## Data Preprocessing
+
+### Steps Performed
+\`\`\`python
+# Preprocessing pipeline
+1. Handling duplicates
+2. Dropping null values
+3. Feature scaling (StandardScaler)
+4. Train-test split (80-20)
+\`\`\`
+
+### Features Used
+| Feature | Description |
+|---------|-------------|
+| SuhuMin | Minimum temperature |
+| SuhuMax | Maximum temperature |
+| Humidity | Relative humidity % |
+| WindSpeed | Wind speed (km/h) |
+| Pressure | Atmospheric pressure |
+| Visibility | Visibility distance |
+
+### Target Variable
+- Binary classification: Snow / No Snow
+
+## Experimental Results
+
+### Accuracy Comparison
+
+| Algorithm | Accuracy |
+|-----------|----------|
+| **SVM** | **~85.36%** |
+| Random Forest | ~84.2% |
+| Logistic Regression | ~82.1% |
+| KNN | ~80.5% |
+| Decision Tree | ~78.3% |
+| Naive Bayes | ~76.8% |
+
+### Key Findings
+
+1. **SVM achieved the highest accuracy** (~85.36%)
+2. **Random Forest** performed comparably well
+3. **Tree-based methods** showed overfitting tendencies
+4. **Feature scaling** significantly impacted KNN and SVM
+
+## Analysis
+
+### Why SVM Performed Best
+- Effective kernel transformation
+- Robust margin maximization
+- Handles feature interactions well
+
+### Feature Importance (Random Forest)
+1. Temperature (Min/Max) - highest importance
+2. Humidity - significant predictor
+3. Pressure - moderate importance
+4. WindSpeed - lower importance
+
+## Implementation
+
+\`\`\`python
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import cross_val_score
+
+# Best performing model
+svm_model = SVC(kernel='rbf', C=1.0)
+svm_model.fit(X_train, y_train)
+\`\`\`
+
+---
+
+*This project was completed as part of machine learning coursework.*
+
+**[🔗 More details coming soon...]**`
+  },
+  {
+    id: "realtime-hand-gesture-detection",
+    type: "project",
+    title: "Real-time Hand Gesture Detection",
+    subtitle: "Web-based computer vision application using TensorFlow.js for Rock-Paper-Scissors recognition",
+    image: "/project_x.jpg",
+    category: "Data & ML",
+    date: "2022",
+    readTime: "5 min read",
+    technologies: ["TensorFlow.js", "JavaScript", "Webcam API", "Computer Vision", "Transfer Learning"],
+    status: "Completed",
+    content: `# Real-time Hand Gesture Detection
+
+A web-based computer vision application that uses your webcam to train and recognize hand gestures in real-time, specifically for the classic Rock-Paper-Scissors game.
+
+## Project Overview
+
+### Concept
+Instead of using a pre-trained model, this application allows users to **train their own gesture recognition model directly in the browser**. This demonstrates the power of transfer learning and on-device machine learning.
+
+### Tech Stack
+- **TensorFlow.js**: Machine learning in the browser
+- **Webcam API**: Real-time video capture
+- **HTML/CSS/JavaScript**: Web interface
+
+## How It Works
+
+### 1. Training Phase
+Users train the model by capturing samples for each gesture:
+
+\`\`\`
+Rock ✊ → Capture 30+ samples
+Paper 🖐 → Capture 30+ samples  
+Scissors ✌ → Capture 30+ samples
+\`\`\`
+
+### 2. Model Training
+The neural network learns to distinguish between gestures:
+- Transfer learning from MobileNet base
+- Custom classification head
+- Training happens in-browser
+
+### 3. Inference Phase
+Real-time prediction with confidence scores:
+- Live webcam feed
+- Instant gesture recognition
+- Confidence bar visualization
+
+## User Interface
+
+### Training Panel
+- **Sample Counter**: Shows captured samples per class
+- **Capture Buttons**: One for each gesture
+- **Train Network**: Initiates model training
+- **Status Indicator**: Training progress
+
+### Inference Panel
+- **Live Video Feed**: Webcam stream
+- **Prediction Display**: Current gesture
+- **Confidence Bars**: Probability for each class
+
+## Example Predictions
+
+| Gesture | Prediction | Confidence |
+|---------|------------|------------|
+| 🖐 | Paper | 94% |
+| ✌ | Scissors | 91% |
+| ✊ | Rock | 89% |
+
+## Technical Details
+
+### Transfer Learning Approach
+\`\`\`javascript
+// Using MobileNet as feature extractor
+const mobilenet = await tf.loadLayersModel('mobilenet/model.json');
+const layer = mobilenet.getLayer('conv_pw_13_relu');
+const truncatedModel = tf.model({
+  inputs: mobilenet.inputs,
+  outputs: layer.output
+});
+\`\`\`
+
+### Real-time Processing
+- Frame capture at 30 FPS
+- Preprocessing per frame
+- Async prediction pipeline
+- Smooth confidence updates
 
 ## Features
 
-- Cross-platform compatibility (iOS & Android)
-- Real-time data synchronization
-- Push notifications
-- Offline-first architecture
+✅ **No server required** - runs entirely in browser
+✅ **Privacy-first** - data never leaves device
+✅ **Customizable** - train with your own gestures
+✅ **Real-time** - instant feedback
+✅ **Educational** - learn ML concepts hands-on
 
-*More details coming soon as the project progresses.*`
+## Challenges Solved
+
+### Lighting Variations
+- Data augmentation during capture
+- Multiple samples in different conditions
+
+### Hand Position Variations
+- Encourage varied sample capture
+- Robust feature learning
+
+### Performance
+- Optimized TensorFlow.js operations
+- Efficient webcam handling
+
+---
+
+*This project demonstrates client-side machine learning for interactive applications.*
+
+**[🔗 Try the demo coming soon...]**`
+  },
+  {
+    id: "axrail-customer365-chatbot",
+    type: "project",
+    title: "Axrail Customer365 (WhatsApp Chatbot)",
+    subtitle: "Enterprise-grade CRM and AI chatbot solution leveraging LLM for customer engagement",
+    image: "/project_x.jpg",
+    category: "Software Engineering",
+    date: "2023",
+    readTime: "6 min read",
+    technologies: ["Python", "LangChain", "OpenAI GPT", "AWS Lambda", "DynamoDB", "WhatsApp API"],
+    status: "Completed",
+    content: `# Axrail Customer365 (WhatsApp Chatbot)
+
+An enterprise-grade CRM and AI-powered chatbot solution designed to help businesses "Win Your Customers Back with Data" through intelligent customer engagement on WhatsApp.
+
+## Role & Contribution
+
+**Position**: AI/Data Engineer at Axrail Pte Ltd
+
+Built the core AI engine powering the chatbot's natural language understanding and response generation capabilities.
+
+## Solution Overview
+
+### Vision
+Transform customer service through an AI-first approach:
+- **24/7 Availability**: Always-on customer support
+- **Multi-language**: Respond in customer's preferred language
+- **Intelligent Routing**: Understand intent and take action
+- **Data-Driven**: Leverage customer data for personalization
+
+## Technical Architecture
+
+### System Flow
+\`\`\`
+Customer Message (WhatsApp)
+        ↓
+OpenAI Embedding Model
+        ↓
+Vector Search (Context Retrieval)
+        ↓
+DynamoDB (History/Context)
+        ↓
+GPT Completion Model
+        ↓
+Final Answer → Customer
+\`\`\`
+
+### Key Components
+
+#### 1. Intent Detection
+Using LangChain for sophisticated intent classification:
+- Order inquiries
+- Product questions
+- Complaint handling
+- Voucher requests
+
+#### 2. Context Management
+- **Conversation History**: Stored in DynamoDB
+- **Customer Profile**: Enriched with CRM data
+- **Session Memory**: Maintains conversation flow
+
+#### 3. Function Calling
+Specific intents trigger AWS Lambda functions:
+
+| Intent | Action |
+|--------|--------|
+| "Get Voucher" | → Lambda: voucher_service |
+| "Check Order" | → Lambda: order_lookup |
+| "Store Hours" | → Lambda: store_info |
+
+## Features
+
+### Multi-language Support
+- Automatic language detection
+- Response in user's language
+- Seamless language switching
+
+### Custom Functions
+\`\`\`python
+# Example: Voucher retrieval function
+def get_voucher(customer_id: str) -> dict:
+    # Query DynamoDB for available vouchers
+    # Return personalized offers
+    pass
+\`\`\`
+
+### Intelligent Responses
+- Context-aware answers
+- Personality customization
+- Escalation to human agents
+
+## Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| LLM Framework | LangChain |
+| AI Model | OpenAI GPT |
+| Compute | AWS Lambda |
+| Database | Amazon DynamoDB |
+| Messaging | WhatsApp Business API |
+| Embeddings | OpenAI Ada |
+
+## Business Impact
+
+- **Response Time**: <5 seconds average
+- **Availability**: 24/7/365
+- **Languages**: 10+ supported
+- **Customer Satisfaction**: Improved engagement
+
+---
+
+*Developed during tenure at Axrail Pte Ltd, Kuala Lumpur.*
+
+**[🔗 More details available upon request...]**`
+  },
+  {
+    id: "axrail-question-generation",
+    type: "project",
+    title: "Axrail Question Generation",
+    subtitle: "EdTech MVP for generating educational questions from PDF documents using LLM",
+    image: "/project_x.jpg",
+    category: "Software Engineering",
+    date: "2023",
+    readTime: "5 min read",
+    technologies: ["Python", "LangChain", "OpenAI GPT", "AWS", "PDF Processing"],
+    status: "Completed",
+    content: `# Axrail Question Generation
+
+An EdTech MVP (Minimum Viable Product) designed to automatically generate educational questions from uploaded PDF documents, leveraging the power of Large Language Models.
+
+## Project Overview
+
+### The Problem
+Teachers and educators spend countless hours creating quizzes and assessments. Manual question creation is:
+- Time-consuming
+- Repetitive
+- Often inconsistent in difficulty
+
+### Our Solution
+An AI-powered system that:
+- Scans PDF documents (textbooks, articles, notes)
+- Extracts key concepts
+- Generates relevant questions automatically
+- Allows difficulty customization
+
+## Key Features
+
+### 1. PDF Upload & Processing
+Users can upload source materials:
+- Textbooks
+- Research papers
+- Course notes
+- Study guides
+
+**Example sources**:
+- Biology texts (cell structure, genetics)
+- History materials (world events, timelines)
+- Science documents (physics, chemistry)
+
+### 2. Configuration Options
+
+| Setting | Options |
+|---------|---------|
+| Question Outline | Free text keywords |
+| Number of Questions | 5, 10, 20, custom |
+| Difficulty Level | Easy, Intermediate, Hard |
+| Question Type | MCQ, True/False, Short Answer |
+
+### 3. Intelligent Generation
+
+\`\`\`
+Upload PDF → Extract Text → Identify Topics → Generate Questions → Review & Edit
+\`\`\`
+
+## Example Output
+
+### Input: Biology Textbook
+**Topic**: Cell Organelles
+**Difficulty**: Intermediate
+
+### Generated Questions:
+
+**Q1**: Which organelle is responsible for producing ATP, the energy currency of the cell?
+- A) Nucleus
+- B) Mitochondria ✓
+- C) Ribosome
+- D) Golgi apparatus
+
+**Q2**: What is the primary function of the rough endoplasmic reticulum?
+- A) Lipid synthesis
+- B) Protein synthesis ✓
+- C) Energy production
+- D) Waste disposal
+
+## Technical Architecture
+
+### Processing Pipeline
+\`\`\`python
+# Simplified flow
+pdf_text = extract_text(uploaded_pdf)
+chunks = split_into_chunks(pdf_text)
+embeddings = create_embeddings(chunks)
+relevant_context = retrieve_context(keywords, embeddings)
+questions = generate_questions(relevant_context, difficulty, count)
+\`\`\`
+
+### Tech Stack
+- **Python**: Core application
+- **LangChain**: LLM orchestration
+- **OpenAI GPT**: Question generation
+- **AWS**: Cloud infrastructure
+- **PDF Libraries**: Text extraction
+
+## User Interface
+
+### Upload Panel
+- Drag-and-drop PDF upload
+- File list management
+- Source material preview
+
+### Configuration UI
+- Keyword input field
+- Question count selector
+- Difficulty toggles (Easy/Intermediate/Hard)
+- Question type selection
+
+### Output Panel
+- Generated questions display
+- Correct answer highlighting
+- Export options (PDF, Word, CSV)
+
+## Applications
+
+- **Schools**: Quiz generation for teachers
+- **Universities**: Exam preparation
+- **Corporate Training**: Assessment creation
+- **Self-study**: Practice question generation
+
+---
+
+*Developed during tenure at Axrail Pte Ltd as an EdTech MVP.*
+
+**[🔗 More details available upon request...]**`
+  },
+  {
+    id: "timesheet-project-management-system",
+    type: "project",
+    title: "Timesheet & Project Management System",
+    subtitle: "Cloud-based automation system for employee time tracking and report generation",
+    image: "/project_x.jpg",
+    category: "Software Engineering",
+    date: "2023",
+    readTime: "6 min read",
+    technologies: ["Google Apps Script", "Google Drive API", "AWS Lambda", "DynamoDB", "Google Sheets"],
+    status: "Completed",
+    content: `# Timesheet & Project Management System
+
+A cloud-based automation system designed to streamline employee time tracking, project management, and automated report generation, improving resource allocation efficiency by 50%.
+
+## Project Overview
+
+### The Challenge
+Manual timesheet management leads to:
+- Delayed reporting
+- Data entry errors
+- Inconsistent formats
+- Difficult resource allocation
+- Time-consuming reconciliation
+
+### Our Solution
+An integrated system connecting Google Workspace with AWS services for seamless automation.
+
+## System Architecture
+
+### Data Flow
+\`\`\`
+Project Manager / Employees
+        ↓
+Google Sheets (Timesheets)
+        ↓
+Apps Script (Automation)
+        ↓
+Google Drive API (File Management)
+        ↓
+AWS Lambda (Processing)
+        ↓
+Amazon DynamoDB (Storage)
+        ↓
+Automated Reports
+\`\`\`
+
+### File Organization
+
+\`\`\`
+📁 Project Folder
+├── 📁 Timesheets
+│   ├── Week_01_2023.xlsx
+│   ├── Week_02_2023.xlsx
+│   └── ...
+├── 📁 Reports
+│   ├── Monthly_Summary.pdf
+│   └── Resource_Allocation.pdf
+└── 📁 Invoices
+    ├── Client_A_Invoice.pdf
+    └── Client_B_Invoice.pdf
+\`\`\`
+
+## Features
+
+### 1. Automated Timesheet Collection
+- Employees submit via Google Sheets
+- Validation rules enforce data quality
+- Automatic deadline reminders
+
+### 2. Project Tracking
+- Real-time project hours
+- Budget vs. actual comparison
+- Resource utilization metrics
+
+### 3. Report Generation
+- Weekly summaries
+- Monthly analytics
+- Client invoices
+- Resource allocation reports
+
+### 4. Integration Points
+| System | Purpose |
+|--------|---------|
+| Google Sheets | Data entry & storage |
+| Google Drive | File organization |
+| Apps Script | Automation logic |
+| AWS Lambda | Backend processing |
+| DynamoDB | Persistent storage |
+
+## Technical Implementation
+
+### Google Apps Script
+\`\`\`javascript
+function onTimesheetSubmit(e) {
+  // Validate submission
+  // Store in DynamoDB
+  // Trigger report update
+  // Send confirmation
+}
+\`\`\`
+
+### AWS Lambda Functions
+- **ProcessTimesheet**: Validates and stores data
+- **GenerateReport**: Creates PDF reports
+- **SendReminders**: Notifies pending submissions
+
+### DynamoDB Schema
+- **Projects**: Project metadata
+- **Timesheets**: Individual submissions
+- **Employees**: User information
+- **Reports**: Generated reports
+
+## Business Impact
+
+### Efficiency Gains
+- **50% improvement** in resource allocation
+- **Automated** report generation
+- **Real-time** project visibility
+- **Reduced** manual data entry
+
+### User Experience
+- Simple Google Sheets interface
+- Mobile-friendly submission
+- Instant confirmation
+- Self-service reporting
+
+---
+
+*Developed at Axrail Pte Ltd to streamline internal operations.*
+
+**[🔗 More details available upon request...]**`
+  },
+  {
+    id: "telurec-recruitment-platform",
+    type: "project",
+    title: "TeluRec (Recruitment Platform)",
+    subtitle: "Decentralized and active recruitment platform design with integrated testing and interviews",
+    image: "/project_x.jpg",
+    category: "Software Engineering",
+    date: "2020",
+    readTime: "5 min read",
+    technologies: ["System Design", "UML", "Business Process Modeling", "UI/UX"],
+    status: "Completed",
+    content: `# TeluRec (Recruitment Platform)
+
+A comprehensive design for a decentralized recruitment system that streamlines the hiring process from job posting to offer acceptance.
+
+## Concept
+
+### Vision
+**"Decentralized & Active Recruitment Platform"**
+
+A modern recruitment system that:
+- Empowers job seekers with better visibility
+- Streamlines HRD workflows
+- Integrates assessment tools
+- Provides transparent hiring pipeline
+
+## Core Features
+
+### 1. Manage Job Applicant
+- Centralized applicant database
+- Profile management
+- Application tracking
+- Communication history
+
+### 2. Integrated Test
+- Built-in assessment tools
+- Technical skill evaluation
+- Personality assessments
+- Automated scoring
+
+### 3. Integrated Interview
+- Scheduling system
+- Video interview support
+- Interview feedback collection
+- Panel interview coordination
+
+### 4. Job Offering
+- Offer letter generation
+- Negotiation tracking
+- Acceptance/rejection handling
+- Onboarding initiation
+
+## System Design
+
+### Business Process Flow
+
+\`\`\`
+                    JOB SEEKER                                    HRD
+                        │                                          │
+                        ↓                                          │
+               [Browse Vacancies]                                  │
+                        │                                          │
+                        ↓                                          ↓
+               [Apply for Job] ────────────────────→ [Review Applications]
+                        │                                          │
+                        │                                          ↓
+                        │                              [Schedule Assessment]
+                        │                                          │
+                        ↓                                          │
+               [Complete Test] ←───────────────────────────────────┘
+                        │                                          │
+                        ↓                                          ↓
+               [Attend Interview] ←───────────────── [Conduct Interview]
+                        │                                          │
+                        │                                          ↓
+                        │                              [Make Decision]
+                        │                                          │
+                        ↓                                          ↓
+               [Receive Offer] ←─────────────────── [Send Offer/Rejection]
+                        │
+                        ↓
+               [Accept/Decline]
+\`\`\`
+
+### Use Case Diagram
+
+**Actors:**
+- Job Seeker
+- HRD (Human Resources Department)
+- System Administrator
+
+**Use Cases:**
+| Actor | Actions |
+|-------|---------|
+| Job Seeker | Read Job Vacancy, Upload Document, Apply, Complete Test, Accept Offer |
+| HRD | Post Vacancy, Review Applications, Schedule Interview, Hire/Reject |
+| Admin | Manage Users, Configure System, Generate Reports |
+
+## Swimlane Diagram
+
+The process is divided into clear responsibilities:
+
+### Job Seeker Lane
+1. Browse available positions
+2. Submit application
+3. Complete assessments
+4. Attend interviews
+5. Respond to offers
+
+### HRD Lane
+1. Create job postings
+2. Screen applications
+3. Administer tests
+4. Conduct interviews
+5. Make hiring decisions
+
+### System Lane
+1. Match candidates
+2. Send notifications
+3. Schedule coordination
+4. Document management
+
+## Design Artifacts
+
+### Included Diagrams
+- **Business Process Map**: Swimlane diagram
+- **Use Case Diagram**: Actor-system interactions
+- **Entity Relationship Diagram**: Database design
+- **Wireframes**: UI mockups
+
+## Key Differentiators
+
+✅ **Decentralized**: Not tied to single company
+✅ **Active Matching**: AI-powered job matching
+✅ **Integrated Tools**: Testing and interviews built-in
+✅ **Transparent Pipeline**: Clear status tracking
+
+---
+
+*This project was developed as part of system analysis and design coursework.*
+
+**[🔗 More details coming soon...]**`
+  },
+  {
+    id: "ui-ux-design-projects",
+    type: "project",
+    title: "Design Projects (UI/UX)",
+    subtitle: "Collection of user interface designs including websites, portfolios, and mobile applications",
+    image: "/project_x.jpg",
+    category: "Designs & Art",
+    date: "2021-2023",
+    readTime: "4 min read",
+    technologies: ["Figma", "Adobe XD", "UI Design", "UX Design", "Wireframing", "Prototyping"],
+    status: "Completed",
+    content: `# Design Projects (UI/UX)
+
+A curated collection of user interface and user experience designs spanning websites, mobile applications, and interactive prototypes.
+
+## Projects Overview
+
+---
+
+## 1. E-Commerce Website Mockup
+
+### Pages Designed
+- **Homepage**: Hero section, featured products, categories
+- **Product Detail**: Images, specifications, reviews, add to cart
+- **Search Page**: Filters, sorting, grid/list view
+- **Sign Up/Login**: Registration flow, social login
+- **User Profile**: Order history, settings, preferences
+
+### Design Principles
+- Clean, minimalist aesthetic
+- Clear visual hierarchy
+- Intuitive navigation
+- Mobile-responsive layouts
+
+---
+
+## 2. Personal Portfolio
+
+### Theme
+*"Data-driven Software Engineer with a passion for machine learning"*
+
+### Design Elements
+- **Dark Mode UI**: Modern, eye-friendly design
+- **Skills Section**: Visual representation (Python, Figma, TensorFlow)
+- **Work Experience**: Card-based timeline
+- **Project Showcase**: Interactive gallery
+
+### Highlights
+- Smooth animations
+- Glassmorphism effects
+- Gradient accents
+- Professional typography
+
+---
+
+## 3. Solar/IoT Application
+
+### System Design
+**Hardware Integration:**
+\`\`\`
+Solar Panel ──→ Charge Controller ──→ Battery ──→ Mobile Device
+                        │
+                        └──→ IoT Sensor ──→ Cloud ──→ App
+\`\`\`
+
+### Mobile Screens
+
+#### Dashboard
+- Energy production metrics
+- Battery status
+- System health indicators
+
+#### Support
+- FAQ section
+- Contact form
+- Live chat integration
+
+#### Transactions
+- Energy credits
+- Payment history
+- Billing details
+
+#### Monitoring
+- Real-time charts
+- Historical data
+- Alerts & notifications
+
+### Design Focus
+- Data visualization
+- Real-time updates
+- Clean dashboard UI
+- Intuitive controls
+
+---
+
+## Design Process
+
+### Workflow
+\`\`\`
+Research → Wireframes → High-Fidelity → Prototype → Testing
+\`\`\`
+
+### Tools Used
+| Tool | Purpose |
+|------|---------|
+| Figma | Primary design tool |
+| Adobe XD | Prototyping |
+| Sketch | UI components |
+| InVision | User testing |
+
+## Design Philosophy
+
+### Principles I Follow
+1. **User-Centered**: Design for real user needs
+2. **Consistency**: Unified design language
+3. **Accessibility**: Inclusive design practices
+4. **Performance**: Designs that translate to fast UIs
+
+### Style Preferences
+- Clean typography
+- Purposeful whitespace
+- Subtle animations
+- Dark mode options
+
+---
+
+*These designs showcase my UI/UX capabilities alongside technical skills.*
+
+**[🔗 Figma files available upon request...]**`
   }
 ];
 

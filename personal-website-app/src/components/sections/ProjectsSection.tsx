@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 import { ExternalLink } from 'react-feather';
 import { CERTIFICATIONS, POSTS } from '../../constants/data';
 import { AnimationState } from '../../hooks/useScrollAnimations';
+// import { ALL } from 'dns';
 
 // Filter only projects from POSTS
-const PROJECTS = POSTS.filter(post => post.type === 'project');
+const ALL_PROJECTS = POSTS.filter(post => post.type === 'project');
 
 interface ProjectsSectionProps {
   projectsRef: React.RefObject<HTMLDivElement>;
@@ -13,6 +14,14 @@ interface ProjectsSectionProps {
 }
 
 export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProps) {
+  // Get 3 random projects (memoized to prevent re-shuffling on re-render)
+  const PROJECTS = useMemo(() => {
+    // const shuffled = [...ALL_PROJECTS].sort(() => Math.random() - 0.5);
+    const shuffled = [ALL_PROJECTS[1], ALL_PROJECTS[9], ALL_PROJECTS[7]].filter(Boolean);
+    // return shuffled.slice(0, 3);
+    return shuffled;
+  }, []);
+
   const handleProjectClick = (projectId: string) => {
     window.location.href = `/playground?post=${projectId}`;
   };
@@ -104,12 +113,12 @@ export function ProjectsSection({ projectsRef, animations }: ProjectsSectionProp
         <div className="hidden sm:flex w-full gap-4">
           {PROJECTS.map((project, index) => (
             <div 
-              key={project.id}
-              className={`relative flex-1 overflow-hidden transition-all duration-1000 cursor-pointer group mt-8 border border-white/10 hover:border-white/20 ${
-                animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              }`}
-              style={{ transitionDelay: `${200 + index * 200}ms` }}
-              onClick={() => handleProjectClick(project.id)}
+            key={project.id}
+            className={`relative flex-1 overflow-hidden transition-all duration-1000 cursor-pointer group mt-8 border border-white/10 hover:border-white/20 ${
+              animations.projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            }`}
+            style={{ transitionDelay: `${200 + index * 200}ms` }}
+            onClick={() => handleProjectClick(project.id)}
             >
               {/* Image Section - Top */}
               <div className="relative h-40 lg:h-48 overflow-hidden">
