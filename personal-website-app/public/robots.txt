@@ -1,0 +1,37 @@
+# Robots.txt for ridhwanashir.com
+
+User-agent: *
+Allow: /
+
+# Disallow protected content
+User-agent: *
+Disallow: /mle-exam/
+Disallow: /pde-exam/
+
+# Specific crawlers
+User-agent: Googlebot
+Disallow: /mle-exam/
+Disallow: /pde-exam/
+
+User-agent: Bingbot
+Disallow: /mle-exam/
+Disallow: /pde-exam/
+
+User-agent: Slurp
+Disallow: /mle-exam/
+Disallow: /pde-exam/
+
+User-agent: DuckDuckBot
+Disallow: /mle-exam/
+Disallow: /pde-exam/
+
+User-agent: Baiduspider
+Disallow: /mle-exam/
+Disallow: /pde-exam/
+
+User-agent: YandexBot
+Disallow: /mle-exam/
+Disallow: /pde-exam/
+
+# Sitemap
+Sitemap: https://ridhwanashir.com/sitemap.xml

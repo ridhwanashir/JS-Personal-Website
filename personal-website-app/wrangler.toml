@@ -10,3 +10,6 @@ custom_domain = true
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
+
+[vars]
+NEXT_PUBLIC_MLE_PASSWORD = "mle2025"
